@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\8A-WDPR.csproj": {}
+    "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj": {}
   },
   "projects": {
-    "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\8A-WDPR.csproj": {
+    "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\8A-WDPR.csproj",
-        "projectName": "8A-WDPR",
-        "projectPath": "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\8A-WDPR.csproj",
+        "projectUniqueName": "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj",
+        "projectName": "WebApplicatie",
+        "projectPath": "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj",
         "packagesPath": "C:\\Users\\joeyt\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\obj\\",
+        "outputPath": "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\joeyt\\AppData\\Roaming\\NuGet\\NuGet.Config"
