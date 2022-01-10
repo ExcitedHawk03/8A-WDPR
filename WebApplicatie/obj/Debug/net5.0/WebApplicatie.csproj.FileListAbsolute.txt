@@ -117,3 +117,18 @@ D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\Register.cshtml.g.cs
 D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\secret.cshtml.g.cs
 D:\8A-WDPR\WebApplicatie\bin\Debug\net5.0\Newtonsoft.Json.dll
 D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\home.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Client\Create.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Client\Delete.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Client\Details.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Client\Edit.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Client\Index.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\AfspraakMaken.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\IndexQ.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\LoginQ.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\Orthopedagogen.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\Ouder.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\Ouderlogin.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\OuderloginQ.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\OuderQ.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\IndexH.cshtml.g.cs
+D:\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Shared\_Layout - kopie.cshtml.g.cs

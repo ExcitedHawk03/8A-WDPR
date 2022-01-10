@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WebApplicatie.context;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace WebApplicatie
@@ -26,11 +26,8 @@ namespace WebApplicatie
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddDbContext<MyContext>(config =>
-            {
-                config.UseInMemoryDatabase("Memory");
-            });
+            services.AddDbContext<ClientContext>(builder => builder.UseSqlite("Data Source=database.db"));
+           
 
             services.AddIdentity<IdentityUser, IdentityRole>(config => { 
             config.Password.RequiredLength = 1;
@@ -38,11 +35,13 @@ namespace WebApplicatie
             config.Password.RequireUppercase = false;
             config.Password.RequireNonAlphanumeric = false;
            })
-            .AddEntityFrameworkStores<MyContext>().AddDefaultTokenProviders();
+            .AddEntityFrameworkStores<ClientContext>().AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(config => {config.Cookie.Name = "account.cookie"; config.LoginPath = "/Home/Login"; }); 
 
             services.AddControllersWithViews();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

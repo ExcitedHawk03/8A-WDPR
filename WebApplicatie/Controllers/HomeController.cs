@@ -51,22 +51,22 @@ namespace WebApplicatie.Controllers
          [HttpPost]
         public async Task<IActionResult> Register(string username, string password, string register_options, string voornaam, string tussenvoegsel, string achternaam){
             
-            hulpverlener hulpverlener = new hulpverlener(voornaam, tussenvoegsel, achternaam, username, password, 2211);
-            switch (register_options)
-            {
-                case "patiënt":
-                currentAccount = new cliënt(voornaam, tussenvoegsel, achternaam, username, password, hulpverlener);
-                break;
-                case "ouder":
-                currentAccount = new ouder(voornaam, tussenvoegsel, achternaam, username, password);
-                break;
-                case "hulpvelener":
-                currentAccount = new hulpverlener(voornaam, tussenvoegsel, achternaam, username, password, 1235);
-                break;
-                case "moderator":
-                currentAccount = new moderator(voornaam, tussenvoegsel, achternaam, username, password);
-                break;
-            }
+           // hulpverlener hulpverlener = new hulpverlener(voornaam, tussenvoegsel, achternaam, username, password, 2211);
+            // switch (register_options)
+            // {
+            //     case "patiënt":
+            //     currentAccount = new client(voornaam, tussenvoegsel, achternaam, username, password);
+            //     break;
+            //     case "ouder":
+            //     currentAccount = new ouder(voornaam, tussenvoegsel, achternaam, username, password);
+            //     break;
+            //     case "hulpvelener":
+            //     //currentAccount = new hulpverlener(voornaam, tussenvoegsel, achternaam, username, password, 1235);
+            //     break;
+            //     case "moderator":
+            //     currentAccount = new moderator(voornaam, tussenvoegsel, achternaam, username, password);
+            //     break;
+            // }
             
             var user1 = new IdentityUser {UserName = username, Email = ""};
 
@@ -114,7 +114,7 @@ namespace WebApplicatie.Controllers
             if(currentAccount.typAccount == "hulpvelener"){
                 var serializedParent = JsonConvert.SerializeObject(currentAccount); 
                 hulpverlener temp = JsonConvert.DeserializeObject<hulpverlener>(serializedParent);              
-                new cliënt(voornaam, tussenvoegsel, achternaam, username, password, temp);
+                //new client(voornaam, tussenvoegsel, achternaam, username, password);
             }
             else{
                 Console.WriteLine("je hebt niet de juiste machtiging");

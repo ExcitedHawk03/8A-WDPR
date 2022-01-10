@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApplicatie.context
 {
-    public class MyContext: IdentityDbContext
-    {
-        public MyContext(DbContextOptions<MyContext> options): base(options){
+    // public class MyContext: IdentityDbContext
+    // {
+    //     public MyContext(DbContextOptions<MyContext> options): base(options){
 
-        }
-    }
+    //     }
+    // }
 }

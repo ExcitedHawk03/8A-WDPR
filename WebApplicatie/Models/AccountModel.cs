@@ -21,64 +21,64 @@ public class Account{
 }
 
 public class hulpverlener : Account {
-   public List<cliënt> cliënten {get; set;} 
+  public List<client> cliënten {get; set;} 
    public int chatNummer {get; set;}
 
-   public hulpverlener(string voornaam, string tussenvoegsel, string achternaam, string gebruikersnaam, string password, int chatnummer){
-       voorNaam = voornaam;
-       tussenVoegsel = tussenvoegsel;
-       achterNaam = achternaam;
-       gebruikersNaam = gebruikersnaam;
-       wachtwoord = password;
-       typAccount = "hulpvelener";
-       chatNummer = chatnummer;
-   }
+//    public hulpverlener(string voornaam, string tussenvoegsel, string achternaam, string gebruikersnaam, string password, int chatnummer){
+//        voorNaam = voornaam;
+//        tussenVoegsel = tussenvoegsel;
+//        achterNaam = achternaam;
+//        gebruikersNaam = gebruikersnaam;
+//        wachtwoord = password;
+//        typAccount = "hulpvelener";
+//        chatNummer = chatnummer;
+//    }
 
 }
 
 
-public class ouder : Account{
+ public class ouder : Account{
     
-    public List<cliënt> kinderen {get; set;}
+     public List<client> kinderen {get; set;}
 
-    public ouder(string voornaam, string tussenvoegsel, string achternaam, string gebruikersnaam, string password){
-       voorNaam = voornaam;
-       tussenVoegsel = tussenvoegsel;
-       achterNaam = achternaam;
-       gebruikersNaam = gebruikersnaam;
-       wachtwoord = password;
-       typAccount = "ouder";
+    // public ouder(string voornaam, string tussenvoegsel, string achternaam, string gebruikersnaam, string password){
+    //    this.voorNaam = voornaam;
+    //    tussenVoegsel = tussenvoegsel;
+    //    achterNaam = achternaam;
+    //    gebruikersNaam = gebruikersnaam;
+    //    wachtwoord = password;
+    //    typAccount = "ouder";
        
-   }
+    // }
 }
 
-public class cliënt: Account {
-    public ouder ouder {get; set;}
-    [Required]
-    public hulpverlener hulpverlener {get; set;}
+ public class client: Account {
+     public ouder ouder {get; set;}
+    
+     public hulpverlener hulpverlener {get; set;}
 
-    public cliënt(string voornaam, string tussenvoegsel, string achternaam, string gebruikersnaam, string password, hulpverlener doktor){
-       voorNaam = voornaam;
-       tussenVoegsel = tussenvoegsel;
-       achterNaam = achternaam;
-       gebruikersNaam = gebruikersnaam;
-       wachtwoord = password;
-       typAccount = "cliënt";
-       hulpverlener = doktor;
+//     public client(string voornaam, string tussenvoegsel, string achternaam, string gebruikersnaam, string password){
+//        voorNaam = voornaam;
+//        tussenVoegsel = tussenvoegsel;
+//        achterNaam = achternaam;
+//        gebruikersNaam = gebruikersnaam;
+//        wachtwoord = password;
+//        typAccount = "cliënt";
+      
+       
+    }
+
+// }
+
+ public class moderator: Account{
+
+//     public moderator(string voornaam, string tussenvoegsel, string achternaam, string gebruikersnaam, string password){
+//        voorNaam = voornaam;
+//        tussenVoegsel = tussenvoegsel;
+//        achterNaam = achternaam;
+//        gebruikersNaam = gebruikersnaam;
+//        wachtwoord = password;
+//        typAccount = "moderator";
        
    }
-
-}
-
-public class moderator: Account{
-
-    public moderator(string voornaam, string tussenvoegsel, string achternaam, string gebruikersnaam, string password){
-       voorNaam = voornaam;
-       tussenVoegsel = tussenvoegsel;
-       achterNaam = achternaam;
-       gebruikersNaam = gebruikersnaam;
-       wachtwoord = password;
-       typAccount = "moderator";
-       
-   }
-}
+// }
