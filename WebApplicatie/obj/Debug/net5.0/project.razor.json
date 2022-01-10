@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj",
+  "FilePath": "d:\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -15619,37 +15619,57 @@
   "RootNamespace": "WebApplicatie",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\Views\\Shared\\Error.cshtml",
+      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\Views\\Shared\\_Layout.cshtml",
+      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\Views\\Home\\Privacy.cshtml",
+      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Home\\secret.cshtml",
+      "TargetPath": "Views\\Home\\secret.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Home\\home.cshtml",
+      "TargetPath": "Views\\Home\\home.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\Views\\Home\\Index.cshtml",
+      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Home\\Login.cshtml",
+      "TargetPath": "Views\\Home\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Home\\Register.cshtml",
+      "TargetPath": "Views\\Home\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     }

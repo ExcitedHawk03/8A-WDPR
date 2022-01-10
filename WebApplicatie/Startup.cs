@@ -4,10 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebApplicatie.context;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplicatie
 {
@@ -23,6 +26,22 @@ namespace WebApplicatie
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDbContext<MyContext>(config =>
+            {
+                config.UseInMemoryDatabase("Memory");
+            });
+
+            services.AddIdentity<IdentityUser, IdentityRole>(config => { 
+            config.Password.RequiredLength = 1;
+            config.Password.RequireDigit = false;  
+            config.Password.RequireUppercase = false;
+            config.Password.RequireNonAlphanumeric = false;
+           })
+            .AddEntityFrameworkStores<MyContext>().AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(config => {config.Cookie.Name = "account.cookie"; config.LoginPath = "/Home/Login"; }); 
+
             services.AddControllersWithViews();
         }
 
@@ -43,6 +62,8 @@ namespace WebApplicatie
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

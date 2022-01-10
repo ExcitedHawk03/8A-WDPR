@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <form action="/Home/home" method="post">
+        <input type="text" name="voornaam" value="" placeholder="voornaam" />
+        <input type="text" name="tussenvoegsel" value=" " placeholder="tussenvoegsel" />
+        <input type="text" name="achternaam" value="" placeholder="achternaam"/>
+        <input type="text" name="username" value="" placeholder="gebruikersnaam"/>
+        <input type="text" name="password" value="" placeholder="wachtwoord"/>
+        <button type="submit">Register cliënt </button>
+    </form>
+</div>

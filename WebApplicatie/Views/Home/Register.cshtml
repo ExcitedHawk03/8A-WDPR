@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Register Page";
+}
+
+<h1> Register</h1>
+<form action="/Home/Register" method="post">
+    <input type="text" name="voornaam" value="" placeholder="voornaam" />
+    <input type="text" name="tussenvoegsel" value=" " placeholder="tussenvoegsel" />
+    <input type="text" name="achternaam" value="" placeholder="achternaam"/>
+    <input type="text" name="username" value="" placeholder="gebruikersnaam"/>
+    <input type="text" name="password" value="" placeholder="wachtwoord"/>
+    <label for="register_options">hoe regristeer je?</label>
+    <select name="register_options" id="register_options">
+        <option value="patiënt">patiënt</option>
+        <option value="ouder">ouder</option>
+        <option value="hulpvelener">hulpvelener</option>
+        <option value="moderator">moderator</option>
+    </select>
+    <button type="submit">Register </button>
+</form>

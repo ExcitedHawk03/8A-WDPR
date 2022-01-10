@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj": {}
+    "D:\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj": {}
   },
   "projects": {
-    "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj": {
+    "D:\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj",
+        "projectUniqueName": "D:\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj",
         "projectName": "WebApplicatie",
-        "projectPath": "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj",
-        "packagesPath": "C:\\Users\\joeyt\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joeyt\\School\\Sem3\\WDPR\\8A-WDPR\\WebApplicatie\\obj\\",
+        "projectPath": "D:\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj",
+        "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
+        "outputPath": "D:\\8A-WDPR\\WebApplicatie\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\joeyt\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,6 +39,36 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.SQLite": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -55,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
