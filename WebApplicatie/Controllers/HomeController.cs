@@ -133,5 +133,27 @@ namespace WebApplicatie.Controllers
             currentAccount = null;
              return RedirectToAction("index");
         }
+    
+        public IActionResult Orthopedagogen()
+        {
+            return View();
+        }
+
+        public IActionResult AfspraakMaken ()
+        {
+            return View();
+        }
+
+        public IActionResult Ouder()
+        {
+            return View();
+        }
+
+         public IActionResult Ouderlogin()
+        {
+            return View();
+        }
+
     }
+
 }
