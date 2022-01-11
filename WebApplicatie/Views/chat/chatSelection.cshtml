@@ -1,0 +1,37 @@
+@model IEnumerable<Chat>
+<html>
+<h1>chat selection screen</h1>
+<body>
+    <div class="main-menu"
+     <div class="side-menu">
+        @foreach(var Chat in Model){
+        <a class="roomBtn" asp-controller="chat" asp-action="chat" asp-route-id="@Chat.Id">
+            @Chat.naam
+        </a>
+        }
+
+        <a class="room-button" id="Create_Room+" href="#">
+            <strong>+</strong>
+        </a>
+    </div>
+     
+    </div> 
+      <vc:room></vc:room>
+    </div>
+
+    <div class="modal" id="room_modal">
+        <form asp-controller="Chat" asp-action="chatSelection" class="modal-body">
+            <header>create room</header>
+            <div>
+                <button onclick="closemodal">X</button>
+            </div>
+            <div>
+                <input name="name">
+            </div>
+            <footer>
+                <button>create</button>
+            </footer>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+@model Chat
+
+<html>
+    <h6 href="https://localhost:5001/chat/chatSelection">terug naar chat selectie scherm</h6>
+    <div class="chat-body">
+        @foreach (var Message in Model.Messages)
+        {
+            <div class="message">
+                <header>@Message.naam</header>
+                <p>@Message.text</p>
+                <footer>@Message.currentTime</footer>
+            </div>
+        }
+    </div>
+    <div class="chat-input">
+        <form asp-controller="chat" asp-action="CreateMessage">
+            <input type="hidden" name="chatId" value="@Model.Id">
+            <input type="text" name="message">
+        <button type="submit">send</button>
+        </form>
+    </div>
+</html>

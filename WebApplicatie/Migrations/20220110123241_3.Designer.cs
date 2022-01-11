@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace WebApplicatie.Migrations
 {
     [DbContext(typeof(ClientContext))]
-    partial class ClientContextModelSnapshot : ModelSnapshot
+    [Migration("20220110123241_3")]
+    partial class _3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -252,48 +254,6 @@ namespace WebApplicatie.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("WebApplicatie.Models.Chat", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("naam")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ruimte")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("chat");
-                });
-
-            modelBuilder.Entity("WebApplicatie.Models.Message", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ChatId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("currentTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("naam")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("text")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ChatId");
-
-                    b.ToTable("message");
                 });
 
             modelBuilder.Entity("client", b =>
@@ -560,17 +520,6 @@ namespace WebApplicatie.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebApplicatie.Models.Message", b =>
-                {
-                    b.HasOne("WebApplicatie.Models.Chat", "chat")
-                        .WithMany("Messages")
-                        .HasForeignKey("ChatId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("chat");
-                });
-
             modelBuilder.Entity("client", b =>
                 {
                     b.HasOne("hulpverlener", "hulpverlener")
@@ -584,11 +533,6 @@ namespace WebApplicatie.Migrations
                     b.Navigation("hulpverlener");
 
                     b.Navigation("ouder");
-                });
-
-            modelBuilder.Entity("WebApplicatie.Models.Chat", b =>
-                {
-                    b.Navigation("Messages");
                 });
 
             modelBuilder.Entity("hulpverlener", b =>

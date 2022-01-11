@@ -4,17 +4,19 @@
 
 <h1> Register</h1>
 <form action="/Home/Register" method="post">
-    <input type="text" name="voornaam" value="" placeholder="voornaam" />
-    <input type="text" name="tussenvoegsel" value=" " placeholder="tussenvoegsel" />
-    <input type="text" name="achternaam" value="" placeholder="achternaam"/>
-    <input type="text" name="username" value="" placeholder="gebruikersnaam"/>
-    <input type="text" name="password" value="" placeholder="wachtwoord"/>
-    <label for="register_options">hoe regristeer je?</label>
-    <select name="register_options" id="register_options">
-        <option value="patiënt">patiënt</option>
-        <option value="ouder">ouder</option>
-        <option value="hulpvelener">hulpvelener</option>
-        <option value="moderator">moderator</option>
+    <input type="text" name="Voornaam" value="" placeholder="voornaam" />
+    <input type="text" name="Tussenvoegsel" value=" " placeholder="tussenvoegsel" />
+    <input type="text" name="Achternaam" value="" placeholder="achternaam"/>
+    <input type="text" name="Lijftijd" value="" placeholder="leeftijd"/>
+    <input type="text" name="Email" value="" placeholder="Email"/>
+    <input type="text" name="Adres" value="" placeholder="Adres"/>
+    <input type="text" name="Postcode" value="" placeholder="Postcode"/>
+    <input type="text" name="Telnr" value="" placeholder="telefoonnummer"/>
+    <input type="text" name="Plaats" value="" placeholder="Woonplaats"/>
+    <input type="text" name="password" value="" placeholder="Wachtwoord"/>
+    <select name="geslacht" id="geslacht">
+        <option value="Man">M</option>
+        <option value="Vrouw">F</option>
     </select>
     <button type="submit">Register </button>
 </form>

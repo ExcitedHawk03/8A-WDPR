@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebApplicatie.Models;
 
-    public class ClientContext : IdentityDbContext
+    public class ClientContext : IdentityDbContext<Account>
     {
         public ClientContext (DbContextOptions options)
             : base(options)
@@ -17,4 +18,7 @@ using Microsoft.EntityFrameworkCore;
         public DbSet<client> cliënt { get; set; }
         public DbSet<ouder> ouder { get; set; }
         public DbSet<moderator> moderator { get; set; }
+
+        public DbSet<Chat> chat {get; set;}
+        public DbSet<Message> message {get; set;}
     }

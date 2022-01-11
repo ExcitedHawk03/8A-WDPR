@@ -11,20 +11,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApplicatie.Models;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplicatie.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly UserManager<IdentityUser> _AccountManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Account> _AccountManager;
+        private readonly SignInManager<Account> _signInManager;
+        private readonly ClientContext _context;
 
         static Account currentAccount;
 
 
-        public HomeController(UserManager<IdentityUser> AccountManager, SignInManager<IdentityUser> signInManager){
+        public HomeController(UserManager<Account> AccountManager, SignInManager<Account> signInManager, ClientContext context){
             _AccountManager = AccountManager;
             _signInManager = signInManager;
+            _context = context;
         }
         
 
@@ -47,41 +50,35 @@ namespace WebApplicatie.Controllers
         public IActionResult Secret(){
             return View();
         }
-
-         [HttpPost]
-        public async Task<IActionResult> Register(string username, string password, string register_options, string voornaam, string tussenvoegsel, string achternaam){
+        
+        [HttpPost]
+        public async Task<IActionResult> Register([Bind("Id,Voornaam,Tussenvoegsel,Achternaam,Leeftijd,Geslacht,Email,Telnr,Adres,Postcode,Plaats,typAccount")] client client, string password){
+             
+            if (ModelState.IsValid)
+            {
+            client.typAccount = "client";
+            _context.Add(client);
+            await _context.SaveChangesAsync();
+            Console.WriteLine(client.Adres);
+            currentAccount = client;
             
-           // hulpverlener hulpverlener = new hulpverlener(voornaam, tussenvoegsel, achternaam, username, password, 2211);
-            // switch (register_options)
-            // {
-            //     case "patiënt":
-            //     currentAccount = new client(voornaam, tussenvoegsel, achternaam, username, password);
-            //     break;
-            //     case "ouder":
-            //     currentAccount = new ouder(voornaam, tussenvoegsel, achternaam, username, password);
-            //     break;
-            //     case "hulpvelener":
-            //     //currentAccount = new hulpverlener(voornaam, tussenvoegsel, achternaam, username, password, 1235);
-            //     break;
-            //     case "moderator":
-            //     currentAccount = new moderator(voornaam, tussenvoegsel, achternaam, username, password);
-            //     break;
-            // }
             
-            var user1 = new IdentityUser {UserName = username, Email = ""};
 
-            var cereresult = await _AccountManager.CreateAsync(user1, password);
+            var result = await _AccountManager.CreateAsync(client, password);
 
-            if(cereresult.Succeeded){
+            if(result.Succeeded){
 
-                var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
+                var result2 = await _signInManager.PasswordSignInAsync(client.Voornaam, password, false, false);
 
-                if(result.Succeeded){
-                    return RedirectToAction("home");
+                if(result2.Succeeded){
+                    return RedirectToAction("login");
                 }
             }
 
              return RedirectToAction("register");
+            
+        }
+        return RedirectToAction("register");
         }
      
         public IActionResult Register(){
@@ -92,41 +89,19 @@ namespace WebApplicatie.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string username, string password){
 
-            var user1 =  await _AccountManager.FindByNameAsync(username);
-
-            if(user1 != null){
-                Console.WriteLine("nice");
-                var result = await _signInManager.PasswordSignInAsync(username, password, false, false);
-
+           var user = await _AccountManager.FindByNameAsync(username);
+           if(user != null){
+           var result = await _signInManager.PasswordSignInAsync(user, password, false,false); 
                 if(result.Succeeded){
-                    return RedirectToAction("index");
+                   return RedirectToAction("chatSelection");
                 }
-            }
-
+           }
             return RedirectToAction("login");
         }
          public IActionResult Login(){
-
-         return View();
+          return View();
          }
-        [HttpPost]
-        public async Task<IActionResult> home(string username, string password, string voornaam, string tussenvoegsel, string achternaam){
-            if(currentAccount.typAccount == "hulpvelener"){
-                var serializedParent = JsonConvert.SerializeObject(currentAccount); 
-                hulpverlener temp = JsonConvert.DeserializeObject<hulpverlener>(serializedParent);              
-                //new client(voornaam, tussenvoegsel, achternaam, username, password);
-            }
-            else{
-                Console.WriteLine("je hebt niet de juiste machtiging");
-            }
-             return RedirectToAction("home");
-
-        }
-        [Authorize]
-        public IActionResult home(){
-
-         return View();
-         }
+        
 
         public async Task<IActionResult> logout(){
             await _signInManager.SignOutAsync();
@@ -153,6 +128,8 @@ namespace WebApplicatie.Controllers
         {
             return View();
         }
+
+
 
     }
 
