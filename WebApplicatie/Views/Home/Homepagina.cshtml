@@ -1,0 +1,42 @@
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/homepagina.css" />
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-5">
+            <h2>Wie zijn wij?</h2>
+            <p>
+                In onze praktijk wordt professioneel hulp aangeboden voor jongeren met verschillende problemen zoals,
+                ADD/ADHD, faalangst, dyslectie/dyscalculie en psychische aandoeningen. Onze specialisten hebben veel
+                ervaring en kennis over deze problemen en gaan uiterst professioneel en deskundig te werk.
+                Wilt u meer weten over onze specialisten? Klik dan op de volgende link: <a asp-controller="Home" asp-action="Orthopedagogen">Onze Specialisten</a>
+            </p>
+            <p>
+                Mocht u nog vragen of opmerkingen hebben, neem gerust telefonisch contact op of via de mail.
+            </p>
+            <img src="/Images/praktijk.png" alt="Praktijk">
+        </div>
+        <div class="col-2">
+
+        </div>
+        <div class="col-5">
+            <h2 id="livechat">Live Chat</h2>
+        </div>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+</script>
+
+</html>
