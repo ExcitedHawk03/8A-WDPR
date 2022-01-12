@@ -125,6 +125,10 @@ namespace WebApplicatie.Controllers
             return View();
         }
 
+        public IActionResult IndexQ()
+        {
+            return View();
+        }
 
 
     }
