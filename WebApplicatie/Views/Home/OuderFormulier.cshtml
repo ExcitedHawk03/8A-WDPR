@@ -1,27 +1,38 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-   <br>
-    <a>Bent uw een ouder of voogd en is uw kind jonger dan 16 jaar? Druk dan op de link om een account voor uw kind aan te maken</a>
-    <br>
-    <a asp-action="Ouder">Clientgegevens voor uw kind invullen</a>
-    <br>
-</div>
-
-
-@model Client
+﻿@model Client
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h2>Clientgegevens invullen</h2>
+<!DOCTYPE html>
+<html>
 
-<div class="row">
-    <div class="col-md-4">
-    <a asp-action="Index">Lijst opnieuw invullen</a>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/css/formulieren.css" />
+</head>
+
+<body>
+
+    <div class="text-center">
+        <br>
+        <p>Bent uw een ouder of voogd en is uw kind jonger dan 16 jaar? Druk dan op de link om een account voor uw kind
+            aan te maken</p>
+        <a asp-action="Ouder"><b>Clientgegevens voor uw kind invullen</b></a>
+        <br><br>
+        <p>
+            <a asp-action="Login">Klik hier als u al een bestaand account heeft</a>
+        </p>
+        <p>
+            <a asp-action="Ouderlogin">Klik hier als u al een bestaand ouderAccount heeft</a>
+        </p>
+    </div>
+    <hr>
+
+    <h2><b>Clientgegevens invullen</b></h2>
+
+    <div class="container">
+        <a asp-action="Index">Lijst opnieuw invullen</a>
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -42,7 +53,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Leeftijd" class="control-label"></label>
-                <input asp-for="Leeftijd" class="form-control" id="Leeftijd"/>
+                <input asp-for="Leeftijd" class="form-control" id="Leeftijd" />
                 <span asp-validation-for="Leeftijd" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -76,37 +87,30 @@
                 <span asp-validation-for="Plaats" class="text-danger"></span>
             </div>
             <div class="form-group">
-                 <button onclick="agecheck()" id="button">Meld aan</button>  
+                <button onclick="agecheck()" id="button">Meld aan</button>
             </div>
         </form>
     </div>
-</div>
-@section Scripts {
+    </div>
+    @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    }
+</body>
+
+</html>
 
 
-<div>
-    <a asp-action="Login">Klik hier als u al een bestaand account heeft</a>
-</div>
-
-
-<div>
-    <a asp-action="Ouderlogin">Klik hier als u al een bestaand ouderAccount heeft</a>
-</div>
-
-    
 <script>
 
-    function agecheck(){
-    let leeftijd = document.getElementById("Leeftijd");
+    function agecheck() {
+        let leeftijd = document.getElementById("Leeftijd");
 
-    if (leeftijd.value >= 16){
-        alert("Je gegevens zijn ingevuld, maak nu een gebruikersnaam en wachtwoord aan. Om te kunnen inloggen.")   
-        
+        if (leeftijd.value >= 16) {
+            alert("Je gegevens zijn ingevuld, maak nu een gebruikersnaam en wachtwoord aan. Om te kunnen inloggen.")
+
+        }
+        else {
+            alert("Je bent helaas niet oud genoeg om zelf een account aan te maken. Laat dit doen door een ouder of voogd.")
+        }
     }
-    else {
-        alert("Je bent helaas niet oud genoeg om zelf een account aan te maken. Laat dit doen door een ouder of voogd.")
-    }
-}
 </script>

@@ -1,10 +1,40 @@
 @{
     ViewData["Title"] = "Login Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1> Login</h1>
-<form action="/Home/Login" method="post">
-    <input type="text" name="username" value="" />
-    <input type="text" name="password" value="" />
-    <button type="submit">Login </button>
-</form>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/css/formulieren.css" />
+</head>
+
+<body>
+
+    <h2><b>Inloggen:</b></h2>
+
+    <form method="post" id="form">
+        <div class="imgcontainer">
+            <img src="/Images/LoginAfbeelding.png" alt="Plaatje van een avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="uname"><b>Gebruikersnaam</b></label>
+            <input type="text" id="usernameTextfield" placeholder="Voer uw gebruikersnaam in" name="username" required>
+
+            <label for="psw"><b>Wachtwoord</b></label>
+            <input type="password" id="passwordTextField" placeholder="Voer uw wachtwoord in" name="wachtwoord" required>
+
+            <button type="submit" id="button">Login</button>
+        </div>
+
+        <div class="container">
+            <a asp-controller="Home" asp-action="Index">Annuleren</a>
+        </div>
+    </form>
+
+</body>
+
+</html>
