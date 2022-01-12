@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f1f1f1;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 36px;
+}
+
+#button:hover {
+    opacity: 0.8;
+}
+
+.container {
+    padding: 16px;
+    background-color: #f1f1f1;
+}
+
+#footer {
+    margin-top: 5px;
+}
+
+h2 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    font-size: larger;
+}
+
+label,
+select {
+    font-size: 18px;
+}
+
+header {
+    background-color: white;
+}
+
+
+/*Maakt de links en de zoekbalk onzichtbaar*/
+
+#Aanmelding {
+    display: none;
+}
+
+#OverOns {
+    display: none;
+}
+
+#Contact {
+    display: none;
+}
+
+#LogIn {
+    display: none;
+}
+
+.search-container {
+    display: none;
+}
