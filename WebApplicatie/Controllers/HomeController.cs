@@ -21,7 +21,7 @@ namespace WebApplicatie.Controllers
         private readonly SignInManager<Account> _signInManager;
         private readonly ClientContext _context;
 
-        static Account currentAccount;
+        public Account currentAccount;
 
 
         public HomeController(UserManager<Account> AccountManager, SignInManager<Account> signInManager, ClientContext context){
@@ -52,30 +52,27 @@ namespace WebApplicatie.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Register([Bind("Id,Voornaam,Tussenvoegsel,Achternaam,Leeftijd,Geslacht,Email,Telnr,Adres,Postcode,Plaats,typAccount")] client client, string password){
-             
-            if (ModelState.IsValid)
-            {
-            client.typAccount = "client";
-            _context.Add(client);
-            await _context.SaveChangesAsync();
-            Console.WriteLine(client.Adres);
-            currentAccount = client;
-            
-            
-
-            var result = await _AccountManager.CreateAsync(client, password);
-
+        public async Task<IActionResult> Register(string voornaam,string tussenvoegsel, string achternaam, int leeftijd,string geslacht, string email,string telnr,string postcode, string plaats, string password, string adres){                                   
+            var account = new Account{
+                Tussenvoegsel = tussenvoegsel,
+                Achternaam = achternaam,
+                Leeftijd = leeftijd,
+                Email = email,
+                Telnr = telnr,
+                Postcode = postcode,
+                Plaats = plaats,
+                UserName = voornaam,
+                Adres = adres
+            };
+            var result = await _AccountManager.CreateAsync(account, password);
             if(result.Succeeded){
 
-                var result2 = await _signInManager.PasswordSignInAsync(client.Voornaam, password, false, false);
+                var result2 = await _signInManager.PasswordSignInAsync(account.UserName, password, false, false);
 
                 if(result2.Succeeded){
-                    return RedirectToAction("login");
+                    currentAccount = account;
+                    return RedirectToAction("chat/chatSelection");
                 }
-            }
-
-             return RedirectToAction("register");
             
         }
         return RedirectToAction("register");
@@ -93,7 +90,7 @@ namespace WebApplicatie.Controllers
            if(user != null){
            var result = await _signInManager.PasswordSignInAsync(user, password, false,false); 
                 if(result.Succeeded){
-                   return RedirectToAction("chatSelection");
+                   return RedirectToAction("chat/chatSelection");
                 }
            }
             return RedirectToAction("login");
@@ -105,7 +102,6 @@ namespace WebApplicatie.Controllers
 
         public async Task<IActionResult> logout(){
             await _signInManager.SignOutAsync();
-            currentAccount = null;
              return RedirectToAction("index");
         }
     

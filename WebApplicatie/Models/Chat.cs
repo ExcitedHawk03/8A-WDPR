@@ -9,6 +9,7 @@ namespace WebApplicatie.Models
         public Chat()
         {
             Messages = new List<Message>();
+            Users = new List<ChatUser>();
         }
         [Key]
         public int Id {get; set;}
@@ -16,6 +17,9 @@ namespace WebApplicatie.Models
 
         public chatRuimte ruimte {get; set;}
         public string naam {get; set;}
+
+        //public ICollection<Account> Users {get; set;}
+        public virtual List<ChatUser> Users {get; set;}
 
         
     }

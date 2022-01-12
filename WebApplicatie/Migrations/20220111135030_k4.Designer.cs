@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace WebApplicatie.Migrations
 {
     [DbContext(typeof(ClientContext))]
-    partial class ClientContextModelSnapshot : ModelSnapshot
+    [Migration("20220111135030_k4")]
+    partial class k4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,6 +42,7 @@ namespace WebApplicatie.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
@@ -87,7 +90,6 @@ namespace WebApplicatie.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Telnr")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Tussenvoegsel")
@@ -98,6 +100,10 @@ namespace WebApplicatie.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Voornaam")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("typAccount")
@@ -309,21 +315,6 @@ namespace WebApplicatie.Migrations
                     b.ToTable("chat");
                 });
 
-            modelBuilder.Entity("WebApplicatie.Models.ChatUser", b =>
-                {
-                    b.Property<int>("ChatId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("AccountId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ChatId", "AccountId");
-
-                    b.HasIndex("AccountId");
-
-                    b.ToTable("chatUsers");
-                });
-
             modelBuilder.Entity("WebApplicatie.Models.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -441,25 +432,6 @@ namespace WebApplicatie.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebApplicatie.Models.ChatUser", b =>
-                {
-                    b.HasOne("Account", "account")
-                        .WithMany("Chats")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WebApplicatie.Models.Chat", "chat")
-                        .WithMany("Users")
-                        .HasForeignKey("ChatId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("account");
-
-                    b.Navigation("chat");
-                });
-
             modelBuilder.Entity("WebApplicatie.Models.Message", b =>
                 {
                     b.HasOne("WebApplicatie.Models.Chat", "chat")
@@ -486,16 +458,9 @@ namespace WebApplicatie.Migrations
                     b.Navigation("ouder");
                 });
 
-            modelBuilder.Entity("Account", b =>
-                {
-                    b.Navigation("Chats");
-                });
-
             modelBuilder.Entity("WebApplicatie.Models.Chat", b =>
                 {
                     b.Navigation("Messages");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("hulpverlener", b =>

@@ -21,4 +21,13 @@ using WebApplicatie.Models;
 
         public DbSet<Chat> chat {get; set;}
         public DbSet<Message> message {get; set;}
+
+        public DbSet<ChatUser> chatUsers {get; set;}
+
+        public DbSet<Account> accounts {get; set;}
+
+        protected override void OnModelCreating(ModelBuilder builder){
+            base.OnModelCreating(builder);
+            builder.Entity<ChatUser>().HasKey(c => new {c.ChatId, c.AccountId});
+        }
     }
