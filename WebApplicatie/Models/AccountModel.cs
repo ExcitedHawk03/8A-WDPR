@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using WebApplicatie.Models;
 
 public class Account : IdentityUser{
-     [Key]
-    public int Id {get; set;}
-    [Required(ErrorMessage = "Voornaam is verplicht")]
-    public string Voornaam {get; set;}
+     public Account() : base()
+        {
+            Chats = new List<ChatUser>();
+        }
     public string Tussenvoegsel {get; set;}
     [Required(ErrorMessage = "Achternaam is verplicht")]
     public string Achternaam {get; set;}
@@ -17,7 +18,7 @@ public class Account : IdentityUser{
     public int Leeftijd {get; set;}
     public string Geslacht {get; set;}
     [Required(ErrorMessage = "Email is verplicht")]
-    public string Email {get; set;}
+    
     public string Telnr {get; set;}
     [Required(ErrorMessage = "Adres is verplicht")]
     public string Adres {get; set;}
@@ -27,6 +28,9 @@ public class Account : IdentityUser{
     public string Plaats {get; set;}
 
     public string typAccount {get; set;}
+
+    //public ICollection<Chat> Chats {get; set;}
+    public virtual List<ChatUser> Chats {get; set;}
 
 }
 

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.SignalR;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -28,8 +29,10 @@ namespace WebApplicatie
         {
             services.AddDbContext<ClientContext>(builder => builder.UseSqlite("Data Source=database.db"));
            
+           var ConnectionString = Configuration.GetConnectionString("DefaultConnection");
+           services.AddMvc();
 
-            services.AddIdentity<IdentityUser, IdentityRole>(config => { 
+            services.AddIdentity<Account, IdentityRole>(config => { 
             config.Password.RequiredLength = 1;
             config.Password.RequireDigit = false;  
             config.Password.RequireUppercase = false;
@@ -41,7 +44,7 @@ namespace WebApplicatie
 
             services.AddControllersWithViews();
 
-            
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

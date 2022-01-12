@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace WebApplicatie.Migrations
 {
     [DbContext(typeof(ClientContext))]
-    partial class ClientContextModelSnapshot : ModelSnapshot
+    [Migration("20220111144702_k8")]
+    partial class k8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,6 +32,9 @@ namespace WebApplicatie.Migrations
                     b.Property<string>("Adres")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("ChatId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -104,6 +109,8 @@ namespace WebApplicatie.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ChatId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -314,12 +321,15 @@ namespace WebApplicatie.Migrations
                     b.Property<int>("ChatId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("AccountId")
+                    b.Property<string>("UserId")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ChatId", "AccountId");
+                    b.Property<string>("accountId")
+                        .HasColumnType("TEXT");
 
-                    b.HasIndex("AccountId");
+                    b.HasKey("ChatId", "UserId");
+
+                    b.HasIndex("accountId");
 
                     b.ToTable("chatUsers");
                 });
@@ -390,6 +400,13 @@ namespace WebApplicatie.Migrations
                     b.HasDiscriminator().HasValue("ouder");
                 });
 
+            modelBuilder.Entity("Account", b =>
+                {
+                    b.HasOne("WebApplicatie.Models.Chat", null)
+                        .WithMany("accounts")
+                        .HasForeignKey("ChatId");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -443,17 +460,15 @@ namespace WebApplicatie.Migrations
 
             modelBuilder.Entity("WebApplicatie.Models.ChatUser", b =>
                 {
-                    b.HasOne("Account", "account")
-                        .WithMany("Chats")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("WebApplicatie.Models.Chat", "chat")
-                        .WithMany("Users")
+                        .WithMany()
                         .HasForeignKey("ChatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Account", "account")
+                        .WithMany()
+                        .HasForeignKey("accountId");
 
                     b.Navigation("account");
 
@@ -486,16 +501,11 @@ namespace WebApplicatie.Migrations
                     b.Navigation("ouder");
                 });
 
-            modelBuilder.Entity("Account", b =>
-                {
-                    b.Navigation("Chats");
-                });
-
             modelBuilder.Entity("WebApplicatie.Models.Chat", b =>
                 {
-                    b.Navigation("Messages");
+                    b.Navigation("accounts");
 
-                    b.Navigation("Users");
+                    b.Navigation("Messages");
                 });
 
             modelBuilder.Entity("hulpverlener", b =>

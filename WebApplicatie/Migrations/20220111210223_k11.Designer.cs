@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace WebApplicatie.Migrations
 {
     [DbContext(typeof(ClientContext))]
-    partial class ClientContextModelSnapshot : ModelSnapshot
+    [Migration("20220111210223_k11")]
+    partial class k11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -314,12 +316,12 @@ namespace WebApplicatie.Migrations
                     b.Property<int>("ChatId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("AccountId")
+                    b.Property<string>("accountId")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ChatId", "AccountId");
+                    b.HasKey("ChatId", "accountId");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("accountId");
 
                     b.ToTable("chatUsers");
                 });
@@ -443,15 +445,15 @@ namespace WebApplicatie.Migrations
 
             modelBuilder.Entity("WebApplicatie.Models.ChatUser", b =>
                 {
-                    b.HasOne("Account", "account")
-                        .WithMany("Chats")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("WebApplicatie.Models.Chat", "chat")
                         .WithMany("Users")
                         .HasForeignKey("ChatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Account", "account")
+                        .WithMany("Chats")
+                        .HasForeignKey("accountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
