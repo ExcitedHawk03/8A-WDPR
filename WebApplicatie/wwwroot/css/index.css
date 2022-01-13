@@ -3,13 +3,18 @@
     box-sizing: border-box;
 }
 
-div>p {
+pre {
     font-size: 120%;
     text-align: center;
 }
 
+h2 {
+    text-align: center;
+    margin-left: 15px;
+}
+
 #footer {
-    bottom: 0px;
+    margin-top: 5px;
     position: absolute;
     width: 100%;
     height: 150px;
@@ -25,5 +30,9 @@ div>p {
 }
 
 #Contact {
+    display: none;
+}
+
+#Home {
     display: none;
 }

@@ -10,32 +10,40 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="~/css/formulieren.css" />
-    <link rel="stylesheet" href="~/css/footerbottom.css" />
 </head>
 
 <body>
 
-    <br><br>
-    
-    <h2><b>Inloggen met Ouder Gebruikersaccount</b></h2>
+    <h2><b>Inloggen als Ouder:</b></h2>
     <div class="container">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Oudergebruikersnaam" class="control-label"></label>
-                    <input asp-for="Oudergebruikersnaam" class="form-control" />
-                    <span asp-validation-for="Oudergebruikersnaam" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Ouderwachtwoord" class="control-label"></label>
-                    <input asp-for="Ouderwachtwoord" class="form-control" />
-                    <span asp-validation-for="Ouderwachtwoord" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <button id="button" onclick="alert('U wordt ingelogd')" id="Login">Login</button>
-                </div>
-            </form>
-        </div>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="imgcontainer">
+                <img src="/Images/LoginAfbeelding.png" alt="Plaatje van een avatar" class="avatar">
+            </div>
+            <div class="form-group">
+                <label asp-for="Oudergebruikersnaam" class="control-label"></label>
+                <input asp-for="Oudergebruikersnaam" class="form-control" />
+                <span asp-validation-for="Oudergebruikersnaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ouderwachtwoord" class="control-label"></label>
+                <input asp-for="Ouderwachtwoord" class="form-control" />
+                <span asp-validation-for="Ouderwachtwoord" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button class="button" onclick="alert('U wordt ingelogd')" id="Login">Login</button>
+            </div>
+            <div class="container">
+                <a asp-controller="Home" asp-action="Register">Nog geen bestaand account? Klik dan hier om een nieuw
+                    account aan te maken.</a>
+            </div>
+
+            <div class="container">
+                <a asp-controller="Home" asp-action="Index">Annuleren</a>
+            </div>
+        </form>
+    </div>
     </div>
 </body>
 

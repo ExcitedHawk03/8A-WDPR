@@ -1,8 +1,32 @@
 @model Chat
 
-<html>
-    <a href="https://localhost:5001/chat/chatSelection">terug naar chat selectie scherm</a>
-    <div class="chat-body">
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/chat.css" />
+    <title>Chatgroep</title>
+</head>
+
+<body>
+    <div class="row">
+    <div class="col-6">
+        <img src="/Images/chat.png" alt="Pictogram van een chat">
+
+        <br><br>
+
+        <a href="https://localhost:5001/chat/chatSelection">terug naar chat selectie scherm</a>
+
+        <br><br>
+    </div>
+    <div class="col-6">
+        <h1><b>Chatgroep:</b></h1>
+
+        <br><br>
+
+        <div class="chat-body">
         @foreach (var Message in Model.Messages)
         {
             <div class="message">
@@ -17,10 +41,11 @@
             <input type="hidden" name="chatId" value="@Model.Id">
             <input type="hidden" name="roomName" value="@Model.naam">
             <input type="text" name="message" id="message-input">
-        <button type="submit">send</button>
+        <button type="submit"><b>Verzenden</b></button>
         </form>
     </div>
-
+    </div>
+    </div>
 
 
     @section scripts {
@@ -89,9 +114,8 @@
                 console.error("message not sent!", error)
             })
         }
-      
-        
 
     </script>
     }
+</body>
 </html>

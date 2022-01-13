@@ -13,13 +13,13 @@
 <body>
 
     <h2><b>Registreer:</b></h2>
-    <p><b>Vul hieronder het formulier om een nieuw account aan te maken.</b></p>
+    <p><b>Vul hieronder het formulier in om een nieuw account aan te maken.</b></p>
     <hr>
 
     <form action="/Home/Register" id="form" method="post">
         <div class="container">
             <label for="voornaam"><b>Voornaam</b></label>
-            <input type="text" name="Voornaam" value="" placeholder="Voornaam" />
+            <input type="text" name="username" value="" placeholder="Voornaam" />
 
             <label for="tussenvoegsel"><b>Tussenvoegsel</b></label>
             <input type="text" name="Tussenvoegsel" value=" " placeholder="Tussenvoegsel" />
@@ -45,6 +45,9 @@
             <label for="woonplaats"><b>Woonplaats</b></label>
             <input type="text" name="Plaats" value="" placeholder="Woonplaats" />
 
+            <label for="wachtwoord"><b>Wachtwoord</b></label>
+            <input type="text" name="password" value="" placeholder="Wachtwoord" />
+
             <label for="geslacht"><b>Geslacht</b></label><br>
             <select name="geslacht" id="geslacht">
                 <option value="Man">M</option>
@@ -52,7 +55,7 @@
             </select>
 
             <div class="container">
-                <button type="submit" id="button">Maak een nieuw account aan</button>
+                <button type="submit" class="button">Maak een nieuw account aan</button>
             </div>
         </div>
         <div class="container">

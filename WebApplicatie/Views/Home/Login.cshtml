@@ -13,7 +13,7 @@
 
 <body>
 
-    <h2><b>Inloggen:</b></h2>
+    <h2><b>Inloggen als kind:</b></h2>
 
     <form method="post" id="form">
         <div class="imgcontainer">
@@ -25,16 +25,27 @@
             <input type="text" id="usernameTextfield" placeholder="Voer uw gebruikersnaam in" name="username" required>
 
             <label for="psw"><b>Wachtwoord</b></label>
-            <input type="password" id="passwordTextField" placeholder="Voer uw wachtwoord in" name="wachtwoord" required>
+            <input type="password" id="passwordTextField" placeholder="Voer uw wachtwoord in" name="wachtwoord"
+                required>
 
-            <button type="submit" id="button">Login</button>
+            <button onclick="alert('U wordt ingelogd')" id="Maak aan" class="button">Login</button>
+        </div>
+
+        <div class="container">
+            <a asp-controller="Home" asp-action="Register">Nog geen bestaand account? Klik dan hier om een nieuw account
+                aan te maken.</a>
         </div>
 
         <div class="container">
             <a asp-controller="Home" asp-action="Index">Annuleren</a>
         </div>
+
     </form>
 
 </body>
 
 </html>
+
+ @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

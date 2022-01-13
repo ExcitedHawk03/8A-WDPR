@@ -1,10 +1,35 @@
 @using System.Security.Claims
 @model IEnumerable<Account>
 
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/chat.css" />
+    <link rel="stylesheet" href="~/css/footerbottom.css" />
+    <title>Zoek naar een persoon</title>
+</head>
+
+<body>
+<div>
+<h1><b>Lijst met gebruikers</b></h1>
+
+<br>
+
+<ul id="lijstNamen"> 
 @foreach (var user in Model)
-{
+{ 
+    <li>
     <a asp-controller="chat" asp-action="CreatePrivateRoom" asp-route-userId = "@user.Id">
                 @* @user.Chats.FirstOrDefault(u => u.AccountId == userId).account.UserName *@
                     @user.UserName
     </a>
+    </li>
 }
+</ul> 
+</div>
+
+</body>
+</html>
