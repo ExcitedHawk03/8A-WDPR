@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.SignalR;
 
 using Microsoft.EntityFrameworkCore;
+using WebApplicatie.Hubs;
 
 namespace WebApplicatie
 {
@@ -67,13 +68,18 @@ namespace WebApplicatie
 
             app.UseAuthentication();
 
+            // app.UseSignalR(routes => {
+            //     routes.MapHub<ChatHub>("/chatHub");
+            // });
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<chatHub>("/chatHub");
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}/{id2?}/{id3?}");
             });
         }
     }

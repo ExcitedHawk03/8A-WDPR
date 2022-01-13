@@ -1,0 +1,10 @@
+@using System.Security.Claims
+@model IEnumerable<Account>
+
+@foreach (var user in Model)
+{
+    <a asp-controller="chat" asp-action="CreatePrivateRoom" asp-route-userId = "@user.Id">
+                @* @user.Chats.FirstOrDefault(u => u.AccountId == userId).account.UserName *@
+                    @user.UserName
+    </a>
+}

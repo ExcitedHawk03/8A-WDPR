@@ -1,20 +1,12 @@
-body {
-    background-color: yellowgreen;
+#OrthopedagogenAfbeeldingen
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+  height: 300px;
 }
 
-#OrthopedagogenAfbeeldingen {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 250px;
-    height: 300px;
-}
-
-h1,
-p {
-    text-align: center;
-}
-
-#LogIn {
-    display: none;
+h1, p {
+    text-align: center; 
 }
