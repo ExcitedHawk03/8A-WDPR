@@ -17,7 +17,6 @@ using WebApplicatie.Models;
         public DbSet<hulpverlener> hulpverlener { get; set; }
         public DbSet<client> cliënt { get; set; }
         public DbSet<ouder> ouder { get; set; }
-        public DbSet<moderator> moderator { get; set; }
 
         public DbSet<Chat> chat {get; set;}
         public DbSet<Message> message {get; set;}

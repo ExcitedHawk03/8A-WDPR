@@ -29,7 +29,6 @@ public class Account : IdentityUser{
 
     public string typAccount {get; set;}
 
-    //public ICollection<Chat> Chats {get; set;}
     public virtual List<ChatUser> Chats {get; set;}
 
 }

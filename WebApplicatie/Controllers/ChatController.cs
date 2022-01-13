@@ -19,19 +19,57 @@ namespace WebApplicatie.Controllers{
         private ClientContext _context;
         private UserManager<Account> _AccountManager;
 
-        private IHubContext<ChatHub> _chat;
+        private IHubContext<chatHub> _chat;
 
-        public ChatController(UserManager<Account> AccountManager, ClientContext context, IHubContext<ChatHub> chat){
+        public ChatController(UserManager<Account> AccountManager, ClientContext context, IHubContext<chatHub> chat){
             _context = context;
             _AccountManager = AccountManager;
             _chat = chat;
         }
+
+        public IActionResult Find(){
+            var users = _context.Users
+                            .Where(u => u.Id != User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                            .Include(cu => cu.Chats)
+                            .ToList();
+            return View(users);
+        }
+
+        public IActionResult privateChatRoom(){
+            var chats = _context.chat
+                        .Include(c => c.Users)
+                        .ThenInclude(cu => cu.account)
+                        .Where(u => u.ruimte == chatRuimte.prive 
+                        && u.Users.Any(s => s.AccountId == User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                        .ToList();
+
+            return View(chats);
+        }
+
+        public async Task<IActionResult> CreatePrivateRoom(string userId){
+            var chat = new Chat {
+                ruimte = chatRuimte.prive,
+            };
+
+            chat.Users.Add(new ChatUser{
+                AccountId = userId
+            });
+
+            chat.Users.Add(new ChatUser{
+                AccountId = User.FindFirst(ClaimTypes.NameIdentifier).Value
+            });
+
+            _context.chat.Add(chat);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("chatRoom", new {id = chat.Id});
+        }
+
         public IActionResult chatSelection(){
             Console.WriteLine(User.FindFirst(ClaimTypes.NameIdentifier).Value);
             return View(_context.chat.Include(c => c.Users).ToList());
         }
         [HttpGet("{Id}")]
-        public IActionResult chat(int Id){
+        public IActionResult chatRoom(int Id){
             var chat = _context.chat.Include(c => c.Messages).FirstOrDefault(c => c.Id == Id);
             return View(chat);
         }
@@ -46,7 +84,7 @@ namespace WebApplicatie.Controllers{
             };
             _context.message.Add(Message);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Chat", new {Id = chatId});
+            return RedirectToAction("ChatRoom", new {Id = chatId});
         }
 
         [HttpPost]
@@ -69,10 +107,6 @@ namespace WebApplicatie.Controllers{
 
         [HttpGet]
         public async Task<IActionResult> joinRoom(int id){
-            // var user = await _AccountManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            // var chat = _context.chat.FirstOrDefault(c => c.Id == id);
-            // chat.Users.Add(user);
-            // user.Chats.Add(chat);
             var chatuser = new ChatUser {
                 ChatId = id,
                 AccountId = User.FindFirst(ClaimTypes.NameIdentifier).Value
@@ -80,19 +114,20 @@ namespace WebApplicatie.Controllers{
             _context.chatUsers.Add(chatuser);
             _context.chat.FirstOrDefault(c => c.Id == id).Users.Add(chatuser);
             await _context.SaveChangesAsync();
-            return RedirectToAction("chat", new {id = id});
+            return RedirectToAction("chatRoom", new {id = id});
         }
-        [HttpPost("[action]/{connectionId}/{roomName}")]
-        public async Task<IActionResult> JoinChat(string roomName, string connectionId){
+
+        [HttpPost("[controller]/[action]/{connectionId}/{roomName}")]
+        public async Task<IActionResult> JoinChat(string connectionId, string roomName){
             await _chat.Groups.AddToGroupAsync(connectionId, roomName);
             return Ok();
         }
-        [HttpPost("[action]/{connectionId}/{roomName}")]
-        public async Task<IActionResult> LeaveChat(string roomName, string connectionId){
+        [HttpPost("[controller]/[action]/{connectionId}/{roomName}")]
+        public async Task<IActionResult> LeaveRoom(string connectionId, string roomName){
             await _chat.Groups.RemoveFromGroupAsync(connectionId, roomName);
             return Ok();
         }
-
+        [HttpPost("[controller]/[action]")]
         public async Task<IActionResult> SendMessage(int chatId,string message, string roomName){
 
             var Message = new Message {
@@ -105,7 +140,11 @@ namespace WebApplicatie.Controllers{
             _context.message.Add(Message);
             await _context.SaveChangesAsync();
 
-            await _chat.Clients.Group(roomName).SendAsync("RecieveMessage", Message);
+            await _chat.Clients.Group(roomName).SendAsync("RecieveMessage", new{
+                text = Message.text,
+                naam = Message.naam,
+                currentTime = Message.currentTime.ToString("dd/mm/yyyy hh:mm")
+            });
             return Ok();
         }
     }

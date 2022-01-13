@@ -11,12 +11,12 @@
                   @if (!Chat.Users.Any(u => u.AccountId == User.FindFirst(ClaimTypes.NameIdentifier).Value))
                     {   
                 <a class="roomBtn" asp-controller="chat" asp-action="joinRoom" asp-route-id="@Chat.Id">
-                @Chat.naam  ||
+                @Chat.naam
                 </a>
                     }
-                  else
+                  else if (Chat.ruimte == chatRuimte.Room)                  
                     {                      
-                  <a class="roomBtn" asp-controller="chat" asp-action="chat" asp-route-id="@Chat.Id">
+                  <a class="roomBtn" asp-controller="chat" asp-action="chatRoom" asp-route-id="@Chat.Id">
                 <br> @Chat.naam  |
                 </a>
                     }  
@@ -24,9 +24,13 @@
         }
          catch
          {}
-        <a class="room-button" id="Create_Room+" href="#">
+        <a class="room-button" id="Create_Room+" href="#" onclick="activateModal">
             <strong>+</strong>
         </a>
+        <br>
+        <a asp-controller="chat" asp-action="Find">vind een persoon</a>
+        <br>
+        <a asp-controller="chat" asp-action="privateChatRoom">je privie chats</a>
     </div>
      
     </div> 
