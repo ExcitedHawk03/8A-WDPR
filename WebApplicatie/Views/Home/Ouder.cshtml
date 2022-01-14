@@ -1,5 +1,6 @@
 @model Ouder
 
+<<<<<<< Updated upstream
 @{
     ViewData["Title"] = "Create";
 }
@@ -13,6 +14,16 @@
 </div>
 
 <h2>De clientgegevens voor uw kind invullen</h2>
+=======
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/css/formulieren.css" />
+    <title>Clientgegevens kinderen invullen</title>
+</head>
+>>>>>>> Stashed changes
 
 
     <div class="text-center">
@@ -26,79 +37,94 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+<<<<<<< Updated upstream
                   <br>
                 <label asp-for="Voornaam" class="control-label"></label>
+=======
+                <br>
+                <label asp-for="Voornaam" id="Voornaam" class="control-label"></label>
+>>>>>>> Stashed changes
                 <input asp-for="Voornaam" class="form-control" />
                 <span asp-validation-for="Voornaam" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tussenvoegsel" class="control-label"></label>
+                <label asp-for="Tussenvoegsel" id="Tussenvoegsel" class="control-label"></label>
                 <input asp-for="Tussenvoegsel" class="form-control" />
                 <span asp-validation-for="Tussenvoegsel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Achternaam" class="control-label"></label>
+                <label asp-for="Achternaam" id="Achternaam" class="control-label"></label>
                 <input asp-for="Achternaam" class="form-control" />
                 <span asp-validation-for="Achternaam" class="text-danger"></span>
             </div>
             <div class="form-group">
+<<<<<<< Updated upstream
                 <label asp-for="Leeftijd" class="control-label"></label>
                 <input asp-for="Leeftijd" class="form-control" id="Leeftijd"/>
+=======
+                <label asp-for="Leeftijd" id="Leeftijd" class="control-label"></label>
+                <input asp-for="Leeftijd" class="form-control" id="Leeftijd" />
+>>>>>>> Stashed changes
                 <span asp-validation-for="Leeftijd" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Geslacht" class="control-label"></label>
+                <label asp-for="Geslacht" id="Geslacht" class="control-label"></label>
                 <input asp-for="Geslacht" class="form-control" />
                 <span asp-validation-for="Geslacht" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
+                <label asp-for="Email" id="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Telnr" class="control-label"></label>
+                <label asp-for="Telnr" id="Telnr" class="control-label"></label>
                 <input asp-for="Telnr" class="form-control" />
                 <span asp-validation-for="Telnr" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Adres" class="control-label"></label>
+                <label asp-for="Adres" id="Adres" class="control-label"></label>
                 <input asp-for="Adres" class="form-control" />
                 <span asp-validation-for="Adres" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Postcode" class="control-label"></label>
+                <label asp-for="Postcode" id="Postcode" class="control-label"></label>
                 <input asp-for="Postcode" class="form-control" />
                 <span asp-validation-for="Postcode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Plaats" class="control-label"></label>
+                <label asp-for="Plaats" id="Plaats" class="control-label"></label>
                 <input asp-for="Plaats" class="form-control" />
                 <span asp-validation-for="Plaats" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Voornaam_kind" class="control-label"></label>
+                <label asp-for="Voornaam_kind" id="Voornaam_kind" class="control-label"></label>
                 <input asp-for="Voornaam_kind" class="form-control" />
                 <span asp-validation-for="Voornaam_kind" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tussenvoegsel_kind" class="control-label"></label>
+                <label asp-for="Tussenvoegsel_kind" id="Tussenvoegsel_kind" class="control-label"></label>
                 <input asp-for="Tussenvoegsel_kind" class="form-control" />
                 <span asp-validation-for="Tussenvoegsel_kind" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Achternaam_kind" class="control-label"></label>
+                <label asp-for="Achternaam_kind" id="Achternaam_kind" class="control-label"></label>
                 <input asp-for="Achternaam_kind" class="form-control" />
                 <span asp-validation-for="Achternaam_kind" class="text-danger"></span>
             </div>
             <div class="form-group">
+<<<<<<< Updated upstream
                 <label asp-for="Leeftijd_kind" class="control-label"></label>
                 <input asp-for="Leeftijd_kind" class="form-control" id="Leeftijd"/>
+=======
+                <label asp-for="Leeftijd_kind" id="Leeftijd_kind" class="control-label"></label>
+                <input asp-for="Leeftijd_kind" class="form-control" id="Leeftijd" />
+>>>>>>> Stashed changes
                 <span asp-validation-for="Leeftijd_kind" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Geslacht_kind" class="control-label"></label>
+                <label asp-for="Geslacht_kind" id="Geslacht_kind" class="control-label"></label>
                 <input asp-for="Geslacht_kind" class="form-control" />
                 <span asp-validation-for="Geslacht_kind" class="text-danger"></span>
             </div>

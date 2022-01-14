@@ -13,15 +13,6 @@
     font-size: larger;
 }
 
-.search-container {
-    float: right;
-    padding: 6px 10px;
-    margin-right: 8px;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-}
-
 .col-5 {
     text-align: left;
 }

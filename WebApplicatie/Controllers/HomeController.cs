@@ -36,6 +36,11 @@ namespace WebApplicatie.Controllers
             return View();
         }
 
+        public IActionResult Homepagina ()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
@@ -73,7 +78,11 @@ namespace WebApplicatie.Controllers
 
                 if(result2.Succeeded){
                     currentAccount = account;
+<<<<<<< Updated upstream
                     return RedirectToAction("chatSelection", "chat");
+=======
+                    return RedirectToAction("Homepagina","Home");
+>>>>>>> Stashed changes
                 }
             
         }
@@ -92,7 +101,11 @@ namespace WebApplicatie.Controllers
            if(user != null){
            var result = await _signInManager.PasswordSignInAsync(user, password, false,false); 
                 if(result.Succeeded){
+<<<<<<< Updated upstream
                    return RedirectToAction("chatSelection", "chat");
+=======
+                   return RedirectToAction("Homepagina","Home");
+>>>>>>> Stashed changes
                 }
            }
             return RedirectToAction("login");
@@ -112,7 +125,7 @@ namespace WebApplicatie.Controllers
             return View();
         }
 
-        public IActionResult AfspraakMaken ()
+        public IActionResult AanmeldingIntake ()
         {
             return View();
         }
@@ -128,6 +141,10 @@ namespace WebApplicatie.Controllers
         }
 
 
+        public IActionResult Contact ()
+        {
+            return View();
+        }
 
     }
 

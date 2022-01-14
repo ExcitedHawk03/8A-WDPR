@@ -4,11 +4,13 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="~/css/formulieren.css" />
+    <link rel="stylesheet" href="~/css/inloggen.css" />
+    <title>Inlog pagina</title>
 </head>
 
 <body>
@@ -17,15 +19,15 @@
 
     <form method="post" id="form">
         <div class="imgcontainer">
-            <img src="/Images/LoginAfbeelding.png" alt="Plaatje van een avatar" class="avatar">
+            <img src="/Images/LoginAfbeelding.png" alt="Plaatje van een persoon" class="avatar">
         </div>
 
         <div class="container">
-            <label for="uname"><b>Gebruikersnaam</b></label>
+            <label for="uname" id="uname"><b>Gebruikersnaam</b></label>
             <input type="text" id="usernameTextfield" placeholder="Voer uw gebruikersnaam in" name="username" required>
 
-            <label for="psw"><b>Wachtwoord</b></label>
-            <input type="password" id="passwordTextField" placeholder="Voer uw wachtwoord in" name="wachtwoord"
+            <label for="psw" id="psw"><b>Wachtwoord</b></label>
+            <input type="password" id="passwordTextField" placeholder="Voer uw wachtwoord in" name="password"
                 required>
 
             <button onclick="alert('U wordt ingelogd')" id="Maak aan" class="button">Login</button>
@@ -37,7 +39,7 @@
         </div>
 
         <div class="container">
-            <a asp-controller="Home" asp-action="Index">Annuleren</a>
+            <a asp-controller="Home" asp-action="Index">Terug naar welkom pagina</a>
         </div>
 
     </form>

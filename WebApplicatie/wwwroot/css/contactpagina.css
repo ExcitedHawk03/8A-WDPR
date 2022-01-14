@@ -18,3 +18,7 @@ p {
 #footer {
     bottom: 0px;
 }
+
+#LogIn {
+    display: none;
+}
