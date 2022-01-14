@@ -1,40 +1,66 @@
 @using System.Security.Claims
-@model IEnumerable<Chat> 
 
-<html>
-<h1>chat selection screen</h1>
+@model IEnumerable<Chat>
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/chat.css" />
+    <link rel="stylesheet" href="~/css/footerbottom.css" />
+    <title>Chat pagina</title>
+</head>
+
 <body>
-    <div class="main-menu"
-     <div class="side-menu">
-         @try
-         { 
-              @foreach(var Chat in Model){
-                  @if (!Chat.Users.Any(u => u.AccountId == User.FindFirst(ClaimTypes.NameIdentifier).Value))
-                    {   
-                <a class="roomBtn" asp-controller="chat" asp-action="joinRoom" asp-route-id="@Chat.Id">
-                @Chat.naam
-                </a>
+
+    <div class="row">
+        <div class="col-7">
+            <h1><b>Chat selection screen</b></h1>
+
+            <br>
+            <img src="/Images/chat.png" alt="Pictogram van een chat">
+        </div>
+        <div class="col-5">
+
+            <br><br><br><br><br><br>
+
+            <h4><b>Join een room</b></h4> 
+            <div class="main-menu" <div class="side-menu">
+                @try
+                    {
+                        @foreach (var Chat in Model)
+                        {
+                            @if (!Chat.Users.Any(u => u.AccountId == User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                            {
+                            <a class="roomBtn" asp-controller="chat" asp-action="joinRoom" asp-route-id="@Chat.Id">
+                                    @Chat.naam
+                            </a>
+                            }
+                            else if (Chat.ruimte == chatRuimte.Room)
+                            {
+                            <a class="roomBtn" asp-controller="chat" asp-action="chatRoom" asp-route-id="@Chat.Id">
+                                <br> @Chat.naam |
+                            </a>
+                            }
+                        }
                     }
-                  else if (Chat.ruimte == chatRuimte.Room)                  
-                    {                      
-                  <a class="roomBtn" asp-controller="chat" asp-action="chatRoom" asp-route-id="@Chat.Id">
-                <br> @Chat.naam  |
+                    catch
+                    { }   
+                <a class="room-button" id="Create_Room+" href="#" onclick="activateModal">
+                    <strong>+</strong>
                 </a>
-                    }  
-                }
-        }
-         catch
-         {}
-        <a class="room-button" id="Create_Room+" href="#">
-            <strong>+</strong>
-        </a>
-        <br>
-        <a asp-controller="chat" asp-action="Find">vind een persoon</a>
-        <br>
-        <a asp-controller="chat" asp-action="privateChatRoom">je privie chats</a>
+                <hr>
+                <h4><b>Een hulpverlener vinden</b></h4>
+                <a asp-controller="chat" asp-action="Find">vind een persoon</a>
+                <hr>
+                <h4><b>Privé chats</b></h4>
+                <a asp-controller="chat" asp-action="privateChatRoom">je privé chats</a>
+            </div>
+        </div>
     </div>
-     
-    </div> 
+    </div>
     </div>
 
     <div class="modal" id="room_modal">
@@ -52,4 +78,5 @@
         </form>
     </div>
 </body>
+
 </html>

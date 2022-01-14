@@ -5,12 +5,36 @@
     var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
     var currentUser = Model.FirstOrDefault(a => a.Id == userId); 
 }
+  
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/chat.css" />
+    <link rel="stylesheet" href="~/css/footerbottom.css" />
+    <title>Zoek naar een persoon</title>
+</head>  
+ 
+<body>
+<div>
+<h1><b>Lijst met gebruikers</b></h1>
+  
 @if (currentUser.typAccount == "moderator")
 {
     <a>selecteer hier iemand die je wil blokkeren</a>
 } else{
 <a>selecteer hier iemand waar je mee wil chatten</a>
 }
+  
+<body>
+<div>
+<h1><b>Lijst met gebruikers</b></h1>
+
+<br>
+
+<ul id="lijstNamen">   
 @foreach (var user in Model)
 {
     @if (user.Id != userId)
@@ -19,18 +43,29 @@
         {
             @if (user.blocked == true)
             {
+              <li>
                 <a asp-controller="chat" asp-action="GebruikerBlokkeren" asp-route-userId = "@user.Id">
                     @user.UserName <strong>: geblokkeerd </strong>  <br>                 
                 </a> 
+              </li>
             } else{
+                <li>
                 <a asp-controller="chat" asp-action="GebruikerBlokkeren" asp-route-userId = "@user.Id">
                     @user.UserName                    
                 </a>
+                </li>
             }
         } else {
-        <a asp-controller="chat" asp-action="CreatePrivateRoom" asp-route-userId = "@user.Id">
-                @user.UserName                    
-        </a> 
+        <li>
+          <a asp-controller="chat" asp-action="CreatePrivateRoom" asp-route-userId = "@user.Id">
+                    @user.UserName
+        </a>
+        </li>
         }
     }
 }
+  </ul>
+  </div>
+
+</body>
+</html>

@@ -8,14 +8,18 @@
     text-align: center;
 }
 
-#empty {
-    background-color: #0d0d0d;
-    height: 650px;
+.navbar-nav>li {
+    padding-right: 30px;
+    font-size: larger;
 }
 
-.navbar-nav>li {
-    padding-left: 30px;
-    padding-right: 30px;
+.search-container {
+    float: right;
+    padding: 6px 10px;
+    margin-right: 8px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
 }
 
 .col-5 {
@@ -25,9 +29,10 @@
 #footer {
     position: absolute;
     width: 100%;
-    height: 200px;
+    height: 150px;
     background: orange;
 }
+
 
 #tekstContactgegevens {
     text-decoration: underline;
@@ -38,7 +43,9 @@
     height: 200px;
 }
 
-modal {
+
+
+.modal {
     display: none;
     position: fixed;
     min-height: 100vh;
@@ -47,6 +54,7 @@ modal {
     top: 0;
     left: 0;
     background-color: rgba(0.2, 0.2, 0.2, 0.8);
+
   }
   
   .modal.active {
@@ -54,3 +62,12 @@ modal {
     justify-content: center;
     align-items: center;
   }
+#footerLeft {
+    text-align: center;
+    font-size: larger;
+}
+
+#footerRight {
+    text-align: center;
+}
+

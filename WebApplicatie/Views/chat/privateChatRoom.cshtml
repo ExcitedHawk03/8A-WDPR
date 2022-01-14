@@ -5,6 +5,21 @@
     var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 }
 
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/chat.css" />
+    <link rel="stylesheet" href="~/css/footerbottom.css" />
+    <title>Jouw privé chats</title>
+</head>
+
+<body>
+
+<h1><b>Privé Chats</b></h1>
+
 <div class="chat-body">
         @foreach (var Chat in Model)
         {      
@@ -13,3 +28,5 @@
             </a>
         }
 </div>
+</body>
+</html>
