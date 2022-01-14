@@ -20,17 +20,21 @@ namespace WebApplicatie.Controllers{
         private UserManager<Account> _AccountManager;
 
         private IHubContext<chatHub> _chat;
-
+        
+        private Account _currentUser;
+        
         public ChatController(UserManager<Account> AccountManager, ClientContext context, IHubContext<chatHub> chat){
             _context = context;
             _AccountManager = AccountManager;
             _chat = chat;
         }
 
+        
+
         public IActionResult Find(){
             var users = _context.Users
-                            .Where(u => u.Id != User.FindFirst(ClaimTypes.NameIdentifier).Value)
-                            .Include(cu => cu.Chats)
+                            .Include(a => a.Chats)
+                            .ThenInclude(cu => cu.chat)
                             .ToList();
             return View(users);
         }
@@ -47,8 +51,10 @@ namespace WebApplicatie.Controllers{
         }
 
         public async Task<IActionResult> CreatePrivateRoom(string userId){
+            string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var chat = new Chat {
                 ruimte = chatRuimte.prive,
+                naam = _context.accounts.FirstOrDefault(a => a.Id == userId).UserName + " chat met " + _context.accounts.FirstOrDefault(a => a.Id == currentUserId).UserName
             };
 
             chat.Users.Add(new ChatUser{
@@ -65,12 +71,32 @@ namespace WebApplicatie.Controllers{
         }
 
         public IActionResult chatSelection(){
-            Console.WriteLine(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            return View(_context.chat.Include(c => c.Users).ToList());
+            var currentPersoon = _context.accounts.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            if(currentPersoon.typAccount != "Ouder" && currentPersoon.typAccount != "moderator" && currentPersoon.blocked == false)
+                return View(_context.chat.Include(c => c.Users).ToList());
+            else if (currentPersoon.typAccount == "moderator")
+                return RedirectToAction("moderatorChatSelection");
+            else
+                return View("index", "Home");
         }
+
+        public IActionResult moderatorChatSelection(){
+                return View(_context.chat.Include(c => c.Users).ToList());
+        }
+
         [HttpGet("{Id}")]
         public IActionResult chatRoom(int Id){
-            var chat = _context.chat.Include(c => c.Messages).FirstOrDefault(c => c.Id == Id);
+            var chat = _context.chat.Include(c => c.Messages).Include(c => c.Users).ThenInclude(cu => cu.account).FirstOrDefault(c => c.Id == Id);
+            if(_context.accounts.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).typAccount == "moderator")
+            {  
+                var chatuser = new ChatUser{
+                    ChatId = Id,
+                    AccountId = User.FindFirst(ClaimTypes.NameIdentifier).Value,
+                    account = _context.accounts.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value),
+                    chat = chat
+                };
+                chat.Users.Add(chatuser);
+            }
             return View(chat);
         }
 
@@ -99,7 +125,6 @@ namespace WebApplicatie.Controllers{
                 AccountId = User.FindFirst(ClaimTypes.NameIdentifier).Value
             });
             
-             //chat.Users.Add(_context.accounts.SingleOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value));
             _context.chat.Add(chat);
             await _context.SaveChangesAsync();
             return RedirectToAction("chatSelection");
@@ -134,7 +159,8 @@ namespace WebApplicatie.Controllers{
                 ChatId = chatId,
                 text = message,
                 naam = User.Identity.Name,
-                currentTime = DateTime.Now
+                currentTime = DateTime.Now,
+                typMessage = "chat"
             };
 
             _context.message.Add(Message);
@@ -146,6 +172,29 @@ namespace WebApplicatie.Controllers{
                 currentTime = Message.currentTime.ToString("dd/mm/yyyy hh:mm")
             });
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> MisbruikMelden(int chatId, string roomName){
+            
+            var abuseMessage = new Message {
+                ChatId = chatId,
+                naam = "er is misbruik gemeld bij de kamer",
+                text = roomName,
+                currentTime = DateTime.Now,
+                typMessage = "abuse"
+            };
+
+            _context.message.Add(abuseMessage);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("chatRoom", new {id = chatId});
+        }
+
+        public async Task<IActionResult> GebruikerBlokkeren(string userId){
+            _context.accounts.FirstOrDefault(a => a.Id == userId).blocked = !_context.accounts.FirstOrDefault(a => a.Id == userId).blocked;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("moderatorChatSelection");
         }
     }
 }

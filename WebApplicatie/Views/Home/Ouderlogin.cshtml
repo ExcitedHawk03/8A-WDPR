@@ -4,8 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<!DOCTYPE html>
-<html>
+
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,6 +31,7 @@
                 <span asp-validation-for="Ouderwachtwoord" class="text-danger"></span>
             </div>
             <div class="form-group">
+
                 <button class="button" onclick="alert('U wordt ingelogd')" id="Login">Login</button>
             </div>
             <div class="container">
@@ -50,5 +50,5 @@
 </html>
 
 @section Scripts {
-@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

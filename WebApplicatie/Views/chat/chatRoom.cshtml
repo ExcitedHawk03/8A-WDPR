@@ -1,4 +1,11 @@
+@using System.Security.Claims
 @model Chat
+
+
+@{
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    var currentUser = Model.Users.FirstOrDefault(u => u.account.Id == userId).account;
+}
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -29,13 +36,18 @@
         <div class="chat-body">
         @foreach (var Message in Model.Messages)
         {
-            <div class="message">
-                <header>@Message.naam</header>
-                <p>@Message.text</p>
-                <footer>@Message.currentTime</footer>
-            </div>
+            @if (Message.typMessage == "chat")
+            {
+                <div class="message">
+                    <header>@Message.naam</header>
+                    <p>@Message.text</p>
+                    <footer>@Message.currentTime</footer>
+                </div>
+            }
         }
     </div>
+    @if (currentUser.typAccount != "moderator")
+    {
     <div class="chat-input">
         <form asp-controller="chat" onsubmit="sendMessage(event)" asp-action="CreateMessage">
             <input type="hidden" name="chatId" value="@Model.Id">
@@ -44,6 +56,8 @@
         <button type="submit"><b>Verzenden</b></button>
         </form>
     </div>
+
+    }
     </div>
     </div>
 

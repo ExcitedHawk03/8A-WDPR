@@ -33,6 +33,18 @@
     background: orange;
 }
 
+
+#tekstContactgegevens {
+    text-decoration: underline;
+}
+
+#contactgegevensAfbeelding {
+    width: 100%;
+    height: 200px;
+}
+
+
+
 .modal {
     display: none;
     position: fixed;
@@ -42,13 +54,14 @@
     top: 0;
     left: 0;
     background-color: rgba(0.2, 0.2, 0.2, 0.8);
-}
 
-.modal.active {
+  }
+  
+  .modal.active {
     display: flex;
-    color: salmon;
-}
-
+    justify-content: center;
+    align-items: center;
+  }
 #footerLeft {
     text-align: center;
     font-size: larger;
@@ -57,3 +70,4 @@
 #footerRight {
     text-align: center;
 }
+
