@@ -1,17 +1,29 @@
+@using System.Security.Claims
 @model Chat
+
+@{
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    var currentUser = Model.Users.FirstOrDefault(u => u.account.Id == userId).account;
+}
 
 <html>
     <a href="https://localhost:5001/chat/chatSelection">terug naar chat selectie scherm</a>
+    <a asp-controller="chat" asp-action="MisbruikMelden" asp-route-roomName = "@Model.naam" asp-route-chatId = "@Model.Id">klik hier om misbruik te melden</a>
     <div class="chat-body">
         @foreach (var Message in Model.Messages)
         {
-            <div class="message">
-                <header>@Message.naam</header>
-                <p>@Message.text</p>
-                <footer>@Message.currentTime</footer>
-            </div>
+            @if (Message.typMessage == "chat")
+            {
+                <div class="message">
+                    <header>@Message.naam</header>
+                    <p>@Message.text</p>
+                    <footer>@Message.currentTime</footer>
+                </div>
+            }
         }
     </div>
+    @if (currentUser.typAccount != "moderator")
+    {
     <div class="chat-input">
         <form asp-controller="chat" onsubmit="sendMessage(event)" asp-action="CreateMessage">
             <input type="hidden" name="chatId" value="@Model.Id">
@@ -20,6 +32,7 @@
         <button type="submit">send</button>
         </form>
     </div>
+    }
 
 
 

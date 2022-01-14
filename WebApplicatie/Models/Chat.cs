@@ -18,8 +18,9 @@ namespace WebApplicatie.Models
         public chatRuimte ruimte {get; set;}
         public string naam {get; set;}
 
-        //public ICollection<Account> Users {get; set;}
-        public virtual List<ChatUser> Users {get; set;}
+        public virtual ICollection<ChatUser> Users {get; set;}
+
+        public string ageGroup {get; set;}
 
         
     }

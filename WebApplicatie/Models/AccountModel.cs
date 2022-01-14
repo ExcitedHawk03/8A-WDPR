@@ -31,6 +31,8 @@ public class Account : IdentityUser{
 
     public virtual List<ChatUser> Chats {get; set;}
 
+    public bool blocked {get; set;}
+
 }
 
 public class hulpverlener : Account {
@@ -50,8 +52,4 @@ public class hulpverlener : Account {
      public ouder ouder {get; set;}
     
      public hulpverlener hulpverlener {get; set;}       
-}
-
- public class moderator: Account{
-
 }

@@ -1,64 +1,22 @@
 @{
-
+    ViewData["Title"] = "Register Page";
 }
 
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="~/css/formulieren.css" />
-</head>
-
-<body>
-
-    <h2><b>Registreer:</b></h2>
-    <p><b>Vul hieronder het formulier om een nieuw account aan te maken.</b></p>
-    <hr>
-
-    <form action="/Home/Register" id="form" method="post">
-        <div class="container">
-            <label for="voornaam"><b>Voornaam</b></label>
-            <input type="text" name="Voornaam" value="" placeholder="Voornaam" />
-
-            <label for="tussenvoegsel"><b>Tussenvoegsel</b></label>
-            <input type="text" name="Tussenvoegsel" value=" " placeholder="Tussenvoegsel" />
-
-            <label for="achternaam"><b>Achternaam</b></label>
-            <input type="text" name="Achternaam" value="" placeholder="Achternaam" />
-
-            <label for="leeftijd"><b>Leeftijd</b></label>
-            <input type="text" name="Leeftijd" value="" placeholder="Leeftijd" />
-
-            <label for="email"><b>Email</b></label>
-            <input type="text" name="Email" value="" placeholder="Email" />
-
-            <label for="adres"><b>Adres</b></label>
-            <input type="text" name="Adres" value="" placeholder="Adres" />
-
-            <label for="postcode"><b>Postcode</b></label>
-            <input type="text" name="Postcode" value="" placeholder="Postcode" />
-
-            <label for="telefoonnr"><b>Telefoonnummer</b></label>
-            <input type="text" name="Telnr" value="" placeholder="Telefoonnummer" />
-
-            <label for="woonplaats"><b>Woonplaats</b></label>
-            <input type="text" name="Plaats" value="" placeholder="Woonplaats" />
-
-            <label for="geslacht"><b>Geslacht</b></label><br>
-            <select name="geslacht" id="geslacht">
-                <option value="Man">M</option>
-                <option value="Vrouw">V</option>
-            </select>
-
-            <div class="container">
-                <button type="submit" id="button">Maak een nieuw account aan</button>
-            </div>
-        </div>
-        <div class="container">
-            <a asp-controller="Home" asp-action="Index">Annuleren</a>
-        </div>
-    </form>
-</body>
-
-</html>
+<h1> Register</h1>
+<form action="/Home/Register" method="post">
+    <input type="text" name="Voornaam" value="" placeholder="voornaam" />
+    <input type="text" name="Tussenvoegsel" value=" " placeholder="tussenvoegsel" />
+    <input type="text" name="Achternaam" value="" placeholder="achternaam"/>
+    <input type="text" name="Lijftijd" value="" placeholder="leeftijd"/>
+    <input type="text" name="Email" value="" placeholder="Email"/>
+    <input type="text" name="Adres" value="" placeholder="Adres"/>
+    <input type="text" name="Postcode" value="" placeholder="Postcode"/>
+    <input type="text" name="Telnr" value="" placeholder="telefoonnummer"/>
+    <input type="text" name="Plaats" value="" placeholder="Woonplaats"/>
+    <input type="text" name="password" value="" placeholder="Wachtwoord"/>
+    <select name="geslacht" id="geslacht">
+        <option value="Man">M</option>
+        <option value="Vrouw">F</option>
+    </select>
+    <button type="submit">Register </button>
+</form>

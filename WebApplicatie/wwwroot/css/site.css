@@ -38,7 +38,7 @@
     height: 200px;
 }
 
-.modal {
+modal {
     display: none;
     position: fixed;
     min-height: 100vh;
@@ -48,8 +48,9 @@
     left: 0;
     background-color: rgba(0.2, 0.2, 0.2, 0.8);
   }
-
+  
   .modal.active {
     display: flex;
-    color: salmon;
+    justify-content: center;
+    align-items: center;
   }

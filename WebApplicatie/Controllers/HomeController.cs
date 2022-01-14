@@ -62,7 +62,9 @@ namespace WebApplicatie.Controllers
                 Postcode = postcode,
                 Plaats = plaats,
                 UserName = voornaam,
-                Adres = adres
+                Adres = adres,
+                blocked = false,
+                typAccount = "moderator"
             };
             var result = await _AccountManager.CreateAsync(account, password);
             if(result.Succeeded){
@@ -71,7 +73,7 @@ namespace WebApplicatie.Controllers
 
                 if(result2.Succeeded){
                     currentAccount = account;
-                    return RedirectToAction("chat/chatSelection");
+                    return RedirectToAction("chatSelection", "chat");
                 }
             
         }
@@ -90,7 +92,7 @@ namespace WebApplicatie.Controllers
            if(user != null){
            var result = await _signInManager.PasswordSignInAsync(user, password, false,false); 
                 if(result.Succeeded){
-                   return RedirectToAction("chat/chatSelection");
+                   return RedirectToAction("chatSelection", "chat");
                 }
            }
             return RedirectToAction("login");
@@ -125,10 +127,6 @@ namespace WebApplicatie.Controllers
             return View();
         }
 
-        public IActionResult OuderFormulier()
-        {
-            return View();
-        }
 
 
     }

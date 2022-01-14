@@ -1,26 +1,31 @@
-@model Ouder
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+   <br>
+    <a>Bent uw een ouder of voogd en is uw kind jonger dan 16 jaar? Druk dan op de link om een account voor uw kind aan te maken</a>
+    <br>
+    <a asp-action="Ouder">Clientgegevens voor uw kind invullen</a>
+    <br>
+</div>
+
+
+@model Client
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<div class="text-center">
-   <br>
-    <a>Is uw kind ouder dan 16 jaar? Dan moet uw kind met onderstaande link zelf een account aanmaken</a>
-    <br>
-    <a asp-action="Index">Clientgegevens invullen</a>
-    <br>
-</div>
-
-<h2>De clientgegevens voor uw kind invullen</h2>
+<h2>Clientgegevens invullen</h2>
 
 <div class="row">
     <div class="col-md-4">
-        <a asp-action="Ouder">Lijst opnieuw invullen</a>
+    <a asp-action="Index">Lijst opnieuw invullen</a>
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                  <br>
+                <br>
                 <label asp-for="Voornaam" class="control-label"></label>
                 <input asp-for="Voornaam" class="form-control" />
                 <span asp-validation-for="Voornaam" class="text-danger"></span>
@@ -70,34 +75,8 @@
                 <input asp-for="Plaats" class="form-control" />
                 <span asp-validation-for="Plaats" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <label asp-for="Voornaam_kind" class="control-label"></label>
-                <input asp-for="Voornaam_kind" class="form-control" />
-                <span asp-validation-for="Voornaam_kind" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tussenvoegsel_kind" class="control-label"></label>
-                <input asp-for="Tussenvoegsel_kind" class="form-control" />
-                <span asp-validation-for="Tussenvoegsel_kind" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Achternaam_kind" class="control-label"></label>
-                <input asp-for="Achternaam_kind" class="form-control" />
-                <span asp-validation-for="Achternaam_kind" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Leeftijd_kind" class="control-label"></label>
-                <input asp-for="Leeftijd_kind" class="form-control" id="Leeftijd"/>
-                <span asp-validation-for="Leeftijd_kind" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Geslacht_kind" class="control-label"></label>
-                <input asp-for="Geslacht_kind" class="form-control" />
-                <span asp-validation-for="Geslacht_kind" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                 <button onclick="agecheck()" id="button">Meld aan</button>
+                 <button onclick="agecheck()" id="button">Meld aan</button>  
             </div>
         </form>
     </div>
@@ -105,17 +84,29 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+<div>
+    <a asp-action="Login">Klik hier als u al een bestaand account heeft</a>
+</div>
+
+
+<div>
+    <a asp-action="Ouderlogin">Klik hier als u al een bestaand ouderAccount heeft</a>
+</div>
+
     
 <script>
 
     function agecheck(){
-    let leeftijd = document.getElementById("Leeftijdkind");
+    let leeftijd = document.getElementById("Leeftijd");
 
-    if (leeftijd.value < 16){
-        alert("De gegevens van u en uw kind zijn ingevuld, maak nu een gebruikersnaam en wachtwoord aan. Om te kunnen inloggen.")
+    if (leeftijd.value >= 16){
+        alert("Je gegevens zijn ingevuld, maak nu een gebruikersnaam en wachtwoord aan. Om te kunnen inloggen.")   
+        
     }
     else {
-        alert("Uw kind is 16 jaar of ouder en moet zelf een account aanmaken.")
+        alert("Je bent helaas niet oud genoeg om zelf een account aan te maken. Laat dit doen door een ouder of voogd.")
     }
 }
 </script>

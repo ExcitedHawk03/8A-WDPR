@@ -14,5 +14,7 @@ namespace WebApplicatie.Models
         public int ChatId {get; set;}
 
         public Chat chat {get; set;}
+
+        public string typMessage {get; set;}
     }
 }
