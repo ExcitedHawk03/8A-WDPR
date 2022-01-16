@@ -1,9 +1,4 @@
-img {
-    width: 100%;
-    height: 400px;
-}
-
-pre {
+p {
     font-size: 120%;
     text-align: center;
 }
@@ -11,12 +6,4 @@ pre {
 h2 {
     text-align: center;
     margin-left: 15px;
-}
-
-#LogIn {
-    display: none;
-}
-
-#footer {
-    bottom: 0px;
 }

@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 
-pre {
+p {
     font-size: 120%;
     text-align: center;
 }
@@ -39,4 +39,11 @@ h2 {
 
 #Chat {
     display: none;
+}
+
+#afbeelding {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }

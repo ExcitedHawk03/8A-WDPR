@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 
 <head>
     <meta charset="utf-8" />
@@ -17,45 +17,25 @@
 <body>
     <header>
         <div>
+            <br>
             <h1 class="TitelHome"><b>Praktijk voor Orthopedagogiek & Psychologie Zorg Maatschap Den Haag (ZMDH)</b></h1>
         </div>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" id ="Home" asp-controller="Home" asp-action="Homepagina">Home</a>
-                        </li>
-                        <li class="nav-item">
-                    </ul>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" id="Aanmelding" asp-controller="Home" asp-action="AanmeldingIntake">Aanmelding
-                                    intake</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="OverOns" asp-controller="Home" asp-action="Orthopedagogen">Over ons</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="LogIn" asp-controller="Home" asp-action="Login">Log in</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="Contact" asp-controller="Home" asp-action="Contact">Contact</a>
-                            </li>
-                            <li>
-                                <div class="search-container">
-                                    <form action="/action_page.php">
-                                        <input type="text" placeholder="Search.." name="search">
-                                        <button type="submit"><i class="fa fa-search"></i></button>
-                                    </form>
-                                </div>
-                            </li>
-                    </div>
-                </div>
+        <nav>
+            <div class="topnav" id="myTopnav">
+                <a asp class="active" id="Home" asp-controller="Home" asp-action="Homepagina"><i class="fa fa-fw fa-home"></i>Home</a>
+                <a id="Aanmelding" asp-controller="Home" asp-action="AanmeldingIntake">Aanmelding intake</a>
+                <a id="OverOns" asp-controller="Home" asp-action="Orthopedagogen">Over ons</a>
+                <a id="LogIn" asp-controller="Home" asp-action="Login"><i class="fa fa-fw fa-user"></i>Log in</a>
+                <a id="Chat" asp-controller="Chat" asp-action="chatSelection">Chat</a>
+                <a id="Contact" asp-controller="Home" asp-action="Contact"><i class="fa fa-fw fa-envelope"></i>Contact</a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
         </nav>
     </header>
+
     <div class="row">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -72,7 +52,7 @@
             </div>
             <div class="col-3" id="VolgOns">
                 <br>
-                <h4><b>Volg Ons</b></h4>
+                <h5><b>Volg Ons</b></h5>
                 <ul>
                     <li>Twitter <i class="fa fa-twitter"></i></li>
                     <li>Instagram <i class="fa fa-instagram"></i></li>
@@ -81,7 +61,7 @@
             </div>
             <div class="col-3" id="footerRight">
                 <br>
-                <h4><b>Contact: </b></h4>
+                <h5><b>Contact: </b></h5>
                 <p>Telefoonnummer: 070-123456789</p>
                 <p>Mail: ZMDH@gmail.com</p>
             </div>
@@ -92,6 +72,17 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
 </body>
 
 </html>
