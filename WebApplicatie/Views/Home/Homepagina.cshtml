@@ -1,3 +1,4 @@
+@model Account
 @{
 
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,7 +16,6 @@
 </head>
 
 <body>
-
     <br>
 
     <div class="row">
@@ -23,6 +23,17 @@
 
         </div>
         <div class="col-8">
+          @if (Model.typAccount == "hulpverlener")
+          {
+                <div>
+                  <h2><a asp-controller="Home" asp-action="clienten">aangemelde clienten bekijken</a></h2>
+                </div>
+              <hr>
+                <div>
+                  <h2><a asp-controller="Home" asp-action="Register" asp-route-typRegister="Ouder">Ouder account aanmaken</a></h2>
+                </div>
+              <hr>
+          }
             <h2><b>Voorbereiding eerste gesprek</b></h2>
             <p>
                 Ooit zenuwen gehad wanneer je een sollicitatie gesprek moet houden met de baas van een bedrijf en begin

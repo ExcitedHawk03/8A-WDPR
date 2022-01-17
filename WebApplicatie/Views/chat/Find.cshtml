@@ -17,7 +17,6 @@
     <title>Zoek naar een persoon</title>
 </head>  
  
-<body>
 <div>
 <h1><b>Lijst met gebruikers</b></h1>
   
@@ -57,7 +56,8 @@
             }
         } else {
         <li>
-          <a asp-controller="chat" asp-action="CreatePrivateRoom" asp-route-userId = "@user.Id">
+          <a asp-controller="chat" asp-action="CreatePrivateRoom" asp-route-userId = "@user.Id" asp-route-chatnummer = 1>
+              @if(user.typAccount != "moderator")
                     @user.UserName
         </a>
         </li>

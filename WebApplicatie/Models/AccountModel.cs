@@ -27,15 +27,22 @@ public class Account : IdentityUser{
     [Required(ErrorMessage = "Plaats is verplicht")]
     public string Plaats {get; set;}
 
+    public string Voornaam {get; set;}
     public string typAccount {get; set;}
 
     public virtual List<ChatUser> Chats {get; set;}
 
     public bool blocked {get; set;}
 
+    public string aangemeldeHulpverlener {get; set;}
+
 }
 
 public class hulpverlener : Account {
+
+    public hulpverlener () : base(){
+        cliënten = new List<client>();
+    }
   public List<client> cliënten {get; set;} 
    public int chatNummer {get; set;}
 
@@ -43,7 +50,10 @@ public class hulpverlener : Account {
 
 
  public class ouder : Account{
-    
+    public ouder () : base(){
+        kinderen = new List<client>();
+    }
+
      public List<client> kinderen {get; set;}
 
 }
@@ -51,5 +61,7 @@ public class hulpverlener : Account {
  public class client: Account {
      public ouder ouder {get; set;}
     
-     public hulpverlener hulpverlener {get; set;}       
+     public hulpverlener hulpverlener {get; set;}     
+
+     public int messageFrequency {get; set;}  
 }
