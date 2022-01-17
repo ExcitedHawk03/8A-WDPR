@@ -1,29 +1,14 @@
 @model Ouder
 
-<<<<<<< Updated upstream
-@{
-    ViewData["Title"] = "Create";
-}
-
-<div class="text-center">
-   <br>
-    <a>Is uw kind ouder dan 16 jaar? Dan moet uw kind met onderstaande link zelf een account aanmaken</a>
-    <br>
-    <a asp-action="Index">Clientgegevens invullen</a>
-    <br>
-</div>
-
-<h2>De clientgegevens voor uw kind invullen</h2>
-=======
 <!DOCTYPE html>
 <html lang="nl">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="~/css/formulieren.css" />
+     <link rel="stylesheet" href="~/css/zonderinloggen.css" />
     <title>Clientgegevens kinderen invullen</title>
 </head>
->>>>>>> Stashed changes
 
 
     <div class="text-center">
@@ -34,16 +19,14 @@
         <br><br>
         <p>Opnieuw de lijst invullen? Druk dan op de onderstaande link</p>
         <a asp-action="Ouder">Lijst opnieuw invullen</a>
+        <hr>
+        </div>
+        <div class="container">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-<<<<<<< Updated upstream
-                  <br>
-                <label asp-for="Voornaam" class="control-label"></label>
-=======
                 <br>
                 <label asp-for="Voornaam" id="Voornaam" class="control-label"></label>
->>>>>>> Stashed changes
                 <input asp-for="Voornaam" class="form-control" />
                 <span asp-validation-for="Voornaam" class="text-danger"></span>
             </div>
@@ -58,13 +41,8 @@
                 <span asp-validation-for="Achternaam" class="text-danger"></span>
             </div>
             <div class="form-group">
-<<<<<<< Updated upstream
-                <label asp-for="Leeftijd" class="control-label"></label>
-                <input asp-for="Leeftijd" class="form-control" id="Leeftijd"/>
-=======
                 <label asp-for="Leeftijd" id="Leeftijd" class="control-label"></label>
                 <input asp-for="Leeftijd" class="form-control" id="Leeftijd" />
->>>>>>> Stashed changes
                 <span asp-validation-for="Leeftijd" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -97,7 +75,6 @@
                 <input asp-for="Plaats" class="form-control" />
                 <span asp-validation-for="Plaats" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Voornaam_kind" id="Voornaam_kind" class="control-label"></label>
                 <input asp-for="Voornaam_kind" class="form-control" />
@@ -114,13 +91,8 @@
                 <span asp-validation-for="Achternaam_kind" class="text-danger"></span>
             </div>
             <div class="form-group">
-<<<<<<< Updated upstream
-                <label asp-for="Leeftijd_kind" class="control-label"></label>
-                <input asp-for="Leeftijd_kind" class="form-control" id="Leeftijd"/>
-=======
                 <label asp-for="Leeftijd_kind" id="Leeftijd_kind" class="control-label"></label>
                 <input asp-for="Leeftijd_kind" class="form-control" id="Leeftijd" />
->>>>>>> Stashed changes
                 <span asp-validation-for="Leeftijd_kind" class="text-danger"></span>
             </div>
             <div class="form-group">

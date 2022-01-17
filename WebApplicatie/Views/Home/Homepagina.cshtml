@@ -1,6 +1,6 @@
 @model Account
 @{
-    
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,35 +11,87 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/homepagina.css" />
+    <link rel="stylesheet" href="~/css/zonderinloggen.css" />
     <title>Homepagina</title>
 </head>
 
 <body>
-    @if (Model.typAccount == "hulpverlener")
-    {
-        <div>
-            <h2><a asp-controller="Home" asp-action="clienten">aangemelde clienten bekijken</a></h2>
+    <br>
+
+    <div class="row">
+        <div class="col-2">
+
         </div>
-        <hr>
-        <div>
-            <h2><a asp-controller="Home" asp-action="Register" asp-route-typRegister="Ouder">Ouder account aanmaken</a></h2>
+        <div class="col-8">
+          @if (Model.typAccount == "hulpverlener")
+          {
+                <div>
+                  <h2><a asp-controller="Home" asp-action="clienten">aangemelde clienten bekijken</a></h2>
+                </div>
+              <hr>
+                <div>
+                  <h2><a asp-controller="Home" asp-action="Register" asp-route-typRegister="Ouder">Ouder account aanmaken</a></h2>
+                </div>
+              <hr>
+          }
+            <h2><b>Voorbereiding eerste gesprek</b></h2>
+            <p>
+                Ooit zenuwen gehad wanneer je een sollicitatie gesprek moet houden met de baas van een bedrijf en begin
+                je
+                te
+                stotteren omdat je je woorden bent vergeten? Het kan bij iedereen voorkomen, ook bij jou. Door alleen je
+                verhaal op een blaadje op te schrijven en dan uit je hoofd leren is niet genoeg. Er zijn meerdere
+                manieren
+                om je beter voor te bereiden en daarom geven we een paar tips hoe jij het best kunt oefenen.
+            </p>
+            <p>
+                Tijdens de behandelingen kan het zo zijn dat jouw orthopedagoog veel vragen stelt waarbij je veel moet
+                gaan vertellen. Hierbij kan het zo zijn dat je soms niet weet wat je precies moet gaan vertellen.
+                Geen probleem, want jouw orthopedagoog probeert dan met wat makkelijkere vragen antwoord te krijgen.
+                Dit is belangrijk voor hun omdat zij jou zo beter kunnen leren kennen of helpen. Een goeie
+                hulpmiddel is de 5W1H-methode (wie, wat, waar, wanneer, waarom en hoe).
+            </p>
+            <p>
+                Nadat je weet wat je wilt vertellen, vraag aan je vriend of moeder of zij graag met je willen oefenen.
+                Je
+                houdt dan samen een individuele gesprek en je partner speelt zich voor als de persoon waar je binnenkort
+                een
+                gesprek mee hebt. Zo leer je hoe een 1-op-1 gesprek is en zal je comfortabeler voelen om een gesprek te
+                houden met iemand.
+
+                Met deze tips hopen wij jou goed te kunnen voorbereiden op een spannende gesprek. Door steeds te oefenen
+                zal
+                een spannende gesprek voor jou heel makkelijke worden.
+            </p>
+            <hr>
+                <h2><b>Hoe kan ik chatten met een hulpverlener</b></h2>
+                <p>
+                    Tijdens het behandelproces is er natuurlijk een mogelijkheid om met jouw hulpverlener te chatten.
+                    Dit kun je doen door in het navigatiemenu op de chat knop te klikken. Je komt vervolgens op een
+                    pagina met drie mogelijkheden die al hierboven zijn genoemd. Om te chatten met jouw hulpverlener
+                    druk je op de derde mogelijkheid jouw privé chats. Je ziet dan de chat met jouw hulpverlener als de
+                    chat al is aangemaakt. Als dat niet het geval is, moet je eerst klikken op de tweede mogelijkheid
+                    zoeken naar een hulpverlener. Selecteer jouw hulpverlener en als je dan weer de derde mogelijkheid
+                    selecteert, zie je de chat staan.
+                </p>
+            <hr>
+                <h2><b>Deelnemen groepschat</b></h2>
+                <p>
+                    Wil je graag samen met andere jongeren chatten? Dan kan dat makkelijk door op de knop chat in het
+                    navigatiemenu te klikken. Als je dat hebt gedaan, zie je een scherm waarbij je kan kiezen tussen
+                    drie mogelijkheden. Eerste mogelijkheid is deelnemen aan een chat. De tweede mogelijkheid is het
+                    zoeken naar een hulpverlener en de laatste is jouw privé chats. Hierbij moet je de eerste
+                    mogelijkheid kiezen om deel te nemen aan een zelfhulpgroep.
+                </p>
+            </div>
+            <div class="col-2">
+
+            </div>
         </div>
-    <hr>
-    }
-    <div>
-        <h2><b>Voorbereiding eerste gesprek</b></h2>
-    </div>
-    <hr>
-    <div>
-        <h2><b>Hoe kan ik chatten met een hulpverlener</b></h2>
-    </div>
-    <hr>
-    <div>
-        <h2><b>Deelnemen groepschat</b></h2>
-    </div>
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
-</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
 
 </html>

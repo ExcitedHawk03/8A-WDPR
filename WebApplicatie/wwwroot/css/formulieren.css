@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f1f1f1;
@@ -13,8 +17,18 @@ input[type=password] {
     box-sizing: border-box;
 }
 
+::placeholder {
+    color: black;
+    opacity: 1;
+}
+
+a {
+    color: black;
+    font-size: medium;
+}
+
 .button {
-    background-color: #04AA6D;
+    background-color: black;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -67,15 +81,6 @@ header {
 }
 
 
-/* Change styles for span and cancel button on extra small screens */
-
-@mediascreen and (max-width: 300px) {
-    .cancelbtn {
-        width: 100%;
-    }
-}
-
-
 /*Maakt de links en de zoekbalk onzichtbaar*/
 
 #Aanmelding {
@@ -87,10 +92,6 @@ header {
 }
 
 #Contact {
-    display: none;
-}
-
-#LogIn {
     display: none;
 }
 
