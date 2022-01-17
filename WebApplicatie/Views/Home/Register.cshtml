@@ -1,3 +1,5 @@
+@model IEnumerable<Account>
+
 @{
     ViewData["Title"] = "Register Page";
 }
@@ -21,7 +23,7 @@
     <form action="/Home/Register" id="form" method="post">
         <div class="container">
             <label for="voornaam" id="voornaam"><b>Voornaam</b></label>
-            <input type="text" name="username" value="" placeholder="Voornaam" />
+            <input type="text" name="voornaam" value="" placeholder="Voornaam" />
 
             <label for="tussenvoegsel" id="tussenvoegsel"><b>Tussenvoegsel</b></label>
             <input type="text" name="Tussenvoegsel" value=" " placeholder="Tussenvoegsel" />
@@ -54,8 +56,31 @@
             <select name="geslacht" id="geslacht">
                 <option value="Man">M</option>
                 <option value="Vrouw">V</option>
-            </select>
+            </select> <br>
 
+            @if (Model.Any(a => a.typAccount == "hulpverlener"))
+            {
+                <label name="typAccount" hidden value="gast"></label>
+                <label for="hulpverlener" id="hulpverlener"><b>hulpverlener</b></label><br>
+                <select name="hulpverlener" id="hulpverlener">
+                @foreach (var account in Model)
+                {
+                    <option value= "@account.Id">@account.Achternaam</option>
+                }
+                </select>
+            } 
+            else{
+                <label name="typAccount" hidden value="Ouder"></label>
+                <label for="kind" id="kind"><b>Ouder van:</b></label><br>
+                <select name="kind" id="kind">
+                @foreach (var account in Model)
+                {
+                    @if (account.typAccount == "client"){
+                        <option value= "@account.Id">@account.Voornaam @account.Tussenvoegsel @account.Achternaam </option>
+                    }
+                }
+                </select>
+            }
             <div class="container">
                 <button type="submit" class="button">Maak een nieuw account aan</button>
             </div>

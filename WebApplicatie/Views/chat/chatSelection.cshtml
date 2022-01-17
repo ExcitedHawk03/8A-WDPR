@@ -32,7 +32,7 @@
                     {
                         @foreach (var Chat in Model)
                         {
-                            @if (!Chat.Users.Any(u => u.AccountId == User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                            @if (!Chat.Users.Any(u => u.AccountId == User.FindFirst(ClaimTypes.NameIdentifier).Value) && Chat.ruimte == chatRuimte.Room)
                             {
                             <a class="roomBtn" asp-controller="chat" asp-action="joinRoom" asp-route-id="@Chat.Id">
                                     @Chat.naam

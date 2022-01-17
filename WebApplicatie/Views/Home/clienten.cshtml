@@ -1,0 +1,41 @@
+@using System.Security.Claims
+@model IEnumerable<Account>
+@{
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+}
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/chat.css" />
+    <link rel="stylesheet" href="~/css/footerbottom.css" />
+    <title>accepteer een client</title>
+</head>  
+
+<body>
+<div>
+<h1><b>Lijst met clienten</b></h1>
+
+<br>
+
+<ul id="lijstNamen">   
+@foreach (var user in Model)
+{           
+    @if (user.aangemeldeHulpverlener == userId + "h")
+    { 
+        <li>
+          <a asp-controller="Home" asp-action="clientenAanmelden" asp-route-Id = "@user.Id">
+                    @user.Voornaam @user.Tussenvoegsel @user.Achternaam
+        </a>
+        </li>
+    }
+}
+  </ul>
+  </div>
+
+</body>
+
+</html>

@@ -21,16 +21,13 @@ namespace WebApplicatie.Controllers{
 
         private IHubContext<chatHub> _chat;
         
-        private Account _currentUser;
+        public static Account _currentUser;
         
         public ChatController(UserManager<Account> AccountManager, ClientContext context, IHubContext<chatHub> chat){
             _context = context;
             _AccountManager = AccountManager;
-            _chat = chat;
+            _chat = chat;        
         }
-
-        
-
         public IActionResult Find(){
             var users = _context.Users
                             .Include(a => a.Chats)
@@ -50,7 +47,7 @@ namespace WebApplicatie.Controllers{
             return View(chats);
         }
 
-        public async Task<IActionResult> CreatePrivateRoom(string userId){
+        public async Task<IActionResult> CreatePrivateRoom(string userId, int chatnummer){
             string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var chat = new Chat {
                 ruimte = chatRuimte.prive,
@@ -77,7 +74,9 @@ namespace WebApplicatie.Controllers{
             else if (currentPersoon.typAccount == "moderator")
                 return RedirectToAction("moderatorChatSelection");
             else
+            {
                 return View("index", "Home");
+            }
         }
 
         public IActionResult moderatorChatSelection(){
@@ -106,7 +105,8 @@ namespace WebApplicatie.Controllers{
                 ChatId = chatId,
                 text = message,
                 naam = User.Identity.Name,
-                currentTime = DateTime.Now
+                currentTime = DateTime.Now,
+                typMessage = "chat"
             };
             _context.message.Add(Message);
             await _context.SaveChangesAsync();
@@ -162,7 +162,7 @@ namespace WebApplicatie.Controllers{
                 currentTime = DateTime.Now,
                 typMessage = "chat"
             };
-
+            //_context.cliënt.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).messageFrequency++;
             _context.message.Add(Message);
             await _context.SaveChangesAsync();
 
@@ -174,7 +174,6 @@ namespace WebApplicatie.Controllers{
             return Ok();
         }
 
-        [HttpGet]
         public async Task<IActionResult> MisbruikMelden(int chatId, string roomName){
             
             var abuseMessage = new Message {
