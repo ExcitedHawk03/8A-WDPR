@@ -19,12 +19,12 @@
 
 <body>
 
-    <h1>Index</h1>
+    <h1><b>Index</b></h1>
 
     <form asp-action="Index" asp-controller="Aanmelding" method="get">
-        <label for="Naam">Zoek bij naam:</label>
+        <label for="NaamHulpverlener" id="NaamHulpverlener">Zoek bij naam:</label>
         <input type="text" id="NaamHulpverlener" name="filter" value='@ViewData["Filter"]' />
-        <input type="submit" value="Search" />
+        <input type="submit"  value="Search" />
     </form>
 
     <br>
@@ -37,7 +37,7 @@
     {
         @if (item.Hulpverlener.Equals("Laura van Veen"))
         {
-            <div class="Afspraak" style="background-color:red;">
+            <div class="Afspraak" style="background-color:#00ff00;">
                 <b>Naam: </b>
                 @Html.DisplayFor(modelItem => item.VoorNaam)
                 @Html.DisplayFor(modelItem => item.AchterNaam)
@@ -52,7 +52,7 @@
 
                 <a asp-action="Delete" asp-route-id="@item.Id">Afspraak afkeuren</a>
                 <a asp-action="Edit" asp-route-id="@item.Id">Aanpassen</a>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details afspraak</a>
             </div>
 
             <br><br>
@@ -75,7 +75,7 @@
 
                 <a asp-action="Delete" asp-route-id="@item.Id">Afspraak afkeuren</a>
                 <a asp-action="Edit" asp-route-id="@item.Id">Aanpassen</a>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details afspraak</a>
             </div>
 
             <br><br>
@@ -83,7 +83,7 @@
 
         else if (item.Hulpverlener.Equals("Takezo Jones"))
         {
-            <div class="Afspraak" style="background-color:green;">
+            <div class="Afspraak" style="background-color:orange;">
                 <b>Naam: </b>
                 @Html.DisplayFor(modelItem => item.VoorNaam)
                 @Html.DisplayFor(modelItem => item.AchterNaam)
@@ -98,7 +98,7 @@
 
                 <a asp-action="Delete" asp-route-id="@item.Id">Afspraak afkeuren</a>
                 <a asp-action="Edit" asp-route-id="@item.Id">Aanpassen</a>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details afspraak</a>
             </div>
 
             <br><br>
@@ -106,7 +106,7 @@
 
         else
         {
-            <div class="Afspraak" style="background-color:gray;">
+            <div class="Afspraak" style="background-color:#33d6ff;">
                 <b>Naam: </b>
                 @Html.DisplayFor(modelItem => item.VoorNaam)
                 @Html.DisplayFor(modelItem => item.AchterNaam)
@@ -121,7 +121,7 @@
 
                 <a asp-action="Delete" asp-route-id="@item.Id">Afspraak afkeuren</a>
                 <a asp-action="Edit" asp-route-id="@item.Id">Aanpassen</a>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details afspraak</a>
             </div>
 
             <br><br>
