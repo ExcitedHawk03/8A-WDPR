@@ -1,4 +1,4 @@
-﻿var createRoomBtn = document.getElementById('Create_Room+')
+﻿var createRoomBtn = document.getElementById('Create_Room')
 var createRoomModal = document.getElementById('room_modal')
 
 createRoomBtn.addEventListener('click', function () {

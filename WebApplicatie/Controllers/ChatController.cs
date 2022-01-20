@@ -36,18 +36,25 @@ namespace WebApplicatie.Controllers{
             return View(users);
         }
 
-        public IActionResult privateChatRoom(){
+        public IActionResult privateChatRoom(string Id){
+            var currentPersoon = _context.accounts.FirstOrDefault(a => a.Id == Id);
+            if (currentPersoon.typAccount != "client")
+            {
             var chats = _context.chat
                         .Include(c => c.Users)
                         .ThenInclude(cu => cu.account)
                         .Where(u => u.ruimte == chatRuimte.prive 
                         && u.Users.Any(s => s.AccountId == User.FindFirst(ClaimTypes.NameIdentifier).Value))
                         .ToList();
-
-            return View(chats);
+                        return View(chats);
+            } else {
+                return RedirectToAction("CreatePrivateRoom", new {userId = 
+                                        _context.hulpverlener.FirstOrDefault(h => h.Id == 
+                                        _context.cliënt.FirstOrDefault(c => c.Id == currentPersoon.Id).hulpverlener.Id).Id});
+            }
         }
 
-        public async Task<IActionResult> CreatePrivateRoom(string userId, int chatnummer){
+        public async Task<IActionResult> CreatePrivateRoom(string userId){
             string currentUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var chat = new Chat {
                 ruimte = chatRuimte.prive,
@@ -67,20 +74,10 @@ namespace WebApplicatie.Controllers{
             return RedirectToAction("chatRoom", new {id = chat.Id});
         }
 
-        public IActionResult chatSelection(){
-            var currentPersoon = _context.accounts.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            if(currentPersoon.typAccount != "Ouder" && currentPersoon.typAccount != "moderator" && currentPersoon.blocked == false)
-                return View(_context.chat.Include(c => c.Users).ToList());
-            else if (currentPersoon.typAccount == "moderator")
-                return RedirectToAction("moderatorChatSelection");
-            else
-            {
-                return View("index", "Home");
-            }
-        }
+        
 
         public IActionResult moderatorChatSelection(){
-                return View(_context.chat.Include(c => c.Users).ToList());
+                return View(_context.message.Where(m => m.typMessage == "abuse").Include(m => m.chat).ThenInclude(c => c.Users).ThenInclude(u => u.account).ToList());
         }
 
         [HttpGet("{Id}")]
@@ -113,11 +110,36 @@ namespace WebApplicatie.Controllers{
             return RedirectToAction("ChatRoom", new {Id = chatId});
         }
 
+        public IActionResult searchSelection(string SelectionKamer, int? SelectionLeeftijd){
+            return RedirectToAction("chatSelection", new {naamKamer = SelectionKamer, leeftijdGroep = SelectionLeeftijd});
+        }
+        public IActionResult chatSelection(string naamKamer, int? leeftijdGroep){
+            var currentPersoon = _context.accounts.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value);        
+            switch (currentPersoon.typAccount){
+                case "moderator":
+                return RedirectToAction("moderatorChatSelection");
+                case "ouder":
+                Console.WriteLine(_context.ouder.FirstOrDefault(o => o.Id == currentPersoon.Id).kinderen.messageFrequency);
+                return View("index", "Home");
+                default:
+                if (naamKamer != null && leeftijdGroep != null)
+                    return View(_context.chat.Where(c => c.ageGroup+1 <= leeftijdGroep && c.ageGroup-1 >= leeftijdGroep && c.naam.Contains(naamKamer)).Include(c => c.Users).ToList());
+                if (leeftijdGroep != null)
+                    return View(_context.chat.Where(c => c.ageGroup+1 <= leeftijdGroep && c.ageGroup-1 >= leeftijdGroep).Include(c => c.Users).ToList());
+                if (naamKamer != null)
+                    return View(_context.chat.Where(c => c.naam.Contains(naamKamer)).Include(c => c.Users).ToList()); 
+                else
+                    return View(_context.chat.Include(c => c.Users).ToList());
+
+            }
+        }
+
         [HttpPost]
-        public async Task<IActionResult> chatSelection(string name){
+        public async Task<IActionResult> chatSelection(int ageGroup, string name ){
             var chat = new Chat{
                naam = name,
-               ruimte = chatRuimte.Room 
+               ruimte = chatRuimte.Room,
+               ageGroup = ageGroup
             };
 
             chat.Users.Add(new ChatUser{
@@ -162,7 +184,7 @@ namespace WebApplicatie.Controllers{
                 currentTime = DateTime.Now,
                 typMessage = "chat"
             };
-            //_context.cliënt.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).messageFrequency++;
+            _context.cliënt.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).messageFrequency++;
             _context.message.Add(Message);
             await _context.SaveChangesAsync();
 
@@ -174,20 +196,17 @@ namespace WebApplicatie.Controllers{
             return Ok();
         }
 
-        public async Task<IActionResult> MisbruikMelden(int chatId, string roomName){
-            
-            var abuseMessage = new Message {
-                ChatId = chatId,
-                naam = "er is misbruik gemeld bij de kamer",
-                text = roomName,
-                currentTime = DateTime.Now,
-                typMessage = "abuse"
-            };
-
-            _context.message.Add(abuseMessage);
+        public async Task<IActionResult> MisbruikMelden(int chatId, bool isAbuse){
+            if (isAbuse)
+            {
+                 _context.message.FirstOrDefault(m => m.ChatId == chatId).typMessage = "abuse";
+                 await _context.SaveChangesAsync();
+                 return RedirectToAction("chatRoom", new {id = chatId});
+            }
+            else  
+                _context.message.FirstOrDefault(m => m.ChatId == chatId).typMessage = "chat";         
             await _context.SaveChangesAsync();
-
-            return RedirectToAction("chatRoom", new {id = chatId});
+            return RedirectToAction("moderatorChatSelection");
         }
 
         public async Task<IActionResult> GebruikerBlokkeren(string userId){
@@ -195,5 +214,7 @@ namespace WebApplicatie.Controllers{
             await _context.SaveChangesAsync();
             return RedirectToAction("moderatorChatSelection");
         }
+
+        
     }
 }

@@ -1,0 +1,41 @@
+@model IEnumerable<hulpverlener>
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/chat.css" />
+    <link rel="stylesheet" href="~/css/footerbottom.css" />
+    <title>hulpverlener aanmeldingen</title>
+</head>  
+ 
+<h1><b>lijst met hulpverleners met hun clienten</b></h1>
+
+<body>
+
+<br>
+
+<ul id="lijstNamen">   
+    @foreach (var user in Model)
+{
+    <li>
+        <a asp-controller="Home" asp-action="clienten">
+            @user.Voornaam
+        </a>
+        <ul>
+            @foreach (var client in user.cliënten)
+            {
+                <li>
+                    <b>
+                        @client.Voornaam
+                    </b>
+                </li>
+            }
+        </ul>
+    </li>
+}
+</ul>
+</body>
+</html>

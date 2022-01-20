@@ -1,5 +1,5 @@
 {
-  "FilePath": "d:\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj",
+  "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\WebApplicatie.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -13566,6 +13566,23 @@
         }
       },
       {
+        "HashCode": 1684702354,
+        "Kind": "MVC.ViewComponent",
+        "Name": "__Generated__RoomViewComponentTagHelper",
+        "AssemblyName": "WebApplicatie",
+        "CaseSensitive": false,
+        "TagMatchingRules": [
+          {
+            "TagName": "vc:room"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "ITagHelper",
+          "Common.TypeName": "__Generated__RoomViewComponentTagHelper",
+          "MVC.ViewComponent.Name": "Room"
+        }
+      },
+      {
         "HashCode": 141407075,
         "Kind": "Components.Bind",
         "Name": "Bind",
@@ -15619,58 +15636,213 @@
   "RootNamespace": "WebApplicatie",
   "Documents": [
     {
-      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Ouderlogin.cshtml",
+      "TargetPath": "Views\\Home\\Ouderlogin.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Orthopedagoog\\Dagmar.cshtml",
+      "TargetPath": "Views\\Orthopedagoog\\Dagmar.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Home\\secret.cshtml",
-      "TargetPath": "Views\\Home\\secret.cshtml",
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\IndexH.cshtml",
+      "TargetPath": "Views\\Home\\IndexH.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\OuderQ.cshtml",
+      "TargetPath": "Views\\Home\\OuderQ.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Home\\home.cshtml",
-      "TargetPath": "Views\\Home\\home.cshtml",
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\chat\\chatRoom.cshtml",
+      "TargetPath": "Views\\chat\\chatRoom.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\_ViewImports.cshtml",
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\LoginQ.cshtml",
+      "TargetPath": "Views\\Home\\LoginQ.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Orthopedagogen.cshtml",
+      "TargetPath": "Views\\Home\\Orthopedagogen.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Home\\Login.cshtml",
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Ouder.cshtml",
+      "TargetPath": "Views\\Home\\Ouder.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\AanmeldingIntake.cshtml",
+      "TargetPath": "Views\\Home\\AanmeldingIntake.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Orthopedagoog\\Laura.cshtml",
+      "TargetPath": "Views\\Orthopedagoog\\Laura.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\AfspraakMaken.cshtml",
+      "TargetPath": "Views\\Home\\AfspraakMaken.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Client\\Create.cshtml",
+      "TargetPath": "Views\\Client\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\OuderloginQ.cshtml",
+      "TargetPath": "Views\\Home\\OuderloginQ.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Orthopedagoog\\Jan.cshtml",
+      "TargetPath": "Views\\Orthopedagoog\\Jan.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Homepagina.cshtml",
+      "TargetPath": "Views\\Home\\Homepagina.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\OuderFormulier.cshtml",
+      "TargetPath": "Views\\Home\\OuderFormulier.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Login.cshtml",
       "TargetPath": "Views\\Home\\Login.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Home\\Register.cshtml",
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Client\\Index.cshtml",
+      "TargetPath": "Views\\Client\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\chat\\chat.cshtml",
+      "TargetPath": "Views\\chat\\chat.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\IndexQ.cshtml",
+      "TargetPath": "Views\\Home\\IndexQ.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\home.cshtml",
+      "TargetPath": "Views\\Home\\home.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Shared\\Components\\Room\\Defaults.cshtml",
+      "TargetPath": "Views\\Shared\\Components\\Room\\Defaults.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Contact.cshtml",
+      "TargetPath": "Views\\Home\\Contact.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\chat\\privateChatRoom.cshtml",
+      "TargetPath": "Views\\chat\\privateChatRoom.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Client\\Edit.cshtml",
+      "TargetPath": "Views\\Client\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\chat\\moderatorChatSelection.cshtml",
+      "TargetPath": "Views\\chat\\moderatorChatSelection.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Orthopedagoog\\Takezo.cshtml",
+      "TargetPath": "Views\\Orthopedagoog\\Takezo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\chat\\Find.cshtml",
+      "TargetPath": "Views\\chat\\Find.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\secret.cshtml",
+      "TargetPath": "Views\\Home\\secret.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\chat\\chatSelection.cshtml",
+      "TargetPath": "Views\\chat\\chatSelection.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\hulpverleneraanmeldingen.cshtml",
+      "TargetPath": "Views\\Home\\hulpverleneraanmeldingen.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Register.cshtml",
       "TargetPath": "Views\\Home\\Register.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\8A-WDPR\\WebApplicatie\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Client\\Details.cshtml",
+      "TargetPath": "Views\\Client\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Client\\Delete.cshtml",
+      "TargetPath": "Views\\Client\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\clienten.cshtml",
+      "TargetPath": "Views\\Home\\clienten.cshtml",
       "FileKind": "mvc"
     }
   ],

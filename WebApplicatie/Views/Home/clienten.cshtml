@@ -24,7 +24,7 @@
 <ul id="lijstNamen">   
 @foreach (var user in Model)
 {           
-    @if (user.aangemeldeHulpverlener == userId + "h")
+    @if (user.aangemeldeHulpverlener == userId)
     { 
         <li>
           <a asp-controller="Home" asp-action="clientenAanmelden" asp-route-Id = "@user.Id">

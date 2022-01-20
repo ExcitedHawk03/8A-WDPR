@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplicatie.Migrations
 {
-    public partial class _1 : Migration
+    public partial class k1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,6 +26,23 @@ namespace WebApplicatie.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Tussenvoegsel = table.Column<string>(type: "TEXT", nullable: true),
+                    Achternaam = table.Column<string>(type: "TEXT", nullable: false),
+                    Leeftijd = table.Column<int>(type: "INTEGER", nullable: false),
+                    Geslacht = table.Column<string>(type: "TEXT", nullable: true),
+                    Telnr = table.Column<string>(type: "TEXT", nullable: false),
+                    Adres = table.Column<string>(type: "TEXT", nullable: false),
+                    Postcode = table.Column<string>(type: "TEXT", nullable: false),
+                    Plaats = table.Column<string>(type: "TEXT", nullable: false),
+                    Voornaam = table.Column<string>(type: "TEXT", nullable: true),
+                    typAccount = table.Column<string>(type: "TEXT", nullable: true),
+                    blocked = table.Column<bool>(type: "INTEGER", nullable: false),
+                    aangemeldeHulpverlener = table.Column<string>(type: "TEXT", nullable: true),
+                    Discriminator = table.Column<string>(type: "TEXT", nullable: false),
+                    ouderId = table.Column<string>(type: "TEXT", nullable: true),
+                    hulpverlenerId = table.Column<string>(type: "TEXT", nullable: true),
+                    messageFrequency = table.Column<int>(type: "INTEGER", nullable: true),
+                    chatNummer = table.Column<int>(type: "INTEGER", nullable: true),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
@@ -44,6 +61,33 @@ namespace WebApplicatie.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_AspNetUsers_hulpverlenerId",
+                        column: x => x.hulpverlenerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_AspNetUsers_ouderId",
+                        column: x => x.ouderId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "chat",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ruimte = table.Column<int>(type: "INTEGER", nullable: false),
+                    naam = table.Column<string>(type: "TEXT", nullable: true),
+                    ageGroup = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_chat", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -174,6 +218,53 @@ namespace WebApplicatie.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "chatUsers",
+                columns: table => new
+                {
+                    AccountId = table.Column<string>(type: "TEXT", nullable: false),
+                    ChatId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_chatUsers", x => new { x.ChatId, x.AccountId });
+                    table.ForeignKey(
+                        name: "FK_chatUsers_AspNetUsers_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_chatUsers_chat_ChatId",
+                        column: x => x.ChatId,
+                        principalTable: "chat",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "message",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    naam = table.Column<string>(type: "TEXT", nullable: true),
+                    text = table.Column<string>(type: "TEXT", nullable: true),
+                    currentTime = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ChatId = table.Column<int>(type: "INTEGER", nullable: false),
+                    typMessage = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_message", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_message_chat_ChatId",
+                        column: x => x.ChatId,
+                        principalTable: "chat",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -206,10 +297,31 @@ namespace WebApplicatie.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_hulpverlenerId",
+                table: "AspNetUsers",
+                column: "hulpverlenerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_ouderId",
+                table: "AspNetUsers",
+                column: "ouderId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_chatUsers_AccountId",
+                table: "chatUsers",
+                column: "AccountId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_message_ChatId",
+                table: "message",
+                column: "ChatId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -230,13 +342,22 @@ namespace WebApplicatie.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "chatUsers");
+
+            migrationBuilder.DropTable(
                 name: "Client");
+
+            migrationBuilder.DropTable(
+                name: "message");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "chat");
         }
     }
 }

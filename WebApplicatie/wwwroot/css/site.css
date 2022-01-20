@@ -87,3 +87,20 @@
 #footerRight {
     text-align: center;
 }
+
+modal {
+    display: none;
+    position: fixed;
+    min-height: 100vh;
+    min-width: 100vw;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    background-color: rgba(0.2, 0.2, 0.2, 0.8);
+  }
+  
+  .modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

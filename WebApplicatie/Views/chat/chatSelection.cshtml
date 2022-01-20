@@ -1,6 +1,12 @@
 @using System.Security.Claims
+@inject ClientContext _context
 
 @model IEnumerable<Chat>
+
+    @{
+        var context = _context;
+        var currentPersoonId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    }
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -28,35 +34,50 @@
 
             <h4><b>Join een room</b></h4> 
             <div class="main-menu" <div class="side-menu">
-                @try
-                    {
+                <form asp-controller="Chat" asp-action="searchSelection">
+            <div>
+                <input name="SelectionKamer" placeholder="de kamernaam">
+            </div>
+            <div>
+                <input name="SelectionLeeftijd" placeholder="de leeftijd groep">
+            </div>
+            <footer>
+                <button>zoek op naam</button>
+            </footer>
+        </form>
+                        <p>niet gejoinde kamers:</p>
                         @foreach (var Chat in Model)
                         {
-                            @if (!Chat.Users.Any(u => u.AccountId == User.FindFirst(ClaimTypes.NameIdentifier).Value) && Chat.ruimte == chatRuimte.Room)
+                            @if (!Chat.Users.Any(u => u.AccountId == currentPersoonId) && Chat.ruimte == chatRuimte.Room)
                             {
                             <a class="roomBtn" asp-controller="chat" asp-action="joinRoom" asp-route-id="@Chat.Id">
-                                    @Chat.naam
-                            </a>
-                            }
-                            else if (Chat.ruimte == chatRuimte.Room)
-                            {
-                            <a class="roomBtn" asp-controller="chat" asp-action="chatRoom" asp-route-id="@Chat.Id">
-                                <br> @Chat.naam |
+                                    @Chat.naam leeftijd: @Chat.ageGroup
                             </a>
                             }
                         }
-                    }
-                    catch
-                    { }   
-                <a class="room-button" id="Create_Room+" href="#" onclick="activateModal">
+                        <br>
+                        <p>gejoinde kamers:</p>
+                        @foreach (var Chat in Model)
+                        {    
+                            @if (Chat.Users.Any(u => u.AccountId == currentPersoonId) && Chat.ruimte == chatRuimte.Room)
+                            {
+                            <a class="roomBtn" asp-controller="chat" asp-action="chatRoom" asp-route-id="@Chat.Id">
+                                @Chat.naam leeftijd: @Chat.ageGroup
+                            </a>
+                            }
+                        }
+                @if (context.accounts.FirstOrDefault(a => a.Id == currentPersoonId).typAccount == "hulpverlener")
+                {               
+                <a class="room-button" id="Create_Room" href="#">
                     <strong>+</strong>
                 </a>
+                }
                 <hr>
-                <h4><b>Een hulpverlener vinden</b></h4>
+                <h4><b>een client vinden</b></h4>
                 <a asp-controller="chat" asp-action="Find">vind een persoon</a>
                 <hr>
                 <h4><b>Privé chats</b></h4>
-                <a asp-controller="chat" asp-action="privateChatRoom">je privé chats</a>
+                <a asp-controller="chat" asp-action="privateChatRoom" asp-route-Id = "@currentPersoonId">je privé chats</a>
             </div>
         </div>
     </div>
@@ -70,7 +91,10 @@
                 <button onclick="closemodal">X</button>
             </div>
             <div>
-                <input name="name">
+                <input name="name" placeholder="de kamernaam">
+            </div>
+            <div>
+                <input name="ageGroup" placeholder="de gemiddelde leeftijd">
             </div>
             <footer>
                 <button>create</button>
