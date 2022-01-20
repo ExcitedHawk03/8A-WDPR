@@ -1,0 +1,9 @@
+input[type='submit'],
+button,
+[aria-label] {
+    cursor: pointer;
+}
+
+.Afspraak {
+    width: 300px;
+}
