@@ -36,14 +36,15 @@
         <div class="chat-body">
         @foreach (var Message in Model.Messages)
         {
-            @if (Message.typMessage == "chat")
-            {
+            @* @if (Message.typMessage == "chat")
+            { *@
                 <div class="message">
+                    <a asp-controller="chat" asp-action="MisbruikMelden" asp-route-chatId="@Message.ChatId" asp-route-isAbuse="true">misbruik melden</a>
                     <header>@Message.naam</header>
                     <p>@Message.text</p>
                     <footer>@Message.currentTime</footer>
                 </div>
-            }
+            @* } *@
         }
     </div>
     @if (currentUser.typAccount != "moderator")

@@ -8,14 +8,125 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebApplicatie.Migrations
 {
     [DbContext(typeof(ClientContext))]
-    [Migration("20220110123241_3")]
-    partial class _3
+    [Migration("20220118175246_k1")]
+    partial class k1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.12");
+
+            modelBuilder.Entity("Account", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Achternaam")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Adres")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Geslacht")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Leeftijd")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Plaats")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Postcode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Telnr")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Tussenvoegsel")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Voornaam")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("aangemeldeHulpverlener")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("blocked")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("typAccount")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex");
+
+                    b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Account");
+                });
 
             modelBuilder.Entity("Client", b =>
                 {
@@ -113,70 +224,6 @@ namespace WebApplicatie.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex");
-
-                    b.ToTable("AspNetUsers");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -256,217 +303,105 @@ namespace WebApplicatie.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("client", b =>
+            modelBuilder.Entity("WebApplicatie.Models.Chat", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Achternaam")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Adres")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Geslacht")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Leeftijd")
+                    b.Property<int>("ageGroup")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Plaats")
-                        .IsRequired()
+                    b.Property<string>("naam")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Postcode")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Telnr")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Tussenvoegsel")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Voornaam")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("hulpverlenerId")
+                    b.Property<int>("ruimte")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ouderId")
+                    b.HasKey("Id");
+
+                    b.ToTable("chat");
+                });
+
+            modelBuilder.Entity("WebApplicatie.Models.ChatUser", b =>
+                {
+                    b.Property<int>("ChatId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("typAccount")
+                    b.Property<string>("AccountId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ChatId", "AccountId");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("chatUsers");
+                });
+
+            modelBuilder.Entity("WebApplicatie.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ChatId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("currentTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("naam")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("text")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("typMessage")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ChatId");
+
+                    b.ToTable("message");
+                });
+
+            modelBuilder.Entity("client", b =>
+                {
+                    b.HasBaseType("Account");
+
+                    b.Property<string>("hulpverlenerId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("messageFrequency")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ouderId")
+                        .HasColumnType("TEXT");
+
                     b.HasIndex("hulpverlenerId");
 
-                    b.HasIndex("ouderId");
+                    b.HasIndex("ouderId")
+                        .IsUnique();
 
-                    b.ToTable("cliënt");
+                    b.HasDiscriminator().HasValue("client");
                 });
 
             modelBuilder.Entity("hulpverlener", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Achternaam")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Adres")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Geslacht")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Leeftijd")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Plaats")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Postcode")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Telnr")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Tussenvoegsel")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Voornaam")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.HasBaseType("Account");
 
                     b.Property<int>("chatNummer")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("typAccount")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("hulpverlener");
-                });
-
-            modelBuilder.Entity("moderator", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Achternaam")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Adres")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Geslacht")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Leeftijd")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Plaats")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Postcode")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Telnr")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Tussenvoegsel")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Voornaam")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("typAccount")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("moderator");
+                    b.HasDiscriminator().HasValue("hulpverlener");
                 });
 
             modelBuilder.Entity("ouder", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.HasBaseType("Account");
 
-                    b.Property<string>("Achternaam")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Adres")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Geslacht")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Leeftijd")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Plaats")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Postcode")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Telnr")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Tussenvoegsel")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Voornaam")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("typAccount")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ouder");
+                    b.HasDiscriminator().HasValue("ouder");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -480,7 +415,7 @@ namespace WebApplicatie.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Account", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -489,7 +424,7 @@ namespace WebApplicatie.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Account", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -504,7 +439,7 @@ namespace WebApplicatie.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Account", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -513,11 +448,41 @@ namespace WebApplicatie.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Account", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("WebApplicatie.Models.ChatUser", b =>
+                {
+                    b.HasOne("Account", "account")
+                        .WithMany("Chats")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApplicatie.Models.Chat", "chat")
+                        .WithMany("Users")
+                        .HasForeignKey("ChatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("account");
+
+                    b.Navigation("chat");
+                });
+
+            modelBuilder.Entity("WebApplicatie.Models.Message", b =>
+                {
+                    b.HasOne("WebApplicatie.Models.Chat", "chat")
+                        .WithMany("Messages")
+                        .HasForeignKey("ChatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("chat");
                 });
 
             modelBuilder.Entity("client", b =>
@@ -527,12 +492,24 @@ namespace WebApplicatie.Migrations
                         .HasForeignKey("hulpverlenerId");
 
                     b.HasOne("ouder", "ouder")
-                        .WithMany("kinderen")
-                        .HasForeignKey("ouderId");
+                        .WithOne("kinderen")
+                        .HasForeignKey("client", "ouderId");
 
                     b.Navigation("hulpverlener");
 
                     b.Navigation("ouder");
+                });
+
+            modelBuilder.Entity("Account", b =>
+                {
+                    b.Navigation("Chats");
+                });
+
+            modelBuilder.Entity("WebApplicatie.Models.Chat", b =>
+                {
+                    b.Navigation("Messages");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("hulpverlener", b =>

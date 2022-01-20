@@ -77,40 +77,31 @@ namespace WebApplicatie.Controllers
                 else
                     account.typAccount = "ouder";
                 var serializedParent = JsonConvert.SerializeObject(account); 
-                var rnd = new Random();
+                var rnd = new Random();                
             switch(account.typAccount){
-                case "hulpverlener" :                 
+                case "hulpverlener" :           
                 hulpverlener newHulpverlener  = JsonConvert.DeserializeObject<hulpverlener>(serializedParent);
                 newHulpverlener.chatNummer = rnd.Next(100,999);
-                newHulpverlener.Id = newHulpverlener.Id + "h";
-                _context.hulpverlener.Add(newHulpverlener);
-                await _context.SaveChangesAsync();
+                await _AccountManager.CreateAsync(newHulpverlener, password); 
                 break;
                 case "ouder":
                 ouder newOuder = JsonConvert.DeserializeObject<ouder>(serializedParent);
                 var kindc = _context.cliënt.FirstOrDefault(a => a.Id == Kind);
-                newOuder.kinderen.Add(kindc);
-                _context.ouder.Add(newOuder);
-                await _context.SaveChangesAsync();
+                newOuder.kinderen = kindc;
+                await _AccountManager.CreateAsync(newOuder, password); 
                 _context.cliënt.FirstOrDefault(a => a.Id == Kind).ouder = _context.ouder.FirstOrDefault(o => o.Id == newOuder.Id); 
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Homepagina","Home");
-                default: 
+                default:
                 await _AccountManager.CreateAsync(account, password);
                 break;
             }
-
-            //var result = await _AccountManager.CreateAsync(account, password);
-            //if(result.Succeeded){
-
                 var result2 = await _signInManager.PasswordSignInAsync(account.UserName, password, false, false);
 
                 if(result2.Succeeded){
                     ChatController._currentUser = account;
                     return RedirectToAction("Homepagina","Home");
                 }
-            
-        //}
         return RedirectToAction("register");
         }
      
@@ -180,12 +171,16 @@ namespace WebApplicatie.Controllers
             var serializedParent = JsonConvert.SerializeObject(_context.accounts.FirstOrDefault(a => a.Id == Id));
             _context.accounts.Remove(_context.accounts.FirstOrDefault(a => a.Id == Id));
             client client =  JsonConvert.DeserializeObject<client>(serializedParent);
-            client.hulpverlener = _context.hulpverlener.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value + "h");
+            client.hulpverlener = _context.hulpverlener.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value);
             _context.cliënt.Add(client);
             await _context.SaveChangesAsync();
-            _context.hulpverlener.FirstOrDefault(h => h.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value + "h").cliënten
+            _context.hulpverlener.FirstOrDefault(h => h.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).cliënten
             .Add(_context.cliënt.FirstOrDefault(c => c.Id == client.Id));
             return RedirectToAction("Homepagina");
+        }
+
+        public IActionResult hulpverleneraanmeldingen(){
+            return View(_context.hulpverlener.ToList());
         }
 
     }

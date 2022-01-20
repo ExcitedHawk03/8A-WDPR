@@ -1,6 +1,9 @@
+@using System.Security.Claims
 @model Account
+@inject ClientContext _context
 @{
-
+    var context = _context;
+    var currentPersoonId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -25,6 +28,12 @@
         <div class="col-8">
           @if (Model.typAccount == "hulpverlener")
           {
+                  @foreach (var client in _context.hulpverlener.FirstOrDefault(h => h.Id == currentPersoonId).cliënten.Where(c => c.blocked == true))
+                  {
+                    <div>
+                        <b>@client.Voornaam @client.Tussenvoegsel @client.Achternaam is geblokkeerd</b> 
+                    </div>
+                  }   
                 <div>
                   <h2><a asp-controller="Home" asp-action="clienten">aangemelde clienten bekijken</a></h2>
                 </div>

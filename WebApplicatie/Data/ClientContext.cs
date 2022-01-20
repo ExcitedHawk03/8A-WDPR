@@ -28,5 +28,6 @@ using WebApplicatie.Models;
         protected override void OnModelCreating(ModelBuilder builder){
             base.OnModelCreating(builder);
             builder.Entity<ChatUser>().HasKey(c => new {c.ChatId, c.AccountId});
+            builder.Entity<ouder>().HasOne(o => o.kinderen).WithOne(c => c.ouder).HasForeignKey<client>(c => c.ouderId);
         }
     }

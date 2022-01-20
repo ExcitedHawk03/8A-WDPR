@@ -100,6 +100,12 @@ namespace WebApplicatie.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Voornaam")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("aangemeldeHulpverlener")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("blocked")
                         .HasColumnType("INTEGER");
 
@@ -301,8 +307,8 @@ namespace WebApplicatie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ageGroup")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("ageGroup")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("naam")
                         .HasColumnType("TEXT");
@@ -365,12 +371,16 @@ namespace WebApplicatie.Migrations
                     b.Property<string>("hulpverlenerId")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("messageFrequency")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("ouderId")
                         .HasColumnType("TEXT");
 
                     b.HasIndex("hulpverlenerId");
 
-                    b.HasIndex("ouderId");
+                    b.HasIndex("ouderId")
+                        .IsUnique();
 
                     b.HasDiscriminator().HasValue("client");
                 });
@@ -480,8 +490,8 @@ namespace WebApplicatie.Migrations
                         .HasForeignKey("hulpverlenerId");
 
                     b.HasOne("ouder", "ouder")
-                        .WithMany("kinderen")
-                        .HasForeignKey("ouderId");
+                        .WithOne("kinderen")
+                        .HasForeignKey("client", "ouderId");
 
                     b.Navigation("hulpverlener");
 

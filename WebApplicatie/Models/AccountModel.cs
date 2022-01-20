@@ -50,15 +50,13 @@ public class hulpverlener : Account {
 
 
  public class ouder : Account{
-    public ouder () : base(){
-        kinderen = new List<client>();
-    }
 
-     public List<client> kinderen {get; set;}
+     public client kinderen {get; set;}
 
 }
 
  public class client: Account {
+     public string ouderId {get; set;}
      public ouder ouder {get; set;}
     
      public hulpverlener hulpverlener {get; set;}     

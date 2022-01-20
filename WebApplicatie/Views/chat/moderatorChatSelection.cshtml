@@ -1,20 +1,25 @@
 @using System.Security.Claims
-@model IEnumerable<Chat> 
+@model IEnumerable<Message>
 <html>
 <h1>chat selection screen</h1>
 <body>
     <div class="main-menu"
      <div class="side-menu">
-  
-              @foreach(var Chat in Model){
-                 
-                <a class="roomBtn" asp-controller="chat" asp-action="ChatRoom" asp-route-id="@Chat.Id">
-                @Chat.naam
-                </a>
+       <b>misbruik gemeld</b>
+              @foreach(var Message in Model){
+               <div class="message">
+                    <a asp-controller="chat" asp-action="MisbruikMelden" asp-route-chatId="@Message.ChatId" asp-route-isAbuse="false">misbruik ontgelden</a>
+                    <header>@Message.naam</header>
+                    <p>@Message.text</p>
+                    <footer>@Message.currentTime</footer>
+                </div>
+                <br>
               }
       </div>
       <br>
         <a asp-controller="chat" asp-action="Find">vind een persoon</a>
+      <br>
+        <a asp-controller="Home" asp-action="hulpverleneraanmeldingen">bekijk de hulpverleners met hun clienten</a>
     </div>
 </body>
 </html>

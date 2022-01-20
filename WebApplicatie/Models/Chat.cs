@@ -20,7 +20,7 @@ namespace WebApplicatie.Models
 
         public virtual ICollection<ChatUser> Users {get; set;}
 
-        public string ageGroup {get; set;}
+        public int ageGroup {get; set;}
 
         
     }
