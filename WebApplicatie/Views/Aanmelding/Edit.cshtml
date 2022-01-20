@@ -1,0 +1,71 @@
+@model Aanmelding
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="~/css/formulieren.css" />
+    <link rel="stylesheet" href="~/css/footerbottom.css" />
+    <title>Afspraak aanpassen</title>
+</head>
+
+<body>
+
+    <h1>Aanpassen</h1>
+
+    <h4>Aanmelding</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="VoorNaam" id="VoorNaam" class="control-label"></label>
+                    <input asp-for="VoorNaam" id="VoorNaam" class="form-control" />
+                    <span asp-validation-for="VoorNaam" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AchterNaam" id="AchterNaam" class="control-label"></label>
+                    <input asp-for="AchterNaam" id="AchterNaam" class="form-control" />
+                    <span asp-validation-for="AchterNaam" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Datum" id="Datum" class="control-label"></label>
+                    <input asp-for="Datum" id="Datum" class="form-control" />
+                    <span asp-validation-for="Datum" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hulpverlener" id="Hulpverlener" class="control-label"></label>
+                    <select name="Hulpverlener" id="Hulpverlener">
+                        <option value="Laura van Veen">Laura van Veen</option>
+                        <option value="Takezo Jones">Takezo Jones</option>
+                        <option value="Jan Singh">Jan Singh</option>
+                        <option value="Dagmar van Parel">Dagmar van Parel</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Opslaan" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" asp-controller="Aanmelding">terug naar de Index pagina</a>
+    </div>
+
+    @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+</body>
+
+</html>

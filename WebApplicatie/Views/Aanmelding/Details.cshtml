@@ -1,0 +1,59 @@
+@model Aanmelding
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <link rel="stylesheet" href="~/css/formulieren.css" />
+    <link rel="stylesheet" href="~/css/footerbottom.css" />
+    <title>Afspraak details</title>
+</head>
+
+<body>
+
+<h1>Details</h1>
+
+<div>
+    <h4>Aanmelding</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VoorNaam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VoorNaam)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AchterNaam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AchterNaam)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Datum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Datum)
+        </dd>
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Hulpverlener)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Hulpverlener)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Aanpassen</a> |
+    <a asp-action="Index" asp-controller="Aanmelding">Terug naar Index pagina</a>
+</div>
+</body>
+</html>
