@@ -72,7 +72,8 @@ namespace WebApplicatie.Controllers
             {
                 _context.Add(aanmelding);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Gelukt", "Aanmelding");
+                return RedirectToAction(nameof(Gelukt),
+                        "Aanmelding");
             }
             return View(aanmelding);
         }
@@ -123,7 +124,8 @@ namespace WebApplicatie.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Aanpassen", "Aanmelding");
+                 return RedirectToAction(nameof(Aanpassen),
+                        "Aanmelding");
             }
             return View(aanmelding);
         }
@@ -154,7 +156,8 @@ namespace WebApplicatie.Controllers
             var aanmelding = await _context.Aanmelding.FindAsync(id);
             _context.Aanmelding.Remove(aanmelding);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Afkeuren", "Aanmelding");
+             return RedirectToAction(nameof(Aanpassen),
+                        "Afkeuren");
         }
 
         private bool AanmeldingExists(int id)
