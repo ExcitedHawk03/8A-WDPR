@@ -1,4 +1,6 @@
+@using System.Security.Claims
 @model IEnumerable<Account>
+@inject ClientContext _context
 
 @{
     
@@ -80,8 +82,25 @@
                         <option value= "@account.Id">@account.Voornaam @account.Tussenvoegsel @account.Achternaam </option>
                     }
                 }
-                </select>
+                </select><br>
             }
+            @try{
+            @if(_context.accounts.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).typAccount == "admin")
+            {
+                <label for="typAccount" id="typAccount"><b>Rol selecteren: </b></label><br>
+                <select name="typAccount" id="typAccount">
+                    <option value="moderator" >Moderator</option>
+                    <option value="hulpverlener">Hulpverlener</option>
+                     </select>
+                }
+            }
+            catch
+            {
+
+            }
+
+           
+
             <div class="container">
                 <button type="submit" class="button">Maak een nieuw account aan</button>
             </div>

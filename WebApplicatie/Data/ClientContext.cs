@@ -24,6 +24,7 @@ using WebApplicatie.Models;
         public DbSet<ChatUser> chatUsers {get; set;}
 
         public DbSet<Account> accounts {get; set;}
+        public DbSet<Aanmelding> Aanmelding {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder){
             base.OnModelCreating(builder);

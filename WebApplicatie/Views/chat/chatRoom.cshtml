@@ -1,10 +1,15 @@
 @using System.Security.Claims
+@using Microsoft.AspNetCore.Http
 @model Chat
-
+@inject ClientContext _context
 
 @{
+   
+
+    var context = _context;
     var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
     var currentUser = Model.Users.FirstOrDefault(u => u.account.Id == userId).account;
+
 }
 
 <!DOCTYPE html>

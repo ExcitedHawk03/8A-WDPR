@@ -70,14 +70,18 @@ namespace WebApplicatie.Controllers
                 Adres = adres,
                 blocked = false,
                 aangemeldeHulpverlener = hulpverlener,
-                Voornaam = voornaam
+                Voornaam = voornaam,
+                typAccount = typAccount
             };
-                if (Kind == null)
+                if (typAccount == null)
                     account.typAccount = "gast";
-                else
+                else if(Kind != null)
                     account.typAccount = "ouder";
                 var serializedParent = JsonConvert.SerializeObject(account); 
-                var rnd = new Random();                
+                var rnd = new Random(); 
+            if(!_context.accounts.Any()){
+                account.typAccount = "admin";
+            }              
             switch(account.typAccount){
                 case "hulpverlener" :           
                 hulpverlener newHulpverlener  = JsonConvert.DeserializeObject<hulpverlener>(serializedParent);

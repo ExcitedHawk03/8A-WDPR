@@ -18,7 +18,6 @@ public class Account : IdentityUser{
     public int Leeftijd {get; set;}
     public string Geslacht {get; set;}
     [Required(ErrorMessage = "Email is verplicht")]
-    
     public string Telnr {get; set;}
     [Required(ErrorMessage = "Adres is verplicht")]
     public string Adres {get; set;}

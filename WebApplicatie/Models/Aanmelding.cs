@@ -17,5 +17,5 @@ public class Aanmelding
     public DateTime Datum {get; set;}
     [Required]
     [Display(Name = "Hulpverlener")]
-    public string Hulpverlener {get; set;}
+    public string Hulpverlener {get; set;}   
 }

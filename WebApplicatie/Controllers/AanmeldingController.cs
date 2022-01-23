@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebApplicatie.Controllers
 {
+    
     public class AanmeldingController : Controller
     {
         private readonly ClientContext _context;
@@ -16,7 +18,7 @@ namespace WebApplicatie.Controllers
         {
             _context = context;
         }
-
+        [Authorize]
         public IQueryable<Aanmelding> Zoek (IQueryable<Aanmelding> lijst, string filter)
         {
             if (filter == null)
@@ -27,15 +29,23 @@ namespace WebApplicatie.Controllers
             return lijst.Where(a => a.Hulpverlener.ToLower().Contains(filter.ToLower()));
             }
         }
+        
+        [Authorize]
+        public async Task<IActionResult> Aanmelding()
+        {
+            return RedirectToAction("IndexAanmelding");
+        }
 
+        [Authorize]
         // GET: Aanmelding
-        public async Task<IActionResult> Index(string filter)
+        public async Task<IActionResult> IndexAanmelding(string filter)
         {
             ViewData["Filter"] = filter;
 
             return View(await Zoek(_context.Aanmelding, filter).ToListAsync());
         }
 
+        [Authorize]
         // GET: Aanmelding/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -78,6 +88,7 @@ namespace WebApplicatie.Controllers
             return View(aanmelding);
         }
 
+        [Authorize]
         // GET: Aanmelding/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -94,6 +105,7 @@ namespace WebApplicatie.Controllers
             return View(aanmelding);
         }
 
+        [Authorize]
         // POST: Aanmelding/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -130,6 +142,7 @@ namespace WebApplicatie.Controllers
             return View(aanmelding);
         }
 
+        [Authorize]
         // GET: Aanmelding/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -148,6 +161,7 @@ namespace WebApplicatie.Controllers
             return View(aanmelding);
         }
 
+        [Authorize]
         // POST: Aanmelding/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -160,21 +174,25 @@ namespace WebApplicatie.Controllers
                         "Afkeuren");
         }
 
+        [Authorize]
         private bool AanmeldingExists(int id)
         {
             return _context.Aanmelding.Any(e => e.Id == id);
         }
 
+        [Authorize]
         public IActionResult Gelukt () 
         {
             return View();
         }
 
+        [Authorize]
          public IActionResult Afkeuren () 
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult Aanpassen ()
         {
             return View ();
