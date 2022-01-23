@@ -27,3 +27,9 @@ col-5 {
 #lijstNamen {
     font-size: 24px;
 }
+
+::placeholder
+{
+    color: black;
+} 
+

@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/chat.css" />
     <link rel="stylesheet" href="~/css/footerbottom.css" />
+    <link rel="stylesheet" href="~/css/zonderinloggen.css" />
     <title>Chat pagina</title>
 </head>
 
@@ -23,7 +24,7 @@
 
     <div class="row">
         <div class="col-7">
-            <h1><b>Chat selection screen</b></h1>
+            <h1><b>Chat pagina</b></h1>
 
             <br>
             <img src="/Images/chat.png" alt="Pictogram van een chat">
@@ -32,20 +33,22 @@
 
             <br><br><br><br><br><br>
 
-            <h4><b>Join een room</b></h4> 
+            <h4><b>Neem deel aan een zelfhulpgroep</b></h4> 
             <div class="main-menu" <div class="side-menu">
                 <form asp-controller="Chat" asp-action="searchSelection">
-            <div>
-                <input name="SelectionKamer" placeholder="de kamernaam">
+            <div> 
+                <label for="Kamernaam" id="Kamernaam">Kamernaam: </label>
+                <input name="SelectionKamer" placeholder="Kamernaam">
             </div>
             <div>
-                <input name="SelectionLeeftijd" placeholder="de leeftijd groep">
+                <label for="Leeftijd" id="Leeftijd">Leeftijd Selectie: </label>
+                <input name="SelectionLeeftijd" placeholder="Leeftijdsgroep">
             </div>
             <footer>
                 <button>zoek op naam</button>
             </footer>
         </form>
-                        <p>niet gejoinde kamers:</p>
+                        <p>Beschikbare chat kamers:</p>
                         @foreach (var Chat in Model)
                         {
                             @if (!Chat.Users.Any(u => u.AccountId == currentPersoonId) && Chat.ruimte == chatRuimte.Room)
@@ -56,7 +59,7 @@
                             }
                         }
                         <br>
-                        <p>gejoinde kamers:</p>
+                        <p>Kamers waar u aan deelneemt:</p>
                         @foreach (var Chat in Model)
                         {    
                             @if (Chat.Users.Any(u => u.AccountId == currentPersoonId) && Chat.ruimte == chatRuimte.Room)
@@ -73,11 +76,11 @@
                 </a>
                 }
                 <hr>
-                <h4><b>een client vinden</b></h4>
-                <a asp-controller="chat" asp-action="Find">vind een persoon</a>
+                <h4><b>Een persoon vinden</b></h4>
+                <a asp-controller="chat" asp-action="Find">Klik hier om een persoon te vinden</a>
                 <hr>
                 <h4><b>Privé chats</b></h4>
-                <a asp-controller="chat" asp-action="privateChatRoom" asp-route-Id = "@currentPersoonId">je privé chats</a>
+                <a asp-controller="chat" asp-action="privateChatRoom" asp-route-Id = "@currentPersoonId">Je privé chats</a>
             </div>
         </div>
     </div>
