@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@inject ClientContext _context
+
+@{
+    var context = _context;
+    var userId = " ";
+    bool IsNull = false;
+    try{
+        userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    } catch{ IsNull =true;}
+    }
+    
+<!DOCTYPE html>
 <html lang="nl">
 
 <head>
