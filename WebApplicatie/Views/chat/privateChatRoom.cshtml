@@ -22,10 +22,12 @@
 
 <div class="chat-body">
         @foreach (var Chat in Model)
-        {      
+        {  
+            <li>  
             <a class="roomBtn" asp-controller="chat" asp-action="chatRoom" asp-route-id="@Chat.Id">
                 @Chat.Users.FirstOrDefault(u => u.AccountId != userId).account.UserName
             </a>
+            </li>
         }
 </div>
 </body>

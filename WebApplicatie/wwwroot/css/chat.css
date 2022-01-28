@@ -33,3 +33,7 @@ col-5 {
     color: black;
 } 
 
+#LogIn{
+    display: none;
+}
+

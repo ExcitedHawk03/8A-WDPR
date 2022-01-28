@@ -37,18 +37,20 @@
             <div class="main-menu" <div class="side-menu">
                 <form asp-controller="Chat" asp-action="searchSelection">
             <div> 
-                <label for="Kamernaam" id="Kamernaam">Kamernaam: </label>
-                <input name="SelectionKamer" placeholder="Kamernaam">
+                <label for="Kamernaam" id="Kamernaam">Onderwerp zelfhulpgroep: </label>
+                <input name="SelectionKamer" placeholder="Zelfhulpgroep">
             </div>
+       
             <div>
-                <label for="Leeftijd" id="Leeftijd">Leeftijd Selectie: </label>
+                <label for="Leeftijd" id="Leeftijd">Leeftijdsgroep: </label>
                 <input name="SelectionLeeftijd" placeholder="Leeftijdsgroep">
             </div>
+        
             <footer>
-                <button>zoek op naam</button>
+                <button>Zoek zelfhulpgroep:</button>
             </footer>
         </form>
-                        <p>Beschikbare chat kamers:</p>
+                        <p>Beschikbare zelfhulpgroepen:</p>
                         @foreach (var Chat in Model)
                         {
                             @if (!Chat.Users.Any(u => u.AccountId == currentPersoonId) && Chat.ruimte == chatRuimte.Room)
@@ -59,7 +61,7 @@
                             }
                         }
                         <br>
-                        <p>Kamers waar u aan deelneemt:</p>
+                        <p>Zelfhulpgroepen waar je deel van uit maakt:</p>
                         @foreach (var Chat in Model)
                         {    
                             @if (Chat.Users.Any(u => u.AccountId == currentPersoonId) && Chat.ruimte == chatRuimte.Room)
@@ -76,11 +78,11 @@
                 </a>
                 }
                 <hr>
-                <h4><b>Een persoon vinden</b></h4>
-                <a asp-controller="chat" asp-action="Find">Klik hier om een persoon te vinden</a>
+                <h4><b>Vind een persoon</b></h4>
+                <a asp-controller="chat" asp-action="Find">Klik hier voor een overzicht van alle personen</a>
                 <hr>
                 <h4><b>Privé chats</b></h4>
-                <a asp-controller="chat" asp-action="privateChatRoom" asp-route-Id = "@currentPersoonId">Je privé chats</a>
+                <a asp-controller="chat" asp-action="privateChatRoom" asp-route-Id = "@currentPersoonId">Klik hier voor een overzicht van alle privé chats</a>
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@
 @inject ClientContext _context
 
 @{
-   
+
 
     var context = _context;
     var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -24,47 +24,50 @@
 
 <body>
     <div class="row">
-    <div class="col-6">
-        <img src="/Images/chat.png" alt="Pictogram van een chat">
+        <div class="col-6">
+            <img src="/Images/chat.png" alt="Pictogram van een chat">
 
-        <br><br>
+            <br><br>
 
-        <a href="https://localhost:5001/chat/chatSelection">terug naar chat selectie scherm</a>
+            <div>
+                <a asp-action="chatSelection" asp-controller="Chat">Terug naar de chatpagina</a>
+            </div>
+          
+            <br><br>
+        </div>
+        <div class="col-6">
+            <h1><b>Chatgroep:</b></h1>
 
-        <br><br>
-    </div>
-    <div class="col-6">
-        <h1><b>Chatgroep:</b></h1>
+            <br><br>
 
-        <br><br>
-
-        <div class="chat-body">
-        @foreach (var Message in Model.Messages)
-        {
-            @* @if (Message.typMessage == "chat")
-            { *@
-                <div class="message">
-                    <a asp-controller="chat" asp-action="MisbruikMelden" asp-route-chatId="@Message.ChatId" asp-route-isAbuse="true">misbruik melden</a>
-                    <header>@Message.naam</header>
-                    <p>@Message.text</p>
-                    <footer>@Message.currentTime</footer>
+            <div class="chat-body">
+                @foreach (var Message in Model.Messages)
+                {
+                    @* @if (Message.typMessage == "chat")
+                        { *@
+                    <div class="message">
+                        <a asp-controller="chat" asp-action="MisbruikMelden" asp-route-chatId="@Message.ChatId"
+                        asp-route-isAbuse="true">misbruik melden</a>
+                        <header>@Message.naam</header>
+                        <p>@Message.text</p>
+                        <footer>@Message.currentTime</footer>
+                    </div>
+                    @* } *@
+                }
+            </div>
+            @if (currentUser.typAccount != "moderator")
+            {
+                <div class="chat-input">
+                    <form asp-controller="chat" onsubmit="sendMessage(event)" asp-action="CreateMessage">
+                        <input type="hidden" name="chatId" value="@Model.Id">
+                        <input type="hidden" name="roomName" value="@Model.naam">
+                        <input type="text" name="message" id="message-input">
+                        <button type="submit"><b>Verzenden</b></button>
+                    </form>
                 </div>
-            @* } *@
-        }
-    </div>
-    @if (currentUser.typAccount != "moderator")
-    {
-    <div class="chat-input">
-        <form asp-controller="chat" onsubmit="sendMessage(event)" asp-action="CreateMessage">
-            <input type="hidden" name="chatId" value="@Model.Id">
-            <input type="hidden" name="roomName" value="@Model.naam">
-            <input type="text" name="message" id="message-input">
-        <button type="submit"><b>Verzenden</b></button>
-        </form>
-    </div>
 
-    }
-    </div>
+            }
+        </div>
     </div>
 
 
@@ -74,12 +77,12 @@
 
     <script>
         var connection = new signalR.HubConnectionBuilder()
-                                .withUrl("/chatHub")
-                                .build();
+            .withUrl("/chatHub")
+            .build();
 
         var _connectionId = '';
 
-        connection.on("RecieveMessage", function(data){
+        connection.on("RecieveMessage", function (data) {
             var message = document.createElement("div")
             message.classList.add('message')
 
@@ -96,46 +99,47 @@
             message.appendChild(text);
             message.appendChild(footer);
 
-           document.querySelector('.chat-body').appendChild(message)
-        })    
+            document.querySelector('.chat-body').appendChild(message)
+        })
 
         connection.start()
-                    .then(function(){
-                        connection.invoke('getConnectionId')
-                            .then(function(connectionId){
-                                _connectionId = connectionId
-                                 joinChat();
-                            })
+            .then(function () {
+                connection.invoke('getConnectionId')
+                    .then(function (connectionId) {
+                        _connectionId = connectionId
+                        joinChat();
                     })
-                    .catch(function(error){
-                        console.log(error)
-                    })
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
 
-        var joinChat = function(){
-            var url = '/chat/JoinChat/'+_connectionId+'/@Model.naam';
+        var joinChat = function () {
+            var url = '/chat/JoinChat/' + _connectionId + '/@Model.naam';
             axios.post(url)
                 .then(res => {
                     console.log("room joined!", res);
                 })
-                .catch(error =>{
+                .catch(error => {
                     console.error("failed to join room!", error)
                 })
         }
 
-        var sendMessage = function(event){
+        var sendMessage = function (event) {
             event.preventDefault();
             var data = new FormData(event.target);
             document.getElementById("message-input").value = '';
             axios.post('/chat/SendMessage', data)
-            .then(res => {
-                console.log("message sent!")
-            })
-            .catch(error => {
-                console.error("message not sent!", error)
-            })
+                .then(res => {
+                    console.log("message sent!")
+                })
+                .catch(error => {
+                    console.error("message not sent!", error)
+                })
         }
 
     </script>
     }
 </body>
+
 </html>

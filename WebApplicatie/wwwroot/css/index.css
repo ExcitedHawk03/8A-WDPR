@@ -41,6 +41,10 @@ h2 {
     display: none;
 }
 
+#LogOut {
+    display: none;
+}
+
 #afbeelding {
     display: block;
     margin-left: auto;

@@ -1,7 +1,10 @@
 @model Chat
 
 <html>
-    <h6 href="https://localhost:5001/chat/chatSelection">terug naar chat selectie scherm</h6>
+    <div>
+        <a asp-action="chatSelection" asp-controller="Chat">Terug naar de chatpagina</a>
+    </div>
+
     <div class="chat-body">
         @foreach (var Message in Model.Messages)
         {
