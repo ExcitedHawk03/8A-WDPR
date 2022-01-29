@@ -21,6 +21,10 @@ p.inloggen {
     display: none;
 }
 
-#LogIn {
+
+#LogOut{
+    display: none;
+}
+#Home{
     display: none;
 }
