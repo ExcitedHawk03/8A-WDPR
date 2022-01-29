@@ -1,0 +1,26 @@
+p.inloggen {
+    font-size: larger;
+}
+
+
+/*Maakt de links en de zoekbalk onzichtbaar*/
+
+#Aanmelding {
+    display: none;
+}
+
+#OverOns {
+    display: none;
+}
+
+#Contact {
+    display: none;
+}
+
+#Chat {
+    display: none;
+}
+
+#LogIn {
+    display: none;
+}
