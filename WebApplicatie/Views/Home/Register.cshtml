@@ -26,34 +26,34 @@
     <form action="/Home/Register" id="form" method="post">
         <div class="container">
             <label for="voornaam" id="voornaam"><b>Voornaam</b></label>
-            <input type="text" name="voornaam" value="" placeholder="Voornaam" />
+            <input type="text" name="voornaam" value="" placeholder="Voornaam" required  />
 
             <label for="tussenvoegsel" id="tussenvoegsel"><b>Tussenvoegsel</b></label>
             <input type="text" name="Tussenvoegsel" value=" " placeholder="Tussenvoegsel" />
 
             <label for="achternaam" id="achternaam"><b>Achternaam</b></label>
-            <input type="text" name="Achternaam" value="" placeholder="Achternaam" />
+            <input type="text" name="Achternaam" value="" placeholder="Achternaam" required />
 
             <label for="leeftijd" id="leeftijd"><b>Leeftijd</b></label>
-            <input type="text" name="Leeftijd" value="" placeholder="Leeftijd" />
+            <input type="text" name="Leeftijd" value="" placeholder="Leeftijd" required />
 
             <label for="email" id="email"><b>Email</b></label>
-            <input type="text" name="Email" value="" placeholder="Email" />
+            <input class="email" type="email" name="Email" value="" placeholder="Email" required />
 
             <label for="adres" id="adres"><b>Adres</b></label>
-            <input type="text" name="Adres" value="" placeholder="Adres" />
+            <input type="text" name="Adres" value="" placeholder="Adres" required/>
 
             <label for="postcode" id="postcode"><b>Postcode</b></label>
-            <input type="text" name="Postcode" value="" placeholder="Postcode" />
+            <input type="text" name="Postcode" value="" placeholder="Postcode" minlength="6" maxlength="6" required />
 
             <label for="telefoonnr" id="telefoonnr"><b>Telefoonnummer</b></label>
-            <input type="text" name="Telnr" value="" placeholder="Telefoonnummer" />
+            <input type="text" name="Telnr" value="" placeholder="Telefoonnummer" minlength="10" maxlength="10" required/>
 
             <label for="woonplaats" id="woonplaats"><b>Woonplaats</b></label>
-            <input type="text" name="Plaats" value="" placeholder="Woonplaats" />
+            <input type="text" name="Plaats" value="" placeholder="Woonplaats" required/>
 
             <label for="wachtwoord" id="wachtwoord"><b>Wachtwoord</b></label>
-            <input type="text" name="password" value="" placeholder="Wachtwoord" />
+            <input type="text" name="password" value="" placeholder="Wachtwoord" required />
 
             <label for="geslacht" id="geslacht"><b>Geslacht</b></label><br>
             <select name="geslacht" id="geslacht">
@@ -98,9 +98,6 @@
             {
 
             }
-
-           
-
             <div class="container">
                 <button type="submit" class="button">Maak een nieuw account aan</button>
             </div>
