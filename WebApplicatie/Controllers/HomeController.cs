@@ -102,9 +102,11 @@ namespace WebApplicatie.Controllers
             }
                 var result2 = await _signInManager.PasswordSignInAsync(account.UserName, password, false, false);
 
+                if(result2 != null){
                 if(result2.Succeeded){
                     ChatController._currentUser = account;
                     return RedirectToAction("Homepagina","Home");
+                }
                 }
         return RedirectToAction("register");
         }

@@ -5,10 +5,9 @@ using WebApplicatie.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
-namespace WebApplicatie.Tests
-{
-    public class AanmeldingTests
+public class AanmeldingTests
     {
 
         [Fact]
@@ -136,5 +135,21 @@ namespace WebApplicatie.Tests
             //Assert (Testen of het type een view is)
             var viewResult = Assert.IsType<ViewResult>(result);
         }
+
+        [Fact]
+        public void TestData()
+        {
+            hulpverlener h = new hulpverlener{Tussenvoegsel = null, Achternaam = "James", Leeftijd = 25, Geslacht = "M",
+             Telnr = "0687456321", Adres = "adres 11", Postcode = "1234AF", Plaats = "Rotterdam", Voornaam = "Mark", typAccount = "hulpverlener" };
+            Aanmelding aa = new Aanmelding {VoorNaam = "Bill", AchterNaam = "Pieter", Datum = DateTime.Now, Hulpverlener = "Mark"};
+
+              DbContextOptions options = new DbContextOptionsBuilder().UseInMemoryDatabase("ClientContext").Options;
+            ClientContext context = new ClientContext(options);
+            
+            context.Aanmelding.Add(aa);
+            context.SaveChanges();
+
+            Assert.Equal("Mark", aa.Hulpverlener);
+            Assert.Equal(1, context.Aanmelding.Count());
+        }
     }
-}
