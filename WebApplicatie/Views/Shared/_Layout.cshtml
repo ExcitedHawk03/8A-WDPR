@@ -33,7 +33,6 @@
         <nav>
             <div class="topnav" id="myTopnav">
                 <a asp class="active" id="Home" asp-controller="Home" asp-action="Homepagina"><i class="fa fa-fw fa-home"></i>Home</a>
-                <a id="Aanmelding" asp-controller="Aanmelding" asp-action="Create">Aanmelding intake</a>
                 @if(_context.accounts.FirstOrDefault() != null && userId != " "){
                    @if(_context.accounts.FirstOrDefault(a => a.Id == userId).typAccount == "hulpverlener"){
                 <a id="Aanmelding" asp-controller="Aanmelding" asp-action="IndexAanmelding">Dashboard</a>
