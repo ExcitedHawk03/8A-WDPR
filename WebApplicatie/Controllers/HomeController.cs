@@ -57,7 +57,7 @@ namespace WebApplicatie.Controllers
         
         [HttpPost]
         public async Task<IActionResult> Register(string voornaam,string tussenvoegsel, string achternaam, DateTime leeftijd,string geslacht, string email,
-        string telnr,string postcode, string plaats, string password, string adres, string hulpverlener, string typAccount, string Kind, bool isOuder){                                   
+        string telnr,string postcode, string plaats, string password, string adres, string hulpverlener, string typAccount, string Kind){                                   
             var account = new Account{
                 Tussenvoegsel = tussenvoegsel,
                 Achternaam = achternaam,
@@ -126,11 +126,10 @@ namespace WebApplicatie.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Login(string username, string password){
-           var userId = _context.accounts.FirstOrDefault(a => a.UserName == username)?.Id ?? "1";
-           var user = await _AccountManager.FindByIdAsync(userId);
+           var user = _context.accounts.FirstOrDefault(a => a.UserName == username); 
            if(user != null){
            var result = await _signInManager.PasswordSignInAsync(user.UserName, password, false,false); 
-                if(result.Succeeded && (user.typAccount.Equals("gast"))){
+                if( result != null && result.Succeeded && (user.typAccount.Equals("gast"))){
                     ChatController._currentUser = user;
                    return RedirectToAction("Create","Aanmelding");
                 }
