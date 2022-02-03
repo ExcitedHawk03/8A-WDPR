@@ -81,13 +81,15 @@ namespace WebApplicatie.Controllers
                 var rnd = new Random(); 
             if(!_context.accounts.Any()){
                 account.typAccount = "admin";
-            }              
+            }   
+
             switch(account.typAccount){
                 case "hulpverlener" :           
                 hulpverlener newHulpverlener  = JsonConvert.DeserializeObject<hulpverlener>(serializedParent);
                 newHulpverlener.chatNummer = rnd.Next(100,999);
                 await _AccountManager.CreateAsync(newHulpverlener, password); 
                 break;
+
                 case "ouder":
                 ouder newOuder = JsonConvert.DeserializeObject<ouder>(serializedParent);
                 var kindc = _context.cliënt.FirstOrDefault(a => a.Id == Kind);
@@ -96,10 +98,12 @@ namespace WebApplicatie.Controllers
                 _context.cliënt.FirstOrDefault(a => a.Id == Kind).ouder = _context.ouder.FirstOrDefault(o => o.Id == newOuder.Id); 
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Homepagina","Home");
+
                 default:
                 await _AccountManager.CreateAsync(account, password);
                 break;
             }
+            
                 var result2 = await _signInManager.PasswordSignInAsync(account.UserName, password, false, false);
 
                 if(result2 != null){
@@ -121,7 +125,7 @@ namespace WebApplicatie.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Login(string username, string password){
-           var userId = _context.accounts.FirstOrDefault(a => a.UserName == username).Id;
+           var userId = _context.accounts.FirstOrDefault(a => a.UserName == username)?.Id ?? "1";
            var user = await _AccountManager.FindByIdAsync(userId);
            if(user != null){
            var result = await _signInManager.PasswordSignInAsync(user.UserName, password, false,false); 

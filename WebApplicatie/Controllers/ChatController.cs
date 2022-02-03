@@ -101,7 +101,7 @@ namespace WebApplicatie.Controllers{
             var Message = new Message {
                 ChatId = chatId,
                 text = message,
-                naam = User.Identity.Name,
+                naam = User?.Identity.Name ?? "test",
                 currentTime = DateTime.Now,
                 typMessage = "chat"
             };
@@ -113,8 +113,11 @@ namespace WebApplicatie.Controllers{
         public IActionResult searchSelection(string SelectionKamer, int? SelectionLeeftijd){
             return RedirectToAction("chatSelection", new {naamKamer = SelectionKamer, leeftijdGroep = SelectionLeeftijd});
         }
+
         public IActionResult chatSelection(string naamKamer, int? leeftijdGroep){
-            var currentPersoon = _context.accounts.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value);        
+            var currentPersoon = _context.accounts.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value); 
+            ViewData["SelectionKamer"] = naamKamer; 
+            ViewData["SelectionLeeftijd"] = leeftijdGroep;           
             switch (currentPersoon.typAccount){
                 case "moderator":
                 return RedirectToAction("moderatorChatSelection");
@@ -144,7 +147,7 @@ namespace WebApplicatie.Controllers{
 
             chat.Users.Add(new ChatUser{
                 ChatId = chat.Id,
-                AccountId = User.FindFirst(ClaimTypes.NameIdentifier).Value
+                AccountId = User?.FindFirst(ClaimTypes.NameIdentifier).Value ?? "test"
             });
             
             _context.chat.Add(chat);
@@ -180,11 +183,14 @@ namespace WebApplicatie.Controllers{
             var Message = new Message {
                 ChatId = chatId,
                 text = message,
-                naam = User.Identity.Name,
+                naam = User?.Identity.Name ?? "test",
                 currentTime = DateTime.Now,
                 typMessage = "chat"
             };
-            _context.cliënt.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).messageFrequency++;
+            if (User != null )
+            {                
+                _context.cliënt.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).messageFrequency++;
+            }
             _context.message.Add(Message);
             await _context.SaveChangesAsync();
 

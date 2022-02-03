@@ -218,8 +218,6 @@ C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0
 C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\Orthopedagogen.cshtml.g.cs
 C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\Ouder.cshtml.g.cs
 C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\OuderFormulier.cshtml.g.cs
-C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\Ouderlogin.cshtml.g.cs
-C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\OuderloginQ.cshtml.g.cs
 C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\OuderQ.cshtml.g.cs
 C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\Register.cshtml.g.cs
@@ -243,3 +241,12 @@ C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0
 C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Orthopedagoog\Jan.cshtml.g.cs
 C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Orthopedagoog\Laura.cshtml.g.cs
 C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Orthopedagoog\Takezo.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Aanmelding\Aanpassen.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Aanmelding\Afkeuren.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Aanmelding\Create.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Aanmelding\Delete.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Aanmelding\Details.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Aanmelding\Edit.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Aanmelding\Gelukt.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Aanmelding\IndexAanmelding.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documenten\GitHub\8A-WDPR\WebApplicatie\obj\Debug\net5.0\Razor\Views\Home\Bevestiging.cshtml.g.cs
