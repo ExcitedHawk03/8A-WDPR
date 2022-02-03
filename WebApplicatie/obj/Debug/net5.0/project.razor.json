@@ -15636,11 +15636,6 @@
   "RootNamespace": "WebApplicatie",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Ouderlogin.cshtml",
-      "TargetPath": "Views\\Home\\Ouderlogin.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Orthopedagoog\\Dagmar.cshtml",
       "TargetPath": "Views\\Orthopedagoog\\Dagmar.cshtml",
       "FileKind": "mvc"
@@ -15711,8 +15706,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\OuderloginQ.cshtml",
-      "TargetPath": "Views\\Home\\OuderloginQ.cshtml",
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Aanmelding\\Delete.cshtml",
+      "TargetPath": "Views\\Aanmelding\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15723,6 +15718,16 @@
     {
       "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Homepagina.cshtml",
       "TargetPath": "Views\\Home\\Homepagina.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Aanmelding\\Create.cshtml",
+      "TargetPath": "Views\\Aanmelding\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Aanmelding\\IndexAanmelding.cshtml",
+      "TargetPath": "Views\\Aanmelding\\IndexAanmelding.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15758,6 +15763,11 @@
     {
       "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\home.cshtml",
       "TargetPath": "Views\\Home\\home.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Aanmelding\\Edit.cshtml",
+      "TargetPath": "Views\\Aanmelding\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15811,6 +15821,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Aanmelding\\Details.cshtml",
+      "TargetPath": "Views\\Aanmelding\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\hulpverleneraanmeldingen.cshtml",
       "TargetPath": "Views\\Home\\hulpverleneraanmeldingen.cshtml",
       "FileKind": "mvc"
@@ -15828,6 +15843,26 @@
     {
       "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Aanmelding\\Aanpassen.cshtml",
+      "TargetPath": "Views\\Aanmelding\\Aanpassen.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Home\\Bevestiging.cshtml",
+      "TargetPath": "Views\\Home\\Bevestiging.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Aanmelding\\Afkeuren.cshtml",
+      "TargetPath": "Views\\Aanmelding\\Afkeuren.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\kevin\\OneDrive\\Documenten\\GitHub\\8A-WDPR\\WebApplicatie\\Views\\Aanmelding\\Gelukt.cshtml",
+      "TargetPath": "Views\\Aanmelding\\Gelukt.cshtml",
       "FileKind": "mvc"
     },
     {
