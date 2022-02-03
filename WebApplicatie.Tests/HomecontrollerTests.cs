@@ -151,5 +151,24 @@ namespace WebApplicatie.Tests
                  
                 _AccountManager.Verify(u => u.CreateAsync(It.IsAny<Account>(), It.IsAny<string>()), Times.Once());
         }
+
+        [Fact]
+        public async void Login_PasswordSignInAsync_Test()
+        {
+            var account = new Account(){
+                UserName = "bobjap"
+            };
+            _context.accounts.Add(account);
+            _context.SaveChanges();
+
+            _signInManager.Setup(x => x.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), false, false));
+            HomeController h = new HomeController(_AccountManager.Object, _signInManager.Object, _context);
+
+            //Act
+            var result = Assert.IsType<RedirectToActionResult>(await h.Login("bobjap", "asdf"));
+
+            //Assert
+            _signInManager.Verify(u => u.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), false, false), Times.Once());
+        }
     }
 }
