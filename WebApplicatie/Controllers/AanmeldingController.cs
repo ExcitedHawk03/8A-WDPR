@@ -73,11 +73,17 @@ namespace WebApplicatie.Controllers
         // POST: Aanmelding/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,VoorNaam,AchterNaam,Datum,Hulpverlener")] Aanmelding aanmelding)
+        public async Task<IActionResult> Create(string Voornaam, string Achternaam, DateTime datum, string HulpVerlener)
         {
-
+            Aanmelding aanmelding = new Aanmelding(){
+                VoorNaam = Voornaam,
+                AchterNaam = Achternaam,
+                Datum = datum,
+                Hulpverlener = HulpVerlener
+            };
+            
             if (ModelState.IsValid)
             {
                 _context.Add(aanmelding);
@@ -87,6 +93,7 @@ namespace WebApplicatie.Controllers
             }
             return View(aanmelding);
         }
+
 
         [Authorize]
         // GET: Aanmelding/Edit/5

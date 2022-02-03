@@ -153,3 +153,22 @@ public class AanmeldingTests
             Assert.Equal(1, context.Aanmelding.Count());
         }
     }
+
+     [Fact]
+        public async void Create_1Keer(){       
+         
+        //Arrange
+        DbContextOptions options = new DbContextOptionsBuilder().UseInMemoryDatabase("ClientContext").Options;
+        var mockContext = new Mock<ClientContext>(options);
+        
+        // //Act
+         var result = new AanmeldingController(mockContext.Object);
+         result.Create("Jan", "Jaap", DateTime.Now, "Takezo");
+     
+        //Assert
+            mockContext.Verify(m => m.Add(It.IsAny<Aanmelding>()), Times.Once());
+        }
+    }
+}
+
+
