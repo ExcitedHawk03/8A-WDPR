@@ -35,8 +35,8 @@
             <label for="achternaam" id="achternaam"><b>Achternaam</b></label>
             <input type="text" name="Achternaam" value="" placeholder="Achternaam" required />
 
-            <label for="leeftijd" id="leeftijd"><b>Leeftijd</b></label>
-            <input type="text" name="Leeftijd" value="" placeholder="Leeftijd" required />
+            <label for="leeftijd" id="leeftijd"><b>Geboortedatum</b></label><br>
+            <input type="Date" name="Leeftijd" value="" placeholder="Leeftijd" required /><br>
 
             <label for="email" id="email"><b>Email</b></label>
             <input class="email" type="email" name="Email" value="" placeholder="Email" required />
@@ -84,8 +84,13 @@
                     }
                 }
                 </select><br>
+                
             }
             @if(_context.accounts.FirstOrDefault() != null && userId != " "){
+                @if(_context.accounts.FirstOrDefault(a => a.Id == userId).typAccount == "ouder")
+                {
+                    <label name="isOuder" hidden value="true"></label>
+                }
             @if(_context.accounts.FirstOrDefault(a => a.Id == userId).typAccount == "admin")
             {
                 <label for="typAccount" id="typAccount"><b>Rol selecteren: </b></label><br>

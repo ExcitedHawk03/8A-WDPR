@@ -122,13 +122,14 @@ namespace WebApplicatie.Controllers{
                 case "moderator":
                 return RedirectToAction("moderatorChatSelection");
                 case "ouder":
+                if(_context.ouder.FirstOrDefault(o => o.Id == currentPersoon.Id).kinderen.Leeftijd < DateTime.Now.AddYears( - 16))
                 Console.WriteLine(_context.ouder.FirstOrDefault(o => o.Id == currentPersoon.Id).kinderen.messageFrequency);
                 return View("index", "Home");
                 default:
                 if (naamKamer != null && leeftijdGroep != null)
-                    return View(_context.chat.Where(c => c.ageGroup+1 <= leeftijdGroep && c.ageGroup-1 >= leeftijdGroep && c.naam.Contains(naamKamer)).Include(c => c.Users).ToList());
+                    return View(_context.chat.Where(c => c.ageGroup+1 >= leeftijdGroep && c.ageGroup-1 <= leeftijdGroep && c.naam.Contains(naamKamer)).Include(c => c.Users).ToList());
                 if (leeftijdGroep != null)
-                    return View(_context.chat.Where(c => c.ageGroup+1 <= leeftijdGroep && c.ageGroup-1 >= leeftijdGroep).Include(c => c.Users).ToList());
+                    return View(_context.chat.Where(c => c.ageGroup+1 >= leeftijdGroep && c.ageGroup-1 <= leeftijdGroep).Include(c => c.Users).ToList());
                 if (naamKamer != null)
                     return View(_context.chat.Where(c => c.naam.Contains(naamKamer)).Include(c => c.Users).ToList()); 
                 else
@@ -187,10 +188,8 @@ namespace WebApplicatie.Controllers{
                 currentTime = DateTime.Now,
                 typMessage = "chat"
             };
-            if (User != null )
-            {                
+            if(User != null && _context.accounts.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).typAccount == "client" && _context.chat.FirstOrDefault(c => c.Id == chatId).ruimte.Equals(chatRuimte.prive))               
                 _context.cliënt.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).messageFrequency++;
-            }
             _context.message.Add(Message);
             await _context.SaveChangesAsync();
 

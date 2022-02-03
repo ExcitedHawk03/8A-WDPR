@@ -34,7 +34,7 @@
     <br>
     @foreach (var item in Model)
     {
-        @if (item.Hulpverlener == _context.accounts.FirstOrDefault(a => a.Id == userId).Id)
+        @if (item.Hulpverlener == _context.accounts.FirstOrDefault(a => a.Id == userId).Id || _context.accounts.FirstOrDefault(a => a.Id == userId).typAccount == "moderator")
         {
             <div class="Afspraak" style="background-color:#00ff00;">
                 <b>Naam: </b>
@@ -45,7 +45,7 @@
                 @Html.DisplayFor(modelItem => item.Datum)
                 <br>
                 <b>Hulpverlener:</b>
-                @Html.DisplayFor(modelItem => _context.accounts.FirstOrDefault(a => a.Id == userId).Voornaam)
+                @Html.DisplayFor(modelItem => _context.accounts.FirstOrDefault(a => a.Id == item.Hulpverlener).Voornaam)
 
                 <br><br>
 

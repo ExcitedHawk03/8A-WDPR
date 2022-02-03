@@ -26,66 +26,6 @@ public class AanmeldingTests
             var ViewResult = Assert.IsType<ViewResult>(result);
         }
 
-        // public void Create_RedirectToActionTesten_Gelukt()
-        // {
-        //     //Arrange
-        //     Aanmelding aanmelding = new Aanmelding();
-        //     DbContextOptions options = new DbContextOptionsBuilder().UseInMemoryDatabase("ClientContext").Options;
-        //     ClientContext context = new ClientContext(options);
-
-        //     AanmeldingController controller = new AanmeldingController(context);
-
-        //     //Act
-        //     var result = controller.Create(aanmelding);
-        //     var redirectToActionResult = Assert.IsType<RedirectToActionResult>(result);
-
-        //     //assert
-        //     Assert.Equal("Aanmelding", redirectToActionResult.ControllerName);
-        //     Assert.Equal("Gelukt", redirectToActionResult.ActionName);
-
-
-        // }
-
-        // [Fact]
-        // public void Edit_RedirectToActionTesten_Aanpassen()
-        // {
-        //     //Arrange
-        //     Aanmelding aanmelding = new Aanmelding();
-        //     DbContextOptions options = new DbContextOptionsBuilder().UseInMemoryDatabase("ClientContext").Options;
-        //     ClientContext context = new ClientContext(options);
-
-        //     AanmeldingController controller = new AanmeldingController(context);
-
-        //     //Act
-        //     var result = controller.Edit(It.IsAny<int>(), aanmelding);
-        //     var redirectToActionResult = Assert.IsType<RedirectToActionResult>(result);
-
-        //     //assert
-        //     Assert.Equal("Aanmelding", redirectToActionResult.ControllerName);
-        //     Assert.Equal("Aanpassen", redirectToActionResult.ActionName);
-
-        // }
-
-        //  [Fact]
-        // public void DeleteConfirmed_RedirectToActionTesten_Afkeuren()
-        // {
-        //     //Arrange
-        //     Aanmelding aanmelding = new Aanmelding();
-        //     DbContextOptions options = new DbContextOptionsBuilder().UseInMemoryDatabase("ClientContext").Options;
-        //     ClientContext context = new ClientContext(options);
-
-        //     AanmeldingController controller = new AanmeldingController(context);
-
-        //     //Act
-        //     var result = controller.DeleteConfirmed(It.IsAny<int>());
-        //     var redirectToActionResult = Assert.IsType<RedirectToActionResult>(result);
-
-        //     //assert
-        //     Assert.Equal("Aanmelding", redirectToActionResult.ControllerName);
-        //     Assert.Equal("Afkeuren", redirectToActionResult.ActionName);
-
-        // }
-
         [Fact]
         public void Gelukt_ResultMoetEenTypeZijn()
         {
@@ -152,10 +92,11 @@ public class AanmeldingTests
             Assert.Equal("Mark", aa.Hulpverlener);
             Assert.Equal(1, context.Aanmelding.Count());
         }
-    }
+    
 
      [Fact]
-        public async void Create_1Keer(){       
+        public async void Create_1Keer()
+        {       
          
         //Arrange
         DbContextOptions options = new DbContextOptionsBuilder().UseInMemoryDatabase("ClientContext").Options;
@@ -169,6 +110,6 @@ public class AanmeldingTests
             mockContext.Verify(m => m.Add(It.IsAny<Aanmelding>()), Times.Once());
         }
     }
-}
+
 
 

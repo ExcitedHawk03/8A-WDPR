@@ -37,7 +37,7 @@ namespace WebApplicatie.Controllers
 
         public IActionResult Homepagina ()
         {
-            return View(_context.accounts.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value));
+            return View(_context.hulpverlener.Include(h => h.cliënten).FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value));
         }
 
         public IActionResult Privacy()
@@ -56,8 +56,8 @@ namespace WebApplicatie.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Register(string voornaam,string tussenvoegsel, string achternaam, int leeftijd,string geslacht, string email,
-        string telnr,string postcode, string plaats, string password, string adres, string hulpverlener, string typAccount, string Kind){                                   
+        public async Task<IActionResult> Register(string voornaam,string tussenvoegsel, string achternaam, DateTime leeftijd,string geslacht, string email,
+        string telnr,string postcode, string plaats, string password, string adres, string hulpverlener, string typAccount, string Kind, bool isOuder){                                   
             var account = new Account{
                 Tussenvoegsel = tussenvoegsel,
                 Achternaam = achternaam,
@@ -72,11 +72,12 @@ namespace WebApplicatie.Controllers
                 aangemeldeHulpverlener = hulpverlener,
                 Voornaam = voornaam,
                 typAccount = typAccount
+
             };
-                if (typAccount == null)
-                    account.typAccount = "gast";
-                else if(Kind != null)
+                if (Kind != null)
                     account.typAccount = "ouder";
+                else if(typAccount == null)
+                    account.typAccount = "gast";
                 var serializedParent = JsonConvert.SerializeObject(account); 
                 var rnd = new Random(); 
             if(!_context.accounts.Any()){
@@ -129,7 +130,7 @@ namespace WebApplicatie.Controllers
            var user = await _AccountManager.FindByIdAsync(userId);
            if(user != null){
            var result = await _signInManager.PasswordSignInAsync(user.UserName, password, false,false); 
-                if(result.Succeeded && (user.typAccount.Equals("client") || user.typAccount.Equals("ouder"))){
+                if(result.Succeeded && (user.typAccount.Equals("gast"))){
                     ChatController._currentUser = user;
                    return RedirectToAction("Create","Aanmelding");
                 }
@@ -175,8 +176,14 @@ namespace WebApplicatie.Controllers
         public IActionResult clienten (){
             return View(_context.accounts.Where(a => a.typAccount == "gast").ToList());
         }
-        
-        public async Task<IActionResult> clientenAanmelden(string Id){
+
+        [HttpPost]
+        public async Task<IActionResult> clienten(string Id, bool afkeuren){
+            if(afkeuren)
+            {
+                _context.accounts.Remove(_context.accounts.FirstOrDefault(a => a.Id == Id));
+                await _context.SaveChangesAsync();
+            }
             _context.accounts.FirstOrDefault(a => a.Id == Id).typAccount = "client";
             var serializedParent = JsonConvert.SerializeObject(_context.accounts.FirstOrDefault(a => a.Id == Id));
             _context.accounts.Remove(_context.accounts.FirstOrDefault(a => a.Id == Id));
@@ -184,13 +191,12 @@ namespace WebApplicatie.Controllers
             client.hulpverlener = _context.hulpverlener.FirstOrDefault(a => a.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value);
             _context.cliënt.Add(client);
             await _context.SaveChangesAsync();
-            _context.hulpverlener.FirstOrDefault(h => h.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).cliënten
-            .Add(_context.cliënt.FirstOrDefault(c => c.Id == client.Id));
+            _context.hulpverlener.Include(h => h.cliënten).FirstOrDefault(h => h.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value).cliënten.Add(client);
             return RedirectToAction("Homepagina");
         }
 
         public IActionResult hulpverleneraanmeldingen(){
-            return View(_context.hulpverlener.ToList());
+            return View(_context.hulpverlener.Include(h => h.cliënten).ToList());
         }
 
         public IActionResult Bevestiging()

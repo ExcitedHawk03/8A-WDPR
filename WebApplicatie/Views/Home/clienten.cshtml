@@ -27,9 +27,12 @@
     @if (user.aangemeldeHulpverlener == userId)
     { 
         <li>
-          <a asp-controller="Home" asp-action="clientenAanmelden" asp-route-Id = "@user.Id">
-                    @user.Voornaam @user.Tussenvoegsel @user.Achternaam
-        </a>
+          <Form asp-action="clienten" method="post">
+                    <b>@user.Voornaam @user.Tussenvoegsel @user.Achternaam</b>
+                    <button asp-route-Id="@user.Id" asp-route-afkeuren="false">Goedkeuren</button>
+                    <button asp-route-Id="@user.Id" asp-route-afkeuren="true">Afkeuren</button>
+
+        </Form>
         </li>
     }
 }

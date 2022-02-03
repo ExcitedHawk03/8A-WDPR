@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
@@ -15,7 +16,8 @@ public class Account : IdentityUser{
     [Required(ErrorMessage = "Achternaam is verplicht")]
     public string Achternaam {get; set;}
     [Required(ErrorMessage = "Leeftijd is verplicht")]
-    public int Leeftijd {get; set;}
+    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+    public DateTime Leeftijd {get; set;}
     public string Geslacht {get; set;}
     [Required(ErrorMessage = "Email is verplicht")]
     public string Telnr {get; set;}
@@ -39,10 +41,8 @@ public class Account : IdentityUser{
 
 public class hulpverlener : Account {
 
-    public hulpverlener () : base(){
-        cliënten = new List<client>();
-    }
-  public List<client> cliënten {get; set;} 
+
+  public ICollection<client> cliënten {get; set;} 
    public int chatNummer {get; set;}
 
 }

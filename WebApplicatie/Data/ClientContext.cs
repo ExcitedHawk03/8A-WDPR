@@ -13,7 +13,6 @@ using WebApplicatie.Models;
         {
         }
 
-        public DbSet<Client> Client { get; set; }
         public DbSet<hulpverlener> hulpverlener { get; set; }
         public DbSet<client> cliënt { get; set; }
         public DbSet<ouder> ouder { get; set; }
@@ -25,6 +24,7 @@ using WebApplicatie.Models;
 
         public DbSet<Account> accounts {get; set;}
         public DbSet<Aanmelding> Aanmelding {get; set;}
+        
 
         protected override void OnModelCreating(ModelBuilder builder){
             base.OnModelCreating(builder);
