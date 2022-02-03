@@ -31,26 +31,29 @@
         </div>
         <div class="col-5">
 
-            <br><br><br><br><br><br>
+            <br><br><br><br>
 
             <h4><b>Neem deel aan een zelfhulpgroep</b></h4> 
             <div class="main-menu" <div class="side-menu">
                 <form asp-controller="Chat" asp-action="searchSelection">
             <div> 
-                <label for="Kamernaam" id="Kamernaam">Onderwerp zelfhulpgroep: </label>
-                <input name="SelectionKamer" placeholder="Zelfhulpgroep" value='@ViewData["SelectionKamer"]'>
+
+                <label for="Kamernaam" id="Kamernaam" style="font-weight:bold;">Onderwerp zelfhulpgroep: </label>
+                <input name="SelectionKamer" placeholder="Zelfhulpgroep">
             </div>
        
             <div>
-                <label for="Leeftijd" id="Leeftijd">Leeftijdsgroep: </label>
-                <input name="SelectionLeeftijd" placeholder="Leeftijdsgroep" value='@ViewData["SelectionLeeftijd"]'>
+                <label for="Leeftijd" id="Leeftijd" style="font-weight:bold;">Leeftijdsgroep: </label>
+                <input name="SelectionLeeftijd" placeholder="Leeftijdsgroep">
+
             </div>
         
             <footer>
                 <button>Zoek zelfhulpgroep:</button>
             </footer>
-        </form>
-                        <p>Beschikbare zelfhulpgroepen:</p>
+        </form>         
+                        <br>
+                        <p><b>Beschikbare zelfhulpgroepen:</b></p>
                         @foreach (var Chat in Model)
                         {
                             @if (!Chat.Users.Any(u => u.AccountId == currentPersoonId) && Chat.ruimte == chatRuimte.Room)
@@ -61,7 +64,8 @@
                             }
                         }
                         <br>
-                        <p>Zelfhulpgroepen waar je deel van uit maakt:</p>
+                        <br>
+                        <p><b>Zelfhulpgroepen waar je deel van uit maakt:</b></p>
                         @foreach (var Chat in Model)
                         {    
                             @if (Chat.Users.Any(u => u.AccountId == currentPersoonId) && Chat.ruimte == chatRuimte.Room)

@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/zonderinloggen.css" />
     <link rel="stylesheet" href="~/css/footerbottom.css" />
-    @* <link rel="stylesheet" href="~/css/formulieren.css" /> *@
+    <link rel="stylesheet" href="~/css/formulieren.css" />
     <title>Intakegesprek inplannen</title>
 </head>
 
@@ -33,25 +33,26 @@
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="VoorNaam" id="VoorNaam" class="control-label"></label>
+                    <label asp-for="VoorNaam" id="VoorNaam" class="control-label" style="font-weight: bold;"></label>
                     <input asp-for="VoorNaam" class="form-control" />
                     <span asp-validation-for="VoorNaam" class="text-danger"></span>
                 </div>
                 <br>
                 <div class="form-group">
-                    <label asp-for="AchterNaam" id="AchterNaam" class="control-label"></label>
+                    <label asp-for="AchterNaam" id="AchterNaam" class="control-label" style="font-weight: bold;"></label>
                     <input asp-for="AchterNaam" class="form-control" />
                     <span asp-validation-for="AchterNaam" class="text-danger"></span>
                 </div>
                 <br>
                 <div class="form-group">
-                    <label asp-for="Datum" id="Datum" class="control-label"></label>
+                    <label asp-for="Datum" id="Datum" class="control-label" style="font-weight: bold;"></label>
                     <input asp-for="Datum" class="form-control" />
                     <span asp-validation-for="Datum" class="text-danger"></span>
                 </div>
                 <br>
                 <div class="form-group">
-                <label asp-for="Hulpverlener" id="Hulpverlener" class="control-label"></label>
+                <label asp-for="Hulpverlener" id="Hulpverlener" class="control-label" style="font-weight: bold;"></label>
+                <br>
                 <select name="Hulpverlener" id="Hulpverlener">
                     @foreach (var item in _context.hulpverlener)
                     {

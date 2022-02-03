@@ -109,7 +109,7 @@ namespace WebApplicatie.Controllers
                 if(result2 != null){
                 if(result2.Succeeded){
                     ChatController._currentUser = account;
-                    return RedirectToAction("Homepagina","Home");
+                    return RedirectToAction("Bevestiging","Home");
                 }
                 }
         return RedirectToAction("register");
@@ -129,12 +129,12 @@ namespace WebApplicatie.Controllers
            var user = await _AccountManager.FindByIdAsync(userId);
            if(user != null){
            var result = await _signInManager.PasswordSignInAsync(user.UserName, password, false,false); 
-                if(result.Succeeded){
+                if(result.Succeeded && (user.typAccount.Equals("client") || user.typAccount.Equals("ouder"))){
                     ChatController._currentUser = user;
-                   return RedirectToAction("Homepagina","Home");
+                   return RedirectToAction("Create","Aanmelding");
                 }
            }
-            return RedirectToAction("login");
+            return RedirectToAction("Homepagina", "Home");
         }
          public IActionResult Login(){
           return View();
@@ -191,6 +191,11 @@ namespace WebApplicatie.Controllers
 
         public IActionResult hulpverleneraanmeldingen(){
             return View(_context.hulpverlener.ToList());
+        }
+
+        public IActionResult Bevestiging()
+        {
+            return View();
         }
 
     }
