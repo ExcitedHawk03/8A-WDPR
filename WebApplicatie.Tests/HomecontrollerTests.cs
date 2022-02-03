@@ -147,7 +147,7 @@ namespace WebApplicatie.Tests
                 _AccountManager.Setup(u => u.CreateAsync(It.IsAny<Account>(), It.IsAny<string>()));          
 
                 HomeController h = new HomeController(_AccountManager.Object, _signInManager.Object, _context);
-                var result = Assert.IsType<RedirectToActionResult>(await h.Register("bob", "van", "jap", 12, "M", "test@test", "12345", "1234DA", "leiden", "asdf", "123A", null, null, null));
+                var result = Assert.IsType<RedirectToActionResult>(await h.Register("bob", "van", "jap", DateTime.Now, "M", "test@test", "12345", "1234DA", "leiden", "asdf", "123A", null, null, null));
                  
                 _AccountManager.Verify(u => u.CreateAsync(It.IsAny<Account>(), It.IsAny<string>()), Times.Once());
         }

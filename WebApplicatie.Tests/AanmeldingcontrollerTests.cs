@@ -79,7 +79,7 @@ public class AanmeldingTests
         [Fact]
         public void TestData()
         {
-            hulpverlener h = new hulpverlener{Tussenvoegsel = null, Achternaam = "James", Leeftijd = 25, Geslacht = "M",
+            hulpverlener h = new hulpverlener{Tussenvoegsel = null, Achternaam = "James", Leeftijd = DateTime.Now, Geslacht = "M",
              Telnr = "0687456321", Adres = "adres 11", Postcode = "1234AF", Plaats = "Rotterdam", Voornaam = "Mark", typAccount = "hulpverlener" };
             Aanmelding aa = new Aanmelding {VoorNaam = "Bill", AchterNaam = "Pieter", Datum = DateTime.Now, Hulpverlener = "Mark"};
 
